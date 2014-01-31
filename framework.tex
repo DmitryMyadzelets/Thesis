@@ -1,0 +1,63 @@
+
+\chapter{The Framework (15-20 pages)}
+
+The notation used in this document is the one in
+\cite{cassandras_introduction_2010}.
+Let $\Sigma$ be a finite set of events. A sequence of events is a string.
+$\Sigma^*$ denotes a set of all finite strings over $\Sigma$.
+$L\subseteq\Sigma^*$ is a language over $\Sigma$. Given strings $s$ and $t$,
+$st$ is their concatenation. Given strings $s$ and $w$, $w$ is a prefix of $s$
+if exists $t$ such that $wt = s$. Prefix closure of $L$, denoted by
+$\overline{L}$ is a set of all prefixes of all the strings in $L$.
+If $\overline{L} = L$ then $L$ is prefix-closed. The post language of $L$ after
+a string $s$ is denoted as $L/s$, i.e. $L/s := \{t\mid st \in L\}$. We
+write $\sigma \in s$ if the event $\sigma \in \Sigma$ appears in the string $s
+\in \Sigma^*$. If $\{s\}$ is a singleton, we write $s$ for operations on
+languages.
+
+An automaton $G$ is a tuple $$G := \left< X,\Sigma,\delta,x_0, X_m \right>,$$
+where $X$ is a set of states, $x_0 \in X$ is an initial state, $X_m \subseteq X$
+is the set of marked states, and $\delta: X \times \Sigma \rightarrow X$ is the
+transition function.
+We say a language $L := \mathcal{L}(G)$ is generated or recognized by the
+automaton $G$. In this paper we assume that for each language there is always a
+correspondent automaton, and vice versa. The marked language $L_m \subseteq L$
+is intended to make a part of the automaton's behaviour distinguishable in a
+certain context.
+
+Some events of DES can not be observed. To reflect that the set of events
+$\Sigma$ is partitioned into disjointed sets of observable events $\Sigma_o$ and
+not observable events $\Sigma_{ou}$, i.e. $\Sigma = \Sigma_o~\dot{\cup}~
+\Sigma_{ou}$.
+$M: \Sigma^* \rightarrow \Sigma_o^*$ denotes natural projection that
+erases unobservable events.
+% ; $\epsilon$ means the empty string. 
+The correspondent inverse projection is $M^{-1}: \Sigma_o^* \rightarrow
+2^{\Sigma^*}$.
+
+Let $I := \{1,2,\ldots,n\} \subset  \mathbb{N}$ be an index set. A system is
+defined by a set of automata $\{G_{i \in I}\}$ and a correspondent set of
+languages $\{L_{i \in I}\}$. We use the term \emph{local} in context of the
+automata and languages from these sets. The \emph{global} language of the system
+is defined by the parallel composition \cite{cassandras_introduction_2010} of
+its local languages:
+$L := \parallel_{i \in I} L_i$.
+The natural projection for the local languages is defined as 
+$P_i := \Sigma^* \rightarrow \Sigma_i^*$. We extend it to the system's languages
+as follows: $P_i(L) := \{s\mid s\in L_{i}\}$, and 
+$P_i^{-1}(L_{i}) := \{s \mid s \in L, P_i(s) \in L_i\}, ~i \in I$.
+We also define natural projection over observable events for the index set: 
+$M_i :\Sigma_i^* \rightarrow \Sigma_{i,o}^*$, natural projection over common
+events:
+$P_{i,c} : \Sigma_i^* \rightarrow (\Sigma_i \cap \bigcup_{j\neq
+i}^I\Sigma_j)^*$, and natural projection over observable and common events:
+$P_{i,co} : (\Sigma_i \cup \Sigma_o)^* \rightarrow (\Sigma_{o} \cup (\Sigma_i
+\cap \bigcup_{j\neq i}^I\Sigma_j))^*$. All the above projections, as well as
+the correspondent inverse projections, are defined also for languages in the
+usual manner.
+
+\section{DES Theoretical Framework}
+
+\section{Modeling Framework (Matteo's work)}
+
+\section{Diagnosability in DES \ldots}

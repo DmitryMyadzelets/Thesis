@@ -1,0 +1,172 @@
+% Tesi di Laurea 
+% Michele Furci
+%\documentclass[final, 12pt, a4paper, twoside, italian, indent]{itthesis}
+\documentclass[final, 12pt, a4paper, twoside, italian, indent]{itthesis}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{babel}
+\usepackage{psfrag}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{makeidx}
+\usepackage{varioref}
+%\usepackage[dvips, light, first, bottomafter]{draftcopy}
+\usepackage{pslatex}    % per avere i fonts PostScript
+\usepackage{amsmath}    % per \genfrac in UserGuide.tex
+\usepackage{amssymb}
+\newcommand{\floorfrac}[2]{\genfrac{\lfloor}{\rfloor}{}{}{#1}{#2}}
+
+%ambiente definizione
+\newtheorem{definizione}{Definizione}
+
+%ambiente teorema
+\newtheorem{teorema}{Teorema}
+
+\makeindex
+
+\newcommand{\Index}[1]{#1\index{#1}}
+\newcommand{\Indextt}[1]{\texttt{#1}\index{#1@\texttt{#1}}}
+\newcommand{\Indexsc}[1]{\textsc{#1}\index{#1@\textsc{#1}}}
+
+\newcommand{\Indexii}[2]{#1 #2\index{#1!#2}}
+\newcommand{\Indexttii}[2]{#1 %
+  \texttt{#2}\index{#1!\texttt{#2}@\texttt{#2}}}
+\newcommand{\Indexscii}[2]{#1 %
+  \textsc{#2}\index{#1!\textsc{#2}@\textsc{#2}}}
+
+\makeatletter
+\newlength{\@entrylabel@length}
+\newcommand{\entrylabel}[2][\bfseries]{%
+  \settowidth{\@entrylabel@length}{{#1 #2}}%
+  \ifdim \@entrylabel@length > \labelwidth
+     \parbox[b]{\labelwidth}{%     label troppo lunga: descrizione a capo.
+       \makebox[0pt][l]{#1 #2}\\}%
+  \else
+     {#1 #2}%                      label corta: descrizione in linea.
+  \fi
+  \hfil\relax%
+}
+\newenvironment{entry}[1][\bfseries]%
+   {\if@inlabel \leavevmode\global \@inlabelfalse \fi
+    \begin{list}{}{%
+       \renewcommand{\makelabel}{\entrylabel[#1]}%
+       \setlength{\labelwidth}{1.5cm}%
+       \setlength{\leftmargin}{\labelwidth}
+       \addtolength{\leftmargin}{\labelsep}}
+       \addtolength{\itemsep}{0.5\baselineskip}
+   }%
+   {\end{list}}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%[ Logos ]%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\MathWorks}{\textsc{The~MathWorks,~Inc.\ }}
+\newcommand{\Matlab}{\textsc{Matlab}}
+\newcommand{\Simulink}{\textsc{Simulink}}
+\newcommand{\PS}{\textsc{PostScript}}
+\newcommand{\Il}{\textsc{Adobe Illustrator 7.0}}
+\newcommand{\Ad}{\textsc{Adobe Systems Inc.}}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%[ Front matter ]%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+\University{Bologna}
+\Faculty{Ingegneria}
+\LCourse{Ingegneria dell'Automazione}
+\Course{Controlli Automatici}
+
+\Title{%
+  Controllo di un quadrotor e manovre spericolateeee yeah!
+}
+
+\Author{Michele Furci}
+\ChairPerson{\makebox[0pt][r]{Chiar.mo~Prof.~Ing.~Lorenzo~Marconi}}
+\CoChairPerson{
+  \makebox[0pt][r]{Dott.~Ing.~Roberto~Naldi}\\
+  {Dott.~Ing.~Marco~Gilioli}
+}
+
+\Session{Invernale}
+\Years{2011/2012}
+
+\maketitle
+
+\thispagestyle{empty}
+
+%
+% Parole chiave
+%
+\begin{entry}    %keywords
+    \item[Parole chiave:] Quadrirotore\\ Controllo Automatico\\ Controllo non Lineare\\
+    Controllo d'Assetto\\UAV\\
+\end{entry}
+
+\vfill
+
+%
+% Copyright e altre informazioni
+%
+\begin{flushleft}     %università, casy etc
+\small C.A.S.Y ,Center for Research on Complex Automated Systems.\\
+\small D.E.I.S., Dipartimento di Elettronica, Informatica e
+Sistemistica.\\
+\small Università di Bologna.
+
+Le simulazioni sono effettuate in \Matlab{} e \Simulink{},
+\Matlab{} e \Simulink{} sono marchi registrati di \MathWorks{}\\
+
+La tesi è scritta in \LaTeXe, la stampa è in \PS.\\
+
+\end{flushleft}
+
+\Dedication{\normalsize Alla mia famiglia}
+
+%\tableofcontents \listoffigures
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%..........
+%
+\chapter*{Ringraziamenti}
+\vspace{0.5cm}\begin{flushright} {\em Bologna, 20 Dicembre 2012 }
+\end{flushright}
+{\em Desidero innanzitutto ringraziare la mia famiglia ...bla bla bla RINGRAZIAMENTI
+} \vspace{0.5cm}
+\begin{flushright}
+{\em GRAZIE A TUTTI. In particolare a Gildo\\
+Michele}
+\end{flushright}
+\clearpage
+%%%%%%%%%%%[ Main matter: body of the document ]%%%%%%%%%%
+\mainmatter
+\chapter{Introduzione \label{ch:intro}}
+    \input{Introduzione.tex}
+
+\chapter{Quadrotor Overview \label{ch:quad}}
+    \input{2_Overview.tex}
+
+\chapter{Controllo \label{ch:control}}
+    \input{5_Controllo.tex}
+
+%\chapter{Pianificazione reattiva del moto}\label{ch:MotPlan}
+ %   \input{MotionPlanning.tex}
+
+%\chapter{Architettura del software di controllo}\label{ch:ArchSoft}
+ %   \input{ArchitetturaSoftware.tex}
+
+\appendix
+
+%\chapter{La gestione dei vettori del piano in C++}\label{ch:App}
+ %   \input{Appendice}
+
+\addcontentsline{toc}{chapter}{Bibliografia}
+\bibliographystyle{plain}
+\bibliography{Bibliografia}
+\nocite{*}
+
+\backmatter \cleardoublepage \printindex
+
+\end{document}

@@ -1,57 +1,50 @@
-%%This is a very basic article template.
-%%There is just one section and two subsections.
-\documentclass{article}
+% \documentclass{article}
+% \documentclass[final, 12pt, a4paper, twoside, english, indent]{itthesis}
+\documentclass[12pt,twoside]{./Help/Templates/MIT/mitthesis}
+\usepackage{./Help/Templates/MIT/lgrind}
+\pagestyle{plain}
+ 
+\usepackage[pdftex, pdftitle={}, pdfauthor={Dmitry Myadzelets}, bookmarks=false,
+% colorlinks=true, linkcolor=black
+]{hyperref}
 
+% Mathematical symbols
+\usepackage{amsfonts, amssymb, amsmath}
 
-% \usepackage[pdftex, pdftitle={}, pdfauthor={Dmitry Myadzelets}, bookmarks=false,
-% % colorlinks=true, linkcolor=black
-% ]{hyperref}
-\usepackage{tikz}
+% 
+\usepackage{tikz} 
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{arrows,positioning,automata,shadows,fit,shapes}
+
+% Algorithms 
+\usepackage{algpseudocode}
+\usepackage{float}
+\newfloat{alg}{t}{lop}
+\floatname{alg}{Algorithm}
 
 
 \begin{document}
 
-
-\section{Introduction (3-4 pages)}
-
-
-\section{Overview of \ldots Industrial Automation Plant (15-20 pages)}
-
-\subsection{Problem}
-
-\subsection{Real Example}
-
-\subsection{Literature}
-
-\subsubsection{Industrial}
-
-\subsubsection{Academic}
+\include{cover}
+% Some departments (e.g. 5) require an additional signature page.  See
+% signature.tex for more information and uncomment the following line if
+% applicable.
+% \include{signature}
+\pagestyle{plain}
+\include{contents}
+\include{introduction}
+\include{overview}
+\include{framework}
+\include{thetheory}
 
 
-\section{The framework (15-20 pages)}
+\chapter{Simulation (10 pages)}
+\section{Real example}
 
-\subsection{DES Theoretical Framework}
+\chapter{Conclusions (3-4 pages)}
 
-\subsection{Modeling Framework (Matteo's work)}
-
-\subsection{Diagnosability in DES \ldots}
-
-
-\section{Main Chapter (20-30 pages)}
-
-\subsection{Modular Virtual Diagnosability}
-
-
-\section{Simulation (10 pages)}
-
-\subsection{Real example}
-
-
-\section{Conclusions (3-4 pages)}
-
-\newpage
-
+% \appendix
+% \include{appa}
+\include{biblio}
 
 \end{document}
