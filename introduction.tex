@@ -1,12 +1,52 @@
 
 \chapter{Introduction (3-4 pages)}
 
+(take the book from Zak's table for introduction)
+
 Motivation for this work. What this work about? Philosophical observation.
 Theory and practicing engineers.
 
 Systems development. Modern Requirements. Growing complexity. Goals during
 development. Formal approaches. Formal offline verification and online
-monitoring
+monitoring.
+
+% How the document is organized.
+Chapter two gives the overview of the problem on a real example of the
+industrial automation plant.
+
+Chapter three describes the automata framework for discrete event systems,
+modeling approach and how it is used for diagnosability problem.
+
+Chapter four presents a new type of diagnosability - modular virtual
+diagnosability, and its relation to existing types of diagnosability. 
+
+Chapter five presents a new tool for modeling and simulation.
+
+
+\emph{Formal methods aim to apply mathematically-based techniques to the
+development of computer-based systems, especially at the specification level,
+but also down to the implementation level. This aids early detection and
+avoidance of errors through increased understanding. It is also beneficial for
+more rigorous testing coverage. This talk presents the use of formal methods on
+a real project. The Z notation has been used to specify a large-scale high
+integrity system to aid in air traffic control. The system has been implemented
+directly from the Z specification using SPARK Ada, an annotated subset of the
+Ada programming language that includes assertions and tool support for proofs.
+The Z specification has been used to direct the testing of the software through
+additional test design documents using tables and fragments of Z. In addition,
+Mathematica has been used as a test oracle for algorithmic aspects of the
+system. In summary, formal methods can be used successfully in all phases of the
+lifecycle for a large software project with suitably trained engineers, despite
+limited tool support.}
+
+\emph{Formal methods have been advocated as a means of increasing the
+reliability of systems, especially those which are safety or business critical,
+but the industrial uptake of such methods has been slow. This is due to the
+perceived difficulty of mathematical nature of these methods, the lack of tool
+support, and the lack of precedents where formal methods has been proven to be
+effective. It is even more difficult to develop automatic specification and
+verification tools due to limitations like state explosion, undecidability,
+etc.}
 
 In Discrete-Event Systems, diagnosis of a fault is a problem of deciding whether
 or not the fault occurred, under partial observation of the system's events.

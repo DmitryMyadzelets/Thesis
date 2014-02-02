@@ -3,7 +3,25 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{assumption}{Assumption}
 
-\chapter{Main Chapter (20-30 pages)}
+\chapter{Modular Virtual Diagnosability}
+
+We define our goal as to make the system modularly diagnosable. If we assume
+that the global system is diagnosable with respect to a given fault, then it
+implies that it is always possible to find a subset of the modules, such
+that it contains a faulty module, and the modules can be composed into
+one locally diagnosable module. Each module in this subset helps to
+detect and distinguish the fault by its sequence of observable events. It also
+implies that not each module of the system can or may participate in the fault
+detection and distinguishing process. We proceed with the formal definition of
+modular virtual diagnosability.
+
+\section{Formal Definition}
+
+Mathematically speaking, if the initial modularity does not satisfy the property
+of modular diagnosability then we need to find a partition of the set of the
+modules such that all the modules in each element of the partition can be
+considered as a \emph{virtual module}, and the system with the new modularity
+satisfies the property of modular diagnosability.
 
 The setup for the problem is following. Let a system be defined as a set of
 local languages $\{L_{i\in I}\}$, and let a faulty behaviour be defined for any
@@ -20,8 +38,6 @@ which never executed. In practice, such assumption may require construction of a
 supervisor, and verification that a local language of each module is globally
 consistent, before checking diagnosability of the system.
 
-First, we recall definition of diagnosability by virtual modules, introduced in
-\cite{myadzelets_virtual_2013}.
 Let $J$ be a partition of $I$. Given a set of system's languages $\{L_{i \in
 I}\}$ and a set of observable projections $\{M_j \mid j \in J \}$. 
 The system is modularly diagnosable with respect to $J$ and $\{M_j\}$ 
@@ -39,13 +55,461 @@ if the following holds:
 The definition requires each fault originated in any language of the subset $j$
 to be diagnosed by observing only events of the languages from the same subset
 $j$.
-% However, the languages $L_j$ are not given, and they do not have to be necessary
-% constructed. That is why we use the term \emph{virtual module} as a synonym for
-% the subset $j$.
 
-Second, we recall Lemma 2 \cite{myadzelets_virtual_2013}, where the statements
-hold for a system of two languages, and rewrite it for an arbitrary couple
-of languages as follows.
+A trivial solution for the above problem is to enumerate all the partitions of
+the set and check whether the result of composition of each element of the
+partition is locally diagnosable. The total number of partitions of a set with
+cardinality $n$ is known as the Bell number $B_n$, which has a double
+exponential generation function \cite{brualdi_introductory_2004}. In
+reality, it may not necessary to enumerate all the partitions, since a
+partition which corresponds to modularly diagnosable system can be found
+event at the first iteration. Moreover, it is not necessary to compose all
+the modules in each element of the partition, since not all them elements
+may contain modules with faults. However, the level of complexity in the worst
+case motivates us to find a more smart solution for the problem. 
+
+In the next section we make a first step toward creation of a feasible approach
+for the problem.
+
+
+\section{Trivial system. Analysis of two adjacent modules}
+
+As was mentioned above, the first step to improve the search for relevant
+partition, would be to enumerate only the modules which potentially can
+influence diagnosability. Intuitively, those are ones which have observable
+events. Then, the structure of a module may have some patterns which could be
+found before the module is composed with others. The module with fault may also
+be analyzed for a possibility to change its observation due to interaction with
+other modules. Thus, in the trivial case of a system consisting of two
+modules, where only one module has a fault, in order to solve the problem we
+need to answer the following questions: a) can the module with a fault
+potentially change the observation of its strings while composed with adjacent
+module? and b) can the module change observation some strings of another module
+due to concurrency? No parallel composition should be used in order to answer
+the questions. Otherwise, the problem would reduce to the problem of local
+diagnosability.
+
+We suppose that the system consists only of two modules with the correspondent
+languages $L_1$ and $L_2$. The language of the system is $L := L_1 \parallel
+L_2$. Suppose that only one module has a faulty behaviour: $L_1 := L_{1,f}
+~\dot{\cup}~ L_{1,nf}$.
+Suppose that $L_1$ is not diagnosable locally, but $L$ is diagnosable.
+
+Firstly, we define the notion of observation changing of a string in a global
+language.
+\begin{definition}Given two languages $L_1$ and $L_2$. A string $s \in
+L_1$ \emph{changes its observation} $M_1(s)$ in the language $L$ if
+there is no the same observation in $P_1^{-1}(s)$, i.e.
+if the following holds:
+\end{definition}
+\begin{equation}
+\label{def:obs}
+	\begin{array}{l}
+		M(L) \cap M_1(s) = \emptyset.
+	\end{array}
+\end{equation}
+
+\begin{lemma}
+\label{lem_changed_observation}
+Given two languages $L_1$ and $L_2$, and a string $s \in L_1$.
+Assume that $s \in P_1(L)$. The string $s$ changes its observation in the
+language $L$ if and only if:
+\end{lemma}
+\begin{subequations}\label{lem:obs}
+\begin{align}
+	(\exists \sigma \in s \mid \sigma \in \Sigma_1 \cap \Sigma_2) \land
+	\label{lem:obs1}
+	\\
+	(\forall t\sigma \in L_2)
+	\left[M_2(t) \neq \emptyset \right],
+	\label{lem:obs2}
+	\\
+	\textrm{where } M_2: \Sigma^* \rightarrow (\Sigma_{2,o} \backslash
+	\Sigma_1)^*. 
+	\label{lem:obs3}
+\end{align}
+\end{subequations}
+
+\begin{proof}
+In order to prove sufficiency of (\ref{lem:obs}) we use its converse relation
+and prove by contradiction that the change of observation (\ref{def:obs}) is
+necessary.
+Assume $\exists w \in L$ and $\exists s \in L_1$ such that
+$M(w)= M_1(s)$ and, therefor, (\ref{def:obs}) is false. Let $\exists
+\sigma \in \Sigma_1 \cap \Sigma_2$ such that $\sigma \in w$ and also
+(\ref{lem:obs1}) holds. Then may $\exists u \sigma \in \overline{w}$ such that
+$M_2(u) = \emptyset$, and then $M_2(P_2(u)) =
+\emptyset$ which contradicts (\ref{lem:obs2}). Now, let (\ref{lem:obs2})
+be true for all $t\sigma \in P_2(w)$. Then the assumption $M(w)=
+M_1(s)$ holds only if $\sigma \not \in s$, which contradicts (\ref{lem:obs1}). 
+
+We prove necessity of (\ref{lem:obs}) by contradiction.
+Let (\ref{lem:obs1}) holds, and $\exists t\sigma \in L_2$ such that
+$M_2(t) = \emptyset$. Then may $\exists t'\sigma \in 
+L \subseteq P_2^{-1}(t\sigma)$ such that $M_2(t') =
+\emptyset$ and $M_1(t') = M_1(s) \neq \emptyset$, which contradicts
+(\ref{def:obs}).
+Now, let (\ref{lem:obs2}) holds and $\not \exists \sigma \in s' \in P_1^{-1}(s)
+\mid \sigma \in \Sigma_1 \cap \Sigma_2$. Then may $\exists w \in L_2$ and,
+hence, $w' \in L \subseteq P_2^{-1}(w)$ such that $M(w')=M(s)$,
+which contradicts (\ref{def:obs}).
+\end{proof}
+
+Informally, the above lemma says that the string of the local language $L_1$
+changes its observation in the global language $L$ if and only if the string has
+an event in common with the language $L_2$, and all the strings of $L_2$ which
+have this common event have observable events in the prefixes, and some of the
+observable events in the prefixes are not common with $L_1$.
+
+We call the subset of stings $\{t \in L_2\}$ satisfying condition
+(\ref{lem:obs2}) as the \emph{adjacent observable support} for the given string
+$s \in L_1$.
+
+\begin{definition} Given two languages $L_1$ and $L_2$. We say that a string $s
+\in L_{1}$ is distinguished from all the other local strings $L_1\backslash s$
+in the language $L$ if the following holds:
+\end{definition}
+\begin{equation}
+\label{def:dist}
+\begin{array}{l}
+% 		M(s \parallel L_2) \cap M((L_1\backslash s) \parallel L_2)
+% 		= \emptyset.
+  (\forall w \in L_1\backslash s)\\
+  	\left[ MP_1^{-1}(w \parallel L_2) \cap MP_1^{-1}(s\parallel L_2) = \emptyset
+  	\right].
+\end{array}
+\end{equation}
+
+\begin{lemma}
+\label{lem:distinguished_for_2}
+Given two languages $L_1$ and $L_2$. Assume that $L_1 = P_1(L)$. The string $s
+\in L_1$ is distinguished from $L_1\backslash s$ in the language $L$ if $s$ has
+an adjacent observable support $L_{2,s} \subseteq L_2$ which
+satisfies the following condition:
+\end{lemma}
+\begin{subequations}
+\begin{align}
+	(\forall t \in L_{2,s})
+	\left[ \exists \sigma \in t \mid \sigma \in \Sigma_1 \cap \Sigma_2)\right]
+	\land
+	\label{lem:dist1}
+	\\
+	(\forall w \in L_1\backslash s)\left[\sigma \not \in w \right]
+	\label{lem:dist2} \land
+	\\
+	(\forall t'\sigma \in \overline{t})
+	[M_2(t / t'\sigma) \neq \emptyset]
+	\label{lem:dist3},
+\end{align}
+\end{subequations}
+
+where $M_2$ is defined as in (\ref{lem:obs3}). 
+
+\begin{proof}
+Assume (\ref{def:dist}) is false, i.e. $\exists w' \in P_1^{-1}(w)$ and $\exists
+s' \in P_1^{-1}(s)$ such that $M(w') = M(s')$. 
+
+Assume (\ref{lem:dist1}) and (\ref{lem:dist2}) hold. Then may $\exists t' \in
+\overline{s'} \mid t' \in P_2^{-1}(L_{2,s})$ such that $M(t') = M(w')$, and $t
+\in P_2(t')$ such that $M_2(t) = M_2(w)$. And may $\exists t'' \in \overline{t}$
+such that $M_2(t'') = M_2(w)$. Since $\sigma \in t$ and $\sigma \not \in w$,
+then $M(t \backslash t''\sigma) = \emptyset$ for any $t''\sigma \in
+\overline{t}$, which contradicts (\ref{lem:dist3}).
+
+Assume (\ref{lem:dist1}) and (\ref{lem:dist3}) hold. Let $M_1(L_1) = \emptyset$
+and $M_2(t\backslash t'\sigma) = M_2(s) = M_2(s)$. Then $\forall s' \in
+M(P_1^{-1}(s))$ there exists $\sigma \in s'$, which contradicts
+(\ref{lem:dist2}).
+
+Assume (\ref{lem:dist2}) and (\ref{lem:dist3}) hold. If (\ref{def:dist}) is
+false, then (\ref{lem:dist1}) is false. However, (\ref{lem:dist3}) is sufficient
+for (\ref{lem:dist1}), which contradicts the former statement.
+\end{proof}
+
+Informally, the above lemma says that a string $s$ becomes distinguishable from
+the other strings $L_1\backslash s$ in the global language, when the occurrence
+of events from the observable support happens only in $P^{-1}(s)$ due to
+common events. Thus, whenever we observe events of the observable support of
+$L_2$, we are sure the string $s$ in $L_1$ is being executed.
+
+As it was discussed in the Section \ref{sec:Diagnosability},
+indistinguishability can be changed either by blocking the string in the local
+language due to concurrency, or by interleaving with observable events from
+other languages. Under assumption that all the strings are not affected by
+concurrency, i.e. $L_1 = P_1(L)$ we can deduce, that the conditions of Lemma
+\ref{lem:distinguished} are also necessary for changing distinguishability. 
+
+The Figure \ref{fig:marking_L2} depicts an automaton which
+accepts the sublanguage of $L_2$ satisfying conditions (\ref{lem:obs1}),
+(\ref{lem:dist1}) and (\ref{lem:dist3}) of the above lemmas.
+The Figure \ref{fig:marking_L1} depicts an automaton which
+marks a sublanguage of $L_1$ satisfying conditions (\ref{lem:obs1}) and
+(\ref{lem:dist1}). 
+
+A procedure verifying if a string $s \in L_1$ is distinguishable in the global
+language $L$ consists of two steps. First, the string $s$ should be marked by
+the automaton depicted in the Figure \ref{fig:marking_L1}. Then the set of
+common events $\Sigma_1 \cap \Sigma_2$ is reduced to the set of events causing
+transitions in the automaton. Second, all the continuations of the strings of
+the language $L_2$ which have these common events should be accepted by the
+automaton depicted in the Figure
+\ref{fig:marking_L2}.
+
+Now we are ready to apply Lemma \ref{lem:distinguished} with respect to
+diagnosability property, but make some notes before. Intuitively, one would
+apply the conditions of the lemma for faulty and non-faulty languages. Recall,
+that faulty and non-faulty languages are disjoint, but they may have common
+prefixes. This common sublanguage is defined as $\overline{L_{f}} \cap (L
+\backslash \overline{L_{f}})$. Changing observability of this sublanguage has no
+effect for diagnosability, and we can exclude it from a verification procedure.
+Thus, the non-faulty sublanguage disjoint to all the prefixes of the faulty
+language is defined as $L \backslash \overline{L_f}$, and the set of all
+prefixes of the faulty language disjoint to the above non-faulty sublanguage and
+to the common prefixes is defined as $\overline{L_f} \backslash (\overline{L_f}
+\cap (L \backslash \overline{L_f}))$.
+
+\begin{lemma}
+\label{lem:diagnosable}
+Given $L_1, L_2$, $L_{1,f} \subseteq L_1$ and $L_{1,nf} \subseteq L_1$. A
+language $L := L_1 \parallel L_2$ is diagnosable if the sublanguages
+$\overline{L_{1,f}} \backslash (\overline{L_{1,f}} \cap (L_i \backslash
+\overline{L_{1,f}}))$ and $L_{1} \backslash \overline{L_{1,f}}$ have
+distinguished observable supports in $L_2$.
+% , which satisfy conditions \ref{lem:dist1}-\ref{lem:dist3}.
+\end{lemma}
+The proof can be deduced from the Lemma \ref{lem:distinguished}. 
+
+The automata depicted in Figures \ref{fig:marking_L2} and \ref{fig:marking_L1}
+can not be simply used in a procedure verifying diagnosability, since we should
+avoid the verification of $\overline{L_{1,f}} \backslash L_{1,f}$ and $L_{1,nf}
+\backslash \overline{L_{1,f}}$. However, it can be used to demonstrate
+the approach in a trivial case, as it is shown in the next section.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+[->,>=stealth, node distance=30mm, auto, initial text=, shorten >=1pt,
+semithick, 
+every state/.style={fill=lightgray},
+every node/.style={scale=0.8}, 
+accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+]
+  \node[initial,state] (0)              {$0$};
+  \node[state]         (1) [right of=0] {$1$};
+  \node[state]         (2) [right of=1] {$2$};
+  \node[state, accepting]         (3) [right of=2] {$3$};
+
+  \path (0) edge [loop above] node {$\Sigma_2 \backslash (\Sigma_1 \cap \Sigma_2)$} (0)
+  		(0) edge              node {$\Sigma_1 \cap \Sigma_2$} (1)
+  		(1) edge [loop above] node {$\Sigma_2 \backslash (\Sigma_{2,o} \backslash \Sigma_1)$} (1)
+        (1) edge              node {$\Sigma_{2,o} \backslash \Sigma_1$} (2)
+  		(2) edge [loop above] node {$\Sigma_2 \backslash (\Sigma_1 \cap \Sigma_2)$} (2)
+        (2) edge              node {$\Sigma_1 \cap \Sigma_2$} (3)
+		(3) edge [loop above] node {$\Sigma_2$} (3)
+%         (2) edge [bend left]  node {$\Sigma_1 \cap \Sigma_2$} (1)
+        ;
+\end{tikzpicture}
+\caption{Automaton for marking the language $L_2$}
+\label{fig:marking_L2}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+[->,>=stealth, node distance=30mm, auto, initial text=, shorten >=1pt,
+semithick, 
+every state/.style={fill=lightgray},
+every node/.style={scale=0.8}, 
+accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+]
+  \node[initial,state] (0)              {$0$};
+  \node[state]         (1) [right of=0] {$1$};
+  \node[state, accepting]         (2) [right of=1] {$2$};
+
+  \path 
+	(0) edge [loop above] node {$\Sigma_1 \backslash (\Sigma_1 \cap \Sigma_2)$} (0)
+	(0) edge              node {$\Sigma_1 \cap \Sigma_2$} (1)
+	(1) edge [loop above] node {$\Sigma_1 \backslash (\Sigma_1 \cap \Sigma_2)$} (1)
+	(1) edge              node {$\Sigma_1 \cap \Sigma_2$} (2)
+	(2) edge [loop above] node {$\Sigma_1$} (2)
+% 	(1) edge [bend left]  node {$\Sigma_1 \cap \Sigma_2$} (0)
+    ;
+\end{tikzpicture}
+\caption{Automaton for marking the language $L_1$}
+\label{fig:marking_L1}
+\end{figure}
+
+
+\subsection{Example}
+Consider the system of two automata $G_1$ and $G_2$ depicted in Figure
+\ref{fig:G1} and Figure \ref{fig:G2}. The set of events for the system is
+$\Sigma = \{a, b, c, e, f\}$. Suppose the observable events are $\Sigma_o = \{c,
+e\}$, and the set of fault events is $\{f\}$. Thus, only the language $L_1$ has a
+fault, and $L_2$ has not. We use the verifier \cite{yoo_polynomial-time_2002} to
+check if a language is diagnosable. The verifier for the language $L_1$ is
+depicted in the Figure \ref{fig:verifier_G1}. One can check that it has an
+indeterminate cycle.
+The strings $fbc^*$ and $ac^*$ are not distinguishable in the local language
+$L_1$. Hence, $L_1$ is not locally diagnosable.
+
+We now use the verification procedure described in this paper to check if the
+language $L_2$ can changes observation of either strings $fbc^*$ or
+$ac^*$ in the language $L_1 \parallel L_2$ such that the strings become
+distinguishable. The set of events common for $L_1$ and $L_2$ is $\{b, c\}$. It
+can be verified that only the strings $fbc^*$ are marked by the automaton
+depicted in the Figure \ref{fig:marking_L1}. Next, it can be verified that all
+the strings of $L_2$ which have events common with the strings $fbc^*$ are
+accepted by the automaton depicted in the Figure \ref{fig:marking_L2}. Thus, we
+conclude that $L_2$ changes observation of the strings $fbc^*$ in the virtual
+module $G$ built of modules $G_1$ and $G_2$, such that $G$ becomes diagnosable.
+Indeed, if we make a parallel composition of the modules and build a verifier
+for the result as it is depicted in the Figure \ref{fig:verifier_G1G2}, it can
+be checked that the verifier has no indeterminate cycles.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+[->,>=stealth, node distance=25mm, auto, initial text=, shorten >=1pt,
+semithick, 
+every state/.style={fill=lightgray},
+every node/.style={scale=0.8}, 
+accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+]
+  \node[initial,state]		(0)              		{$0$};
+  \node[state ]   (1) [above right of=0]	{$1$};
+  \node[state]         		(2) [right of=0]		{$2$};
+  \node[state]	(3) [right of=2]		{$3$};
+
+  \path
+ 	(0) edge [loop above] node {$c$} (0)
+ 	(0) edge              node {$a$} (1)
+ 	(1) edge [loop above] node {$c$} (1)
+ 	(0) edge              node {$f$} (2)
+ 	(2) edge              node {$b$} (3)
+ 	(3) edge [loop above] node {$c$} (3)
+    ;
+\end{tikzpicture}
+\caption{Automaton $G_1$}
+\label{fig:G1}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+[->,>=stealth, node distance=25mm, auto, initial text=, shorten >=1pt,
+semithick, 
+every state/.style={fill=lightgray},
+every node/.style={scale=0.8}, 
+accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+]
+  \node[initial,state]		(0)              		{$0$};
+  \node[state]         		(1) [right of=0]		{$1$};
+  \node[state]	(2) [right of=1]		{$2$};
+
+  \path
+%  	(0) edge              node {$a$} (1)
+ 	(0) edge [loop above] node {$c$} (0)
+ 	(0) edge              node {$b$} (1)
+ 	(1) edge              node {$e$} (2)
+ 	(2) edge [loop above] node {$c$} (2)
+    ;
+\end{tikzpicture}
+\caption{Automaton $G_2$}
+\label{fig:G2}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+[->,>=stealth, node distance=25mm, auto, initial text=, shorten >=1pt,
+semithick,
+every state/.style={fill=lightgray},
+every node/.style={scale=0.8},
+accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+]
+  \node[initial,draw]		(0N0N)             			{0N,0N};
+  \coordinate[below of=0N0N](fake);
+  \node[draw]         		(2F0N) [left of=fake]		{2F,0N};
+  \node[draw]         		(1N0N) [right of=fake]		{1N,0N};
+  \node[draw]         		(3F0N) [below of=2F0N]		{3F,0N};
+  \node[draw]         		(2F2F) [left of=3F0N]		{2F,2F};
+  \node[draw]         		(1N2F) [right of=3F0N]		{1N,2F};
+  \node[draw]         		(1N1N) [right of=1N2F]		{1N,1N};
+  \node[draw]         		(3F2F) [below of=3F0N]		{3F,2F};
+  \node[draw]         		(1N3F) [below of=1N2F]		{1N,3F};
+  \node[draw]         		(3F3F) [below of=3F2F]		{3F,3F};
+
+  \path
+  	(0N0N) edge              node {$f$} (2F0N)
+  	(0N0N) edge              node {$a$} (1N0N)
+  	(2F0N) edge              node {$f$} (2F2F)
+  	(2F0N) edge              node {$b$} (3F0N)
+  	(2F0N) edge              node {$a$} (1N2F)
+  	(1N0N) edge              node {$f$} (1N2F)
+  	(1N0N) edge              node {$a$} (1N1N)
+ 	(1N1N) edge [loop right] node {$c$} (1N1N)
+  	(2F2F) edge              node {$b$} (3F2F)
+  	(3F0N) edge              node {$f$} (3F2F)
+  	(3F0N) edge              node {$a$} (1N3F)
+  	(1N2F) edge              node {$b$} (1N3F)
+  	(1N3F) edge [loop right] node {$c$} (1N3F)
+  	(3F2F) edge              node {$b$} (3F3F)
+  	(3F3F) edge [loop right] node {$c$} (3F3F)
+    ;
+\end{tikzpicture}
+\caption{Verifier of $G_1}
+\label{fig:verifier_G1}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+[->,>=stealth, node distance=25mm, auto, initial text=, shorten >=1pt,
+semithick,
+every state/.style={fill=lightgray},
+every node/.style={scale=0.8}, 
+accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+]
+  \node[draw, initial](00N00N)              	  {$0,0N;0,0N$};
+  \coordinate[below of=00N00N](fake);
+  \node[draw]         (20F00N) [left of =fake] {$2,0F;0,0N$};
+  \node[draw]         (10N00N) [right of =fake] {$1,0N;0,0N$};
+  \node[draw]         (31F00N) [below of =20F00N] {$3,1F;0,0N$};
+  \node[draw]         (20F20F) [left of =31F00N]  {$2,0F;2,0F$};
+  \node[draw]         (20F10N) [right of =31F00N] {$2,0F;1,0N$};
+  \node[draw]         (10N10N) [right of =20F10N] {$1,0N;1,0N$};
+  \node[draw]         (31F20F) [below of =31F00N] {$3,1F;2,0F$};
+  \node[draw]         (31F10N) [below of =20F10N] {$3,1F;1,0N$};
+  \node[draw]         (31F31F) [below of =31F20F] {$3,1F;3,1F$};
+  \node[draw]         (32F32F) [below of =31F31F] {$3,2F;3,2F$};
+
+  \path
+	(00N00N) edge	node {$f$} (20F00N)
+	(00N00N) edge	node {$a$} (10N00N)
+	(20F00N) edge	node {$f$} (20F20F)
+	(20F00N) edge	node {$f$} (20F10N)
+	(20F00N) edge	node {$a$} (31F00N)
+	(10N00N) edge	node {$f$} (20F10N)
+	(10N00N) edge	node {$a$} (10N10N)
+	(10N10N) edge [loop below] node {$c$} (10N10N)
+	(20F20F) edge	node {$b$} (31F20F)
+	(31F00N) edge	node {$f$} (31F20F)
+	(31F00N) edge	node {$a$} (31F10N)
+	(20F10N) edge	node {$b$} (31F10N)
+	(31F20F) edge	node {$b$} (31F31F)
+	(31F31F) edge	node {$e$} (32F32F)
+	(32F32F) edge [loop below] node {$c$} (32F32F)
+    ;
+\end{tikzpicture}
+\caption{Verifier of $G_1 \parallel G_2$}
+\label{fig:verifier_G1G2}
+\end{figure}
+
+
+\section{General form of conditions}
+
+We rewrite Lemma \ref{lem:distinguished_for_2}, where the statements hold for a
+system of two languages, for an arbitrary couple of languages as follows.
 
 \begin{lemma}
 \label{lem:distinguished}
@@ -130,6 +594,12 @@ requirements.
 
 \section{Algorithms for diagnosability by virtual modules}
 \label{sec:algorithms}
+
+Fault propagation algorithm
+Observation propagation algorithm
+
+Multiple choice for a virtual module
+
 
 Assume that a language with a faulty behaviour and a language which has an
 observable support are given. Then, it's required to verify if the observable
@@ -226,8 +696,8 @@ sublanguage of an arbitrary module can be computed as follows:
 We skip the definition of co-non-faulty sublanguage here due to its similarity. 
 
 \begin{alg}
-\caption{Computing all co-faulty and co-non-faulty languages of
-all the modules}
+\caption{Forward propagation of a fault. Computes co-faulty and
+co-non-faulty languages of all the modules}
 \begin{algorithmic}[1]
 	\Require The set of the system's languages $\{L_j\mid j \in I\}$, faulty and
 	non-faulty sublanguages $L_{i,f}$, $L_{i,nf}$ of a faulty module $i\in I$.
@@ -321,10 +791,11 @@ calculated for each module at the step \ref{alg:fcf_final}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Construction of  virtual module}
+\subsection{Construction of a virtual module}
 
 \begin{alg} 
-\caption{Computing observable information for the faulty module} 
+\caption{Backward propagation of the fault observation. Computes observable
+information for the faulty module} 
 \begin{algorithmic}[1]
 	\Require The index  $i \in I$ of the faulty module, the index of a module with
 	observable support $k \in I \mid M(L_{k,cf}) \neq \emptyset \lor M(L_{k,cnf})
@@ -493,7 +964,7 @@ $\{\{1,4\}, \{2\}, \{3\}\}$.
 \begin{figure}[t]
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -519,7 +990,7 @@ semithick, initial text=,
 \end{tikzpicture}
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -570,7 +1041,7 @@ semithick, initial text=,
 % \centering
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -609,7 +1080,7 @@ semithick, initial text=,
 % \centering
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -638,7 +1109,7 @@ semithick, initial text=,
 
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -662,7 +1133,7 @@ semithick, initial text=,
 \end{tikzpicture}
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -685,7 +1156,7 @@ semithick, initial text=,
 \end{tikzpicture}
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5}, 
+	every node/.style={scale=0.8}, 
 	every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -708,7 +1179,7 @@ semithick, initial text=,
 \end{tikzpicture}
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -742,7 +1213,7 @@ sublanguage $F_4$ is defined partially at first, then fully}
 % \centering
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -773,7 +1244,7 @@ equal to the ones depicted in the Figure \ref{fig:FN}}
 % \begin{figure}[t]
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5}, 
+	every node/.style={scale=0.8}, 
 	every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -794,7 +1265,7 @@ semithick, initial text=,
 \end{tikzpicture}
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -812,7 +1283,7 @@ semithick, initial text=,
 \end{tikzpicture}
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -835,7 +1306,7 @@ semithick, initial text=,
 \end{tikzpicture}
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -864,7 +1335,7 @@ $D_{j,nf}$ are not depicted since they have no observable events}
 % \centering
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
-	every node/.style={scale=0.5},
+	every node/.style={scale=0.8},
     every state/.style={fill=green!40,text=black},
     accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
     ]
@@ -903,5 +1374,3 @@ from the observation of $L_{1,nf}$ which is $\{o_1\}$}
 \label{fig:L1_extended}
 \end{figure}
 
-
-\section{Modular Virtual Diagnosability}
