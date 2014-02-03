@@ -232,8 +232,7 @@ of events from the observable support happens only in $P^{-1}(s)$ due to
 common events. Thus, whenever we observe events of the observable support of
 $L_2$, we are sure the string $s$ in $L_1$ is being executed.
 
-As it was discussed in the Section \ref{sec:Diagnosability},
-indistinguishability can be changed either by blocking the string in the local
+Indistinguishability can be changed either by blocking the string in the local
 language due to concurrency, or by interleaving with observable events from
 other languages. Under assumption that all the strings are not affected by
 concurrency, i.e. $L_1 = P_1(L)$ we can deduce, that the conditions of Lemma
@@ -311,10 +310,10 @@ accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
 \end{tikzpicture}
 \caption{Automaton for marking the language $L_2$}
 \label{fig:marking_L2}
-\end{figure}
-
-\begin{figure}[t]
-\centering
+% \end{figure}
+% 
+% \begin{figure}[t]
+% \centering
 \begin{tikzpicture}
 [->,>=stealth, node distance=30mm, auto, initial text=, shorten >=1pt,
 semithick, 
@@ -323,6 +322,7 @@ every node/.style={scale=0.8},
 accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
 ]
   \node[initial,state] (0)              {$0$};
+  \node[] (fake) [above of=0]              {}; %for space above the picture
   \node[state]         (1) [right of=0] {$1$};
   \node[state, accepting]         (2) [right of=1] {$2$};
 
@@ -391,10 +391,10 @@ accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
 \end{tikzpicture}
 \caption{Automaton $G_1$}
 \label{fig:G1}
-\end{figure}
-
-\begin{figure}[t]
-\centering
+% \end{figure}
+% 
+% \begin{figure}[t]
+% \centering
 \begin{tikzpicture}
 [->,>=stealth, node distance=25mm, auto, initial text=, shorten >=1pt,
 semithick, 
@@ -403,6 +403,7 @@ every node/.style={scale=0.8},
 accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
 ]
   \node[initial,state]		(0)              		{$0$};
+  \node[] (fake) [above of=0] {}; %for space above the picture
   \node[state]         		(1) [right of=0]		{$1$};
   \node[state]	(2) [right of=1]		{$2$};
 
@@ -418,7 +419,7 @@ accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
 \label{fig:G2}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
 [->,>=stealth, node distance=25mm, auto, initial text=, shorten >=1pt,
@@ -506,7 +507,7 @@ accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
 \end{figure}
 
 
-\section{General form of conditions}
+\section{Generalization. Conditions for diagnosability}
 
 We rewrite Lemma \ref{lem:distinguished_for_2}, where the statements hold for a
 system of two languages, for an arbitrary couple of languages as follows.
@@ -539,8 +540,8 @@ language before any continuation of the string $s$.
 Then, the lemma defines a condition which allows us to distinguish these
 observations from the observation of the string $u$.
 
-Now, we rewrite Lemma 3 \cite{myadzelets_virtual_2013}, in the context of our
-setup, as follows:
+Now, we rewrite Lemma \ref{lem:diagnosable}, in the context of our setup, as
+follows:
 \begin{lemma}
 \label{lem:virtual_module_is_diagnosable}
 Given a virtual module $j \in J$, the module is diagnosable with respect to
@@ -695,7 +696,7 @@ sublanguage of an arbitrary module can be computed as follows:
 
 We skip the definition of co-non-faulty sublanguage here due to its similarity. 
 
-\begin{alg}
+\begin{alg}[!ht]
 \caption{Forward propagation of a fault. Computes co-faulty and
 co-non-faulty languages of all the modules}
 \begin{algorithmic}[1]
@@ -962,6 +963,7 @@ $\{\{1,4\}, \{2\}, \{3\}\}$.
 
 
 \begin{figure}[t]
+\centering
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
 	every node/.style={scale=0.8},
@@ -1006,8 +1008,16 @@ semithick, initial text=,
 (1)	edge [] 		  node {$d$} (2)
 (2)	edge [loop right] node {$c$} (2)
 ;
+\end{tikzpicture}
+\begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
+semithick, initial text=,	
+	every node/.style={scale=0.8},
+    every state/.style={fill=green!40,text=black},
+    accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+    ]
 % G3
-\node[initial,state, accepting] (0') [below of=0]      {$0$};
+% \node[initial,state, accepting] (0') [below of=0]      {$0$};
+\node[initial,state, accepting] (0') []      {$0$};
 \node[above left = 0.5em of 0']{$L_{3}$};
 \node[state, accepting]         (1') [right of=0']		{$1$};
 \node[state, accepting]         (2') [right of=1']     {$2$};
@@ -1017,8 +1027,17 @@ semithick, initial text=,
 (1')	edge [] 		  node {$e$} (2')
 (2')	edge [loop right] node {$c$} (2')
 ;
+\end{tikzpicture}
+\begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
+semithick, initial text=,	
+	every node/.style={scale=0.8},
+    every state/.style={fill=green!40,text=black},
+    accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+    ]
 % G4
-\node[initial,state, accepting] (0'') [below of=0']  {$0$};
+% \node[initial,state, accepting] (0'') [below of=0']  {$0$};
+\node[initial,state, accepting] (0'') []  {$0$};
+\node[] (fake) [above of=0''] {}; %for space above the picture
 \node[above left = 0.5em of 0'']{$L_{4}$}; 
 \node[state, accepting]         (1'') [right of=0'']	{$1$};
 \node[state, accepting]         (2'') [right of=1'']   {$2$};
@@ -1091,7 +1110,7 @@ semithick, initial text=,
 \node[state, accepting, fill=orange]         (2) [right of=0]       {$2$};
 \node[state, accepting, fill=orange]         (4) [right of=2]       {$4$};
 
-\node[initial,state] (0') [] at (5,0)              {$0$};
+\node[initial,state] (0') [] at (6,0)              {$0$};
 \node[above left = 0.5em of 0']{$N_1$};
 \node[state, accepting]         (5) [right of=0'] 		{$5$};
 
@@ -1125,12 +1144,15 @@ semithick, initial text=,
 (2)	edge [loop right] node {$c$} (2)
 ;
 % F2
-\node[initial,state, accepting] (0') at (5,0) {$0$};
+\node[initial,state, accepting] (0') at (6,0) {$0$};
 \node[above left = 0.5em of 0']{$N_2$};
 \path
 (0') edge [loop below] node {$c$} (0')
 ;
 \end{tikzpicture}
+
+\newline
+
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
 	every node/.style={scale=0.8},
@@ -1148,12 +1170,15 @@ semithick, initial text=,
 (1)	edge [] 		  node {$d$} (2)
 (2)	edge [loop right] node {$c$} (2)
 ;
-\node[initial,state, accepting] (0') at (5,0) {$0$};
+\node[initial,state, accepting] (0') at (6,0) {$0$};
 \node[above left = 0.5em of 0']{$N_4$};
 \path
 (0') edge [loop below] node {$c$} (0')
 ;
 \end{tikzpicture}
+
+\newline
+
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
 	every node/.style={scale=0.8}, 
@@ -1171,12 +1196,15 @@ semithick, initial text=,
 (1)	edge [] 		  node {$e$} (2)
 (2)	edge [loop right] node {$c$} (2)
 ;
-\node[initial,state, accepting] (0') at (5,0) {$0$};
+\node[initial,state, accepting] (0') at (6,0) {$0$};
 \node[above left = 0.5em of 0']{$N_3$};
 \path
 (0') edge [loop below] node {$c$} (0')
 ;
 \end{tikzpicture}
+
+\newline
+
 \begin{tikzpicture}[->,>=stealth, node distance=2cm, auto, shorten >=1pt,
 semithick, initial text=,	
 	every node/.style={scale=0.8},
@@ -1194,7 +1222,7 @@ semithick, initial text=,
 (1)	edge [] 		  node {$d$} (2)
 (2)	edge [loop right] node {$c$} (2)
 ;
-\node[initial,state, accepting] (0') at (5,0) {$0$};
+\node[initial,state, accepting] (0') at (6,0) {$0$};
 \node[above left = 0.5em of 0']{$N_4$};
 \path
 (0') edge [loop below] node {$c$} (0')
