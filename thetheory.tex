@@ -739,7 +739,7 @@ co-non-faulty languages of all the modules}
 	\State $F_i \leftarrow P_{i,c}(L_{i,f})$
 		\label{alg:fcf_Fi}
 	\State $N_i \leftarrow P_{i,c}(L_{i,nf})$
-	\State \textproc{co-languages}($i$, $F_i$, $N_i$)
+	\State \textproc{propagate-fn}($i$, $F_i$, $N_i$)
 	\Comment{Beginning of recursion}	
 	\ForAll{$j \in I \mid j \neq i$}
 		\Comment{Finalization}

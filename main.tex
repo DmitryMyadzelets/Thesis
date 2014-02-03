@@ -11,10 +11,23 @@
 % Mathematical symbols
 \usepackage{amsfonts, amssymb, amsmath, amsthm}
 
-% 
+% Figures
 \usepackage{tikz} 
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{arrows,positioning,automata,shadows,fit,shapes}
+
+% For color backgound of figures 
+% \usepackage{mdframed}
+% \let\originalfigure=\figure
+% \let\endoriginalfigure=\endfigure
+% \renewenvironment{figure}[1][]{
+%   \begin{originalfigure}[#1]
+%     \begin{mdframed}[linecolor=black!0,backgroundcolor=blue!5]
+% }{
+%     \end{mdframed}
+%   \end{originalfigure}
+% }
+
 
 % Algorithms 
 \usepackage{algpseudocode}
