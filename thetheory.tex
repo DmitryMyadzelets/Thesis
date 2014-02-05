@@ -3,22 +3,23 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{assumption}{Assumption}
 
-\chapter{Modular Virtual Diagnosability}
+\chapter{Virtual Modular Diagnosability}
 
-We define our goal as to make the system modularly diagnosable. If we assume
-that the global system is diagnosable with respect to a given fault, then it
-implies that it is always possible to find a subset of the modules, such
-that it contains a faulty module, and the modules can be composed into
-one locally diagnosable module. Each module in this subset helps to
-detect and distinguish the fault by its sequence of observable events. It also
-implies that not each module of the system can or may participate in the fault
-detection and distinguishing process. We proceed with the formal definition of
-modular virtual diagnosability.
+We define our goal as to make a given system modularly diagnosable. Lets assume
+that the system is diagnosable globally with respect to a given fault. It
+implies that it is always possible to find a subset of the system's modules,
+such that it contains a faulty module, and all the modules from the subset can
+be composed into one locally diagnosable module. Each module in the subset helps
+to detect and distinguish the fault by sequences of its observable events. The
+assumption also implies that not each module of the system can or may
+participate in the fault detection and distinguishing process. 
+
+Firstly, we define virtual modular diagnosability formally.
 
 \section{Formal Definition}
 
 Mathematically speaking, if the initial modularity does not satisfy the property
-of modular diagnosability then we need to find a partition of the set of the
+of modular diagnosability, then we need to find a partition of the set of the
 modules such that all the modules in each element of the partition can be
 considered as a \emph{virtual module}, and the system with the new modularity
 satisfies the property of modular diagnosability.
@@ -26,8 +27,9 @@ satisfies the property of modular diagnosability.
 The setup for the problem is following. Let a system be defined as a set of
 local languages $\{L_{i\in I}\}$, and let a faulty behaviour be defined for any
 $i \in I$, i.e. each language $L_i$ can be disjoint into faulty and non-faulty
-sublanguages: $L_{i,f}$ and $L_{i,nf}$. We assume that a faulty behaviour is
-defined in a \emph{specification-based}, rather then \emph{event-based}, way.
+sublanguages: $L_{i,f}$ and $L_{i,nf}$. 
+% We assume that a faulty behaviour is
+% defined in a \emph{specification-based}, rather then \emph{event-based}, way.
 For the sake of simplicity, we assume that a language may have only one type of
 fault. We assume that $(\forall i \in I)\left[ L_i = P_i(L)\right]$. The
 motivation for this assumption is following. Most of real-life complex systems
@@ -38,10 +40,12 @@ which never executed. In practice, such assumption may require construction of a
 supervisor, and verification that a local language of each module is globally
 consistent, before checking diagnosability of the system.
 
+\begin{definition}
 Let $J$ be a partition of $I$. Given a set of system's languages $\{L_{i \in
 I}\}$ and a set of observable projections $\{M_j \mid j \in J \}$. 
 The system is modularly diagnosable with respect to $J$ and $\{M_j\}$ 
 if the following holds:
+\end{definition}
 \begin{equation}
 	\begin{array}{l}
 		\forall(i \in I, s \in L_{i,f}, t \in L_{i,f}/s)
@@ -58,36 +62,37 @@ $j$.
 
 A trivial solution for the above problem is to enumerate all the partitions of
 the set and check whether the result of composition of each element of the
-partition is locally diagnosable. The total number of partitions of a set with
-cardinality $n$ is known as the Bell number $B_n$, which has a double
-exponential generation function \cite{brualdi_introductory_2004}. In
-reality, it may not necessary to enumerate all the partitions, since a
-partition which corresponds to modularly diagnosable system can be found
-event at the first iteration. Moreover, it is not necessary to compose all
-the modules in each element of the partition, since not all them elements
-may contain modules with faults. However, the level of complexity in the worst
-case motivates us to find a more smart solution for the problem. 
+partition is locally diagnosable. In general, the total number of partitions of
+a set with cardinality $n$ is known as the Bell number $B_n$, which has a double
+exponential generation function \cite{brualdi_introductory_2004}.
 
-In the next section we make a first step toward creation of a feasible approach
-for the problem.
+In reality, it may not necessary to enumerate all the partitions, since a
+partition which corresponds to modularly diagnosable system can be found even at
+the first iteration. Moreover, it is not necessary to compose all the modules of
+each element of the partitions, since not all partition's elements may contain
+modules with faults. However, the level of complexity in the worst case
+motivates us to find a more smart solution for the problem.
+
+In the next section we make the first step toward a feasible approach for the
+problem.
 
 
 \section{Trivial system. Analysis of two adjacent modules}
 
-As was mentioned above, the first step to improve the search for relevant
-partition, would be to enumerate only the modules which potentially can
-influence diagnosability. Intuitively, those are ones which have observable
-events. Then, the structure of a module may have some patterns which could be
-found before the module is composed with others. The module with fault may also
-be analyzed for a possibility to change its observation due to interaction with
-other modules. Thus, in the trivial case of a system consisting of two
-modules, where only one module has a fault, in order to solve the problem we
-need to answer the following questions: a) can the module with a fault
-potentially change the observation of its strings while composed with adjacent
-module? and b) can the module change observation some strings of another module
-due to concurrency? No parallel composition should be used in order to answer
-the questions. Otherwise, the problem would reduce to the problem of local
-diagnosability.
+As was mentioned above, the first step to improve the search for a relevant
+partition, is to enumerate only the modules which potentially can influence
+diagnosability. Firstly, those are ones which have observable events. Then, the
+structure of modules may have some patterns, such that if a pattern is found,
+then we can infer its influence before the module is composed with others.
+The module with the fault may also be analyzed for a possibility to change its
+observation due to interaction with other modules. Thus, in the trivial case of
+a system consisting of two modules where only one module has a fault, in order
+to solve the problem, we need to answer the following questions: a) can a
+module with a fault potentially change observations of its strings while
+composed with the adjacent module? and b) can a module change observation of
+some strings of another module due to concurrency? No parallel composition should be
+used in order to answer the questions. Otherwise, the problem would reduce to
+the problem of local diagnosability.
 
 We suppose that the system consists only of two modules with the correspondent
 languages $L_1$ and $L_2$. The language of the system is $L := L_1 \parallel
@@ -596,12 +601,6 @@ requirements.
 \section{Algorithms for diagnosability by virtual modules}
 \label{sec:algorithms}
 
-Fault propagation algorithm
-Observation propagation algorithm
-
-Multiple choice for a virtual module
-
-
 Assume that a language with a faulty behaviour and a language which has an
 observable support are given. Then, it's required to verify if the observable
 support is either for the faulty or non-faulty sublanguages. If it is true, then the
@@ -696,6 +695,9 @@ sublanguage of an arbitrary module can be computed as follows:
 
 We skip the definition of co-non-faulty sublanguage here due to its similarity. 
 
+
+\subsection{Fault propagation algorithm}
+
 \begin{alg}[!ht]
 \caption{Forward propagation of a fault. Computes co-faulty and
 co-non-faulty languages of all the modules}
@@ -753,6 +755,7 @@ co-non-faulty languages of all the modules}
 \label{alg:propagate_fn}
 \end{alg}
 
+
 Now, we present Algorithm \ref{alg:propagate_fn} which, given a module with a
 faulty behaviour defined, computes the co-faulty and co-non-faulty languages for
 all the rest modules of the system.
@@ -792,7 +795,7 @@ calculated for each module at the step \ref{alg:fcf_final}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Construction of a virtual module}
+\subsection{Observation propagation algorithm}
 
 \begin{alg} 
 \caption{Backward propagation of the fault observation. Computes observable
