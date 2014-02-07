@@ -101,27 +101,34 @@ the correspondent inverse projections, are defined also for languages in the
 usual manner.
 
 
-\subsection{Abstraction}
-For model checking and verification the state explosion problem is one of
+\subsection{Abstraction by decomposition}
+
+For model checking and verification of DES the state explosion problem is one of
 the main limitations for their application in industry. The most important
 technique to deal with the state explosion problem is abstraction. The basic
-idea of abstraction is that parts of a system \emph{does not have effect} on the
+idea of abstraction is that parts of a system \emph{do not have effect} on the
 particular properties. These parts can be \emph{eliminated} from the design.
 
-One of the most effective abstraction techniques, compositional reasoning,
-deals with complex systems in order to reduce its complexity by breaking into
-smaller parts, checking its properties and then deducing the system correctness. These parts
-does not necessary reflect the real structure of a system if any. On the other
-hand the most of the systems are already structured in reality. Their structure
-is understood by humans, the properties of their parts can be described and
-checked easier relatively to the complex system. Then the models of the part
-along of their properties can be reused.
+One of the most effective abstraction techniques, compositional reasoning
+\cite{berezin_compositional_1998}, deals with complex systems in order to reduce
+its complexity by breaking into smaller parts, checking its properties and then
+deducing the system correctness. These parts do not necessary reflect the real
+structure of a system if any. On the other hand, the most of systems are
+already structured in reality. Their structure is understood by humans, the
+properties of their parts can be described and checked easier relatively to the
+complex system. Then the models of the system's parts along with their
+properties can be reused.
 
-When a system is built from its components, the state explosion problem rises
-on the parallel (synchronous) composition of component's models. Then it seems
-rational to modify the description of a complex system such that a parallel
-composition of component's models can be avoided, and tune the analysis
-techniques to suit the new description.
+The next section describes a modeling approach of applying design patterns for
+functional design of DES and verification of system's properties. The approach
+exploits automata and language theories, and is mainly oriented for industrial
+use.
+
+% When a system is built from its components, the state explosion problem rises on
+% the parallel (synchronous) composition of component's models. Then it seems
+% rational to modify the description of a complex system such that a parallel
+% composition of component's models can be avoided, and tune the analysis
+% techniques to suit the new description.
 
 \section{Modeling Framework (Matteo's work)}
 
