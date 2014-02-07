@@ -1,5 +1,7 @@
 \newtheorem{theorem}{Theorem}
-\newtheorem{definition}{Definition}
+\ifx \definition \undefined
+	\newtheorem{definition}{Definition}
+\fi	
 \newtheorem{lemma}{Lemma}
 \newtheorem{assumption}{Assumption}
 

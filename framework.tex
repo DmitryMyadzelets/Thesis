@@ -9,6 +9,38 @@
 
 \section{DES Theoretical Framework}
 
+Discrete Event Systems (DES) are systems, the dynamic of which is characterized
+by asynchronous occurrence of \emph{events}. An event is a fundamental concept
+which can be viewed and described by humans as ``something happened'', either
+in systems designed by humans or in nature. Events have no property of
+continuation, they are instant, and can be observed only at discrete points in
+time. The second fundamental concept, characterizing a DES is a state. A state
+is viewed a result of \emph{temporally ordered} discrete events, which occurred
+starting from the moment when the system was at an \emph{initial state}. The
+initial state of a DES characterizes the system before occurrence of any events.
+This characteristic can be relative in reality, and may be seen as an assumption
+or ``agreement'' for the given system. Being at a certain state, when an event
+occurs, the system makes a \emph{transition} to another state.
+
+The examples of events are: switching a light on, pressing a button, a 
+moment of rising a temperature above a certain level. The correspondent states
+are: the light is on, the button is down, the temperature is high.
+
+Historically, the events are think as an \emph{alphabet}. Temporally ordered,
+the form \emph{words} which, consequently, form a \emph{language}. At this level
+of abstraction DES are studied by the \emph{language theory} 
+\cite{aho_theory_1968}.
+
+Formal language theory is closely related to \emph{Automata theory}
+\cite{hopcroft_introduction_2007} which study automata. Automata are used as one
+of the modeling formalisms for DES. An automaton can be represented as a
+directed graph, and it is, probably, the simplest way a complex system's
+behaviour can be graphically and formally described and conceived by humans.
+
+The next section gives the preliminaries from theories of languages and
+automata, used in this document.
+
+
 \subsection{Notation}
 
 The notation used in this document is the one in
