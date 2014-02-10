@@ -11,31 +11,31 @@
 
 Discrete Event Systems (DES) are systems, the dynamic of which is characterized
 by asynchronous occurrence of \emph{events}. An event is a fundamental concept
-which can be viewed and described by humans as ``something happened'', either
-in systems designed by humans or in nature. Events have no property of
-continuation, they are instant, and can be observed only at discrete points in
-time. The second fundamental concept, characterizing a DES is a state. A state
-is viewed a result of \emph{temporally ordered} discrete events, which occurred
-starting from the moment when the system was at an \emph{initial state}. The
-initial state of a DES characterizes the system before occurrence of any events.
-This characteristic can be relative in reality, and may be seen as an assumption
-or ``agreement'' for the given system. Being at a certain state, when an event
-occurs, the system makes a \emph{transition} to another state.
+which can be viewed and described as ``something happened'', either in systems
+designed by humans or in nature. Events have no property of continuation, they
+are instant, and can be observed only at discrete points in time. The second
+fundamental concept, characterizing a DES, is a state. A state is viewed as a
+result of \emph{temporally ordered} discrete events, occurred starting from a
+moment when the system was at its \emph{initial state}. The initial state of a
+DES characterizes the system before occurrence of any event. In reality, this
+characteristic may be seen as an assumption or ``agreement'' for the given
+system. Being at a certain state, when an event occurs, the system makes a
+\emph{transition} to another state.
 
 The examples of events are: switching a light on, pressing a button, a 
 moment of rising a temperature above a certain level. The correspondent states
 are: the light is on, the button is down, the temperature is high.
 
-Historically, the events are think as an \emph{alphabet}. Temporally ordered,
-the form \emph{words} which, consequently, form a \emph{language}. At this level
-of abstraction DES are studied by the \emph{language theory} 
-\cite{aho_theory_1968}.
+Historically, all the system's events are thought as of an \emph{alphabet}.
+Temporally ordered, they form \emph{words} which, consequently, form a
+\emph{language}. At this level of abstraction DES are studied by the
+\emph{language theory} \cite{aho_theory_1968}.
 
 Formal language theory is closely related to \emph{Automata theory}
-\cite{hopcroft_introduction_2007} which study automata. Automata are used as one
-of the modeling formalisms for DES. An automaton can be represented as a
-directed graph, and it is, probably, the simplest way a complex system's
-behaviour can be graphically and formally described and conceived by humans.
+\cite{hopcroft_introduction_2007}. Automata are used as one of the modeling
+formalisms for DES. A single automaton can be represented as a directed graph,
+and it is, probably, the simplest way a complex system's behaviour can be graphically
+and formally described and conceived by humans.
 
 The next section gives the preliminaries from theories of languages and
 automata, used in this document.
@@ -106,8 +106,9 @@ usual manner.
 For model checking and verification of DES the state explosion problem is one of
 the main limitations for their application in industry. The most important
 technique to deal with the state explosion problem is abstraction. The basic
-idea of abstraction is that parts of a system \emph{do not have effect} on the
-particular properties. These parts can be \emph{eliminated} from the design.
+idea of abstraction is that some parts of a given system \emph{do not have
+effect} on particular properties, and hence, these parts can be
+\emph{eliminated} from the system's design.
 
 One of the most effective abstraction techniques, compositional reasoning
 \cite{berezin_compositional_1998}, deals with complex systems in order to reduce
@@ -130,7 +131,65 @@ use.
 % composition of component's models can be avoided, and tune the analysis
 % techniques to suit the new description.
 
-\section{Modeling Framework (Matteo's work)}
+
+\section{Modeling Framework}
+
+\subsection{Introduction}
+
+The fundamental principle ``divide and concur'' underlies many techniques and
+approaches either used solely at the level of individual engineers and
+programmer or developed at the level of international standard committees and
+organisations. As instances, one can recall object-oriented concepts in
+traditional programming principles \cite{farrell_object-oriented_2013}, and
+standards of International Electrotechnical Commission (IEC),
+particularly the legacy IEC 61131-3 \cite{otto_iec_2009} which defines
+programming languages for programmable logic controllers (PLC), and the modern
+IEC 61499 \cite{vyatkin_iec_2009} which represents a component solution for
+distributed industrial automation systems aiming at portability, reusability,
+interoperability and reconfiguration of distributed applications.
+
+Many Integrated Development Environments (IDE) used in industrial world satisfy
+all the requirements and standards in order to facilitate the process of
+development, enrollment and maintenance of a complex system. They
+exploit object-oriented concepts as classes with their instances, inheritance
+and encapsulation. However, these concepts were not initially created bearing in
+mind the purpose of formal verification. As a consequence, the tools widely used
+in industry nowadays do not generally support approaches for DES raising in the
+scientific world. As a response for the growing demand for intersection of
+classical development process with formal techniques many researches
+attempt to create instrumental and theoretical bridges. The most
+promising results seem to be reached in formalizing Unified Modeling Language
+(UML), Statecharts, and general purpose programming languages as C. 
+
+In \cite{mcumber_general_2001} the authors introduce a framework which allows to
+convert an UML model into the formal languages described in the form of
+specification. The framework can be applied only for a subset of UML diagrams.
+The resulting formal specification can be used for model checking and
+simulation, using existing tools aimed for this purpose. In
+\cite{bonfe_design_2003} the authors develop a framework to transform UML
+diagrams and Statecharts into Computation Tree Logic (CTL) which is the used in
+a model checking tool.
+Other works to mention are \cite{dong_model_2001}, where UML diagrams are mapped
+to automata, \cite{frey_re-engineering_2004} where the authors concentrate on
+converting PLC languages to UML and then to automata. Even a such known widely
+spread tool as Matlab \cite{matlab}, used by both practitioners and
+theoreticians, also has to be tweaked in order to get its modeling ability
+closer to a formal representation. Examples of such attempts are
+\cite{ray_automated_2007} and \cite{li_stateflow_2011}. As a model checking
+tool, which many of the above mentioned approaches exploit, the most notable one
+is NuSMV \cite{nusmv} which automatically verifies properties of finite-state
+systems, expressed in CTL, Linear Temporal Logic (LTL) or Property Specification
+Language (PSL).
+
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics{uml_state_machine.png}
+	\caption{Example of UML diagram}
+	\label{fig:example_of_UML}
+\end{figure}
+
+
 
 
 \section{Diagnosability in DES \ldots}
