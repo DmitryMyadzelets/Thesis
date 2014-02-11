@@ -161,14 +161,59 @@ attempt to create instrumental and theoretical bridges. The most
 promising results seem to be reached in formalizing Unified Modeling Language
 (UML), Statecharts, and general purpose programming languages as C. 
 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics{uml_state_machine.png}
+	\begin{tikzpicture}[->,>=stealth, node distance=4cm, auto, shorten >=1pt,
+	semithick, initial text=,	
+		every node/.style={scale=0.8},
+		every state/.style={minimum size=2.2cm},
+	    accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+	    ]
+% \draw[help lines] (0,0) grid (6,2);
+	\node[state]         (1) [] 	  {toasting};
+	\node[state]         (3) [below of=1]       {door~open};
+	\node[state]         (2) [below of=3]       {baking};
+	\node[] (0') [left of=3] {}; %dummy
+	\node[initial,state] (0) [left of=0']{initial};
+	\node[above = 1em of 1] {}; %adds some space above
+	\path
+	(0)	edge [bend left, align=left]  node [above left]
+		{ do\_toasting / \\ heater\_on \\  arm\_time\_event	}
+	(1) 
+	(0)	edge [bend right, align=left]  node [below left] 
+		{ do\_baking / \\ heater\_on \\ set\_temperature }
+	(2)
+	(1)	edge [bend left, align=left]  node [right]
+		{ door\_open / \\ heater\_off \\ disarm\_time\_event \\ lamp\_on }
+	(3) 
+	(3)	edge [bend left, align=left]  node [left]
+		{ door\_close / \\ heater\_on \\ arm\_time\_event \\ lamp\_off }
+	(1) 
+	(2)	edge [bend right, align=left]  node [right]
+		{ door\_open / \\ heater\_off \\ set\_temperature\_0 \\ lamp\_on }
+	(3) 
+	(3)	edge [bend right, align=left]  node [left]
+		{ door\_close / \\ heater\_on \\ set\_temperature \\ lamp\_off }
+	(2) 
+	;
+	\end{tikzpicture}
+
+	\caption{Example of an UML diagram (at top) and its representation by
+	Mealy automaton}
+	\label{fig:example_of_UML_with_Mealy}
+\end{figure}
+
 In \cite{mcumber_general_2001} the authors introduce a framework which allows to
 convert an UML model into the formal languages described in the form of
 specification. The framework can be applied only for a subset of UML diagrams.
 The resulting formal specification can be used for model checking and
-simulation, using existing tools aimed for this purpose. In
-\cite{bonfe_design_2003} the authors develop a framework to transform UML
-diagrams and Statecharts into Computation Tree Logic (CTL) which is the used in
-a model checking tool.
+simulation, using existing tools aimed for this purpose. Figure
+\ref{fig:example_of_UML_with_Mealy} depicts the instance of an UML diagram and
+its representation by a Mealy automaton which, in its turn, can be transformed
+into a classical automaton. In \cite{bonfe_design_2003} the authors develop a
+framework to transform UML diagrams and Statecharts into Computation Tree Logic
+(CTL) which is the used in a model checking tool.
 Other works to mention are \cite{dong_model_2001}, where UML diagrams are mapped
 to automata, \cite{frey_re-engineering_2004} where the authors concentrate on
 converting PLC languages to UML and then to automata. Even a such known widely
@@ -180,14 +225,6 @@ tool, which many of the above mentioned approaches exploit, the most notable one
 is NuSMV \cite{nusmv} which automatically verifies properties of finite-state
 systems, expressed in CTL, Linear Temporal Logic (LTL) or Property Specification
 Language (PSL).
-
-
-\begin{figure}[!t]
-	\centering
-	\includegraphics{uml_state_machine.png}
-	\caption{Example of UML diagram}
-	\label{fig:example_of_UML}
-\end{figure}
 
 
 
