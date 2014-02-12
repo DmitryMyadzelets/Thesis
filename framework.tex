@@ -251,6 +251,60 @@ automated systems \cite{faldella_hierarchical_2008}. The next section gives a
 breve introduction of this concept and the refined approach.
 
 
+\subsection{Generalized Device Abstraction}
+
+The architectural approach of Generalized Device (GD) is based on a modeling
+framework with Generalized Actuator (GA), presented in
+\cite{faldella_hierarchical_2008}. The GA approach aims to reduce complexity of
+the modeling process using standardized object-oriented concepts of engineering.
+An idea of GA is to identificate essential patterns in automated manufacturing
+systems, and design control software entities suitable for formal methods of DES
+theory. The GA approach gives a modeling framework and defines a design
+procedure with following characteristics:
+\begin{itemize}
+  \item Encapsulation of ``actuation mechanism'';
+  \item Hierarchical representation of a plant;
+  \item Separation of control policies from actuation mechanisms in each GA;
+  \item Support of visualization of plant's hardware;
+  \item Interoperability and reusability of GAs.
+\end{itemize}
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=30em]{ga_blocks.png}
+	\includegraphics[width=30em]{ga_automaton.png}
+	\caption{GA with two types of interfaces (top) and its underlining
+	formal representation by the automaton (bottom)
+	(the image is borrowed from \cite{faldella_hierarchical_2008})}
+	\label{fig:ga_blocks}
+\end{figure}
+
+The GA implements a concept of abstraction. It implies that all the actions of a
+complex process, from the high-level point of view, can be decomposed into sets
+of two kinds: \emph{Do-Done} actions and \emph{Start-Stop} actions.
+
+The Do-Done GA reflects a process which starts by an external (with respect to
+this process) ``Do'' command, and continues until an internal (with respect to
+this process) decision to terminate is taken. The duration can be finite or
+infinite. After its termination the process issues ``Done'' event. The 
+instance of a process which can be abstracted by this type of GA is opening a
+valve: a command ``Do'' to open the valve is issued; when it opens an event
+``Done'' occurs.
+
+The Start-Stop GA is an abstraction of a process which starts by an external
+``Start'' event, and continues until an external ``Stop" event occurs .
+Again, the duration can be finite or infinite. The instance of a such process is
+a temperature regulation with a heater: ``Start'' event switches on the heater;
+when temperature reaches a required level the ``Stop'' event switches it off.
+
+The above described two types of GA can be implemented as Functional Blocks
+(FB) in terms of IEC 61131-3 standard, as depicted in Figure
+\ref{fig:ga_blocks}.
+
+\ldots Continue with description of the automaton from the picture.
+Modeling steps and etc.\ldots
+
+ 
 
 \section{Diagnosability in DES \ldots}
 
@@ -274,7 +328,7 @@ Architectures for on-line diagnosis can be categorized as follows:
 centralized, decentralized and distributed.
 
 
-\begin{figure}[!Ht]
+\begin{figure}[!ht]
 \centering
 \begin{tikzpicture}
 	\node[draw]		(0)	at (1, 3) 		{$L_1$};
