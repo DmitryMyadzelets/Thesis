@@ -200,7 +200,7 @@ promising results seem to be reached in formalizing Unified Modeling Language
 	\end{tikzpicture}
 
 	\caption{Example of an UML diagram (at top) and its representation by
-	Mealy automaton}
+	the Mealy automaton}
 	\label{fig:example_of_UML_with_Mealy}
 \end{figure}
 
@@ -220,12 +220,35 @@ converting PLC languages to UML and then to automata. Even a such known widely
 spread tool as Matlab \cite{matlab}, used by both practitioners and
 theoreticians, also has to be tweaked in order to get its modeling ability
 closer to a formal representation. Examples of such attempts are
-\cite{ray_automated_2007} and \cite{li_stateflow_2011}. As a model checking
-tool, which many of the above mentioned approaches exploit, the most notable one
-is NuSMV \cite{nusmv} which automatically verifies properties of finite-state
-systems, expressed in CTL, Linear Temporal Logic (LTL) or Property Specification
-Language (PSL).
+\cite{ray_automated_2007} and \cite{li_stateflow_2011}. An instance of model
+checking tool, which is exploited by many of the approaches mentioned above, the
+most notable one is NuSMV \cite{nusmv} which automatically verifies properties
+of finite-state systems, expressed in CTL, Linear Temporal Logic (LTL) or
+Property Specification Language (PSL).
 
+Quick analysis of the aforementioned attempts to bridge the most widely
+used object-oriented IDEs and their underlining modeling technologies shows that
+they solve the problem of using formal methods by system's developers
+only partially. The reason is, as it was said before, that those concepts
+and tools had been developed before formal methods became useful in practice,
+and they simply can not be merged with modern formal approaches. The problem
+lays, firstly, in the ambiguity of legacy methods, their freedom of
+interpretation. It appears when, for instance, one tries to convert an UML
+diagram to automata. Second, the problem comes from the fact, that producers of
+development tools have created a wide range of derivatives of one standard,
+which, at one hand, satisfied requirements of the market and, on the other hand,
+made these implementations incompatible to each other. Now, when formal
+approaches both, have reached enough theoretical level, and have growing demand
+due to the high complexity of currently appearing systems, there is a need for
+new approaches and tools that exploit formal methods as an underlying concept.
+
+One of the approaches which uses the object-oriented principles, and focuses on
+formal verification is presented in \cite{sartini_architectures_2010}, which
+introduces a modeling entity called \emph{Generalized Device} and shows how it
+can be used for formal verification in the DES framework. The approach is a
+refined architecture of a concept of \emph{Generalized Actuator} for industrial
+automated systems \cite{faldella_hierarchical_2008}. The next section gives a
+breve introduction of this concept and the refined approach.
 
 
 
@@ -610,3 +633,4 @@ then the composition of that module with a faulty one would result in a new
 module satisfying the property of local diagnosability, thus improving
 the modular diagnosability property of the system. In the following section we
 provide a formal description of the problem.
+
