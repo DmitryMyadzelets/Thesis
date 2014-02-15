@@ -1,3 +1,4 @@
+
 \ifx \definition \undefined
 	\newtheorem{definition}{Definition}
 \fi
@@ -251,12 +252,12 @@ automated systems \cite{faldella_hierarchical_2008}. The next section gives a
 breve introduction of this concept and the refined approach.
 
 
-\subsection{Generalized Device Abstraction}
+\subsection{Generalized Actuator and Generalized Device}
 
-The architectural approach of Generalized Device (GD) is based on a modeling
-framework with Generalized Actuator (GA), presented in
-\cite{faldella_hierarchical_2008}. The GA approach aims to reduce complexity of
-the modeling process using standardized object-oriented concepts of engineering.
+\subsubsection{Generalized Actuator}
+
+The GA approach aims to reduce complexity of the modeling process using
+standardized object-oriented concepts of engineering.
 An idea of GA is to identificate essential patterns in automated manufacturing
 systems, and design control software entities suitable for formal methods of DES
 theory. The GA approach gives a modeling framework and defines a design
@@ -287,24 +288,97 @@ The Do-Done GA reflects a process which starts by an external (with respect to
 this process) ``Do'' command, and continues until an internal (with respect to
 this process) decision to terminate is taken. The duration can be finite or
 infinite. After its termination the process issues ``Done'' event. The 
-instance of a process which can be abstracted by this type of GA is opening a
-valve: a command ``Do'' to open the valve is issued; when it opens an event
-``Done'' occurs.
+instance of a process which can be abstracted by this type of GA is the opening
+of a valve: the command ``Do'' is issued to open the valve; when it opens, the
+event ``Done'' occurs.
 
 The Start-Stop GA is an abstraction of a process which starts by an external
 ``Start'' event, and continues until an external ``Stop" event occurs .
 Again, the duration can be finite or infinite. The instance of a such process is
-a temperature regulation with a heater: ``Start'' event switches on the heater;
-when temperature reaches a required level the ``Stop'' event switches it off.
+a temperature regulation with a heater: the ``Start'' event switches on the
+heater; when temperature reaches a required level the ``Stop'' event switches it off.
 
 The above described two types of GA can be implemented as Functional Blocks
 (FB) in terms of IEC 61131-3 standard, as depicted in Figure
-\ref{fig:ga_blocks}.
+\ref{fig:ga_blocks}. Besides the essential inputs and outputs necessary to
+perform the above described types of actions, the blocks have other inputs and
+outputs related to the low level of processes, and to some additional
+information related to the high level. 
 
-\ldots Continue with description of the automaton from the picture.
-Modeling steps and etc.\ldots
+Internally, each type of GA is represented by the automaton, as depicted on the
+figure. Each state of the automaton can abstract a set of states of other
+automata, i.e. GAs contain a hierarchical structure of automata.
 
- 
+A design procedure, according to the framework of GA can be described by the
+following steps:
+\begin{itemize}
+  \item Identification of distinguished processes and their basic actions;
+  \item Classification of actions into Do-Done and Start-Stop actions;
+  \item Definition of GAs for two kinds of actions;
+  \item Assigning low level information and additional information to each GA;
+  \item Design of internal hierarchical structure and logic of automata for
+  each GA.
+\end{itemize}
+
+The last two steps in the above described design procedure encapsulate a logic
+specific for a given process. Potentially, the complexity of internal
+implementations of GAs is not limited. Thus, the functional blocks
+correspondent to the GAs can became very specific, such that it would be
+possible to reuse them only at the same plant, or for a technologically similar
+processes. A designer of a GA must be aware of this problem, and maintain
+simplicity of the internal implementation. Instead of increasing the complexity
+of internal structure of a GA, one can create other GAs. However, this
+process relies solely on decision of a particular designer for a system.
+
+The design problem, described above, can be reformulated as that a GA abstracts
+a process at its high level, but does not abstract it at its low level. The
+architectural approach of Generalized Device (GD) is aimed to solve this
+problem.
+
+\subsubsection{Generalized Device}
+
+The idea of a Generalized Device is based of the observation that the most
+of different low level field devices can be viewed as only two kind of abstract
+devices: either single acting device or double acting device. Each kind
+of devices has an actuator and also may have sensors.
+
+A single acting device has only one command (input) to perform a ``forward'' or
+``on'' action. The ``backward'' or ``off'' action is performed by the device
+itself, implicitly ore explicitly. Examples of single acting devices are:
+a cylinder with a return spring, a contactor itself or together with any
+controlled equipment (electric motor, heater, lighting, etc).
+
+A double action device has one command to activate the device and another
+command to deactivate it. Simultaneous commands on inputs of the device are
+usually prohibited or have now effect on a state of the device. The instances of
+double action devices are: a double acting cylinder, an auxiliary relay or any
+start-stop device which may itself be a composition of two single acting
+devices.
+
+The common feature of the both, single and double acting devices is that they
+have two clearly distinguished states. In order to detect what the current state
+of a device stays in, it is usually equipped with one or two sensors. In case of
+two sensors each of them gives the feedback for the correspondent state. In case
+of one sensor one level of its signal corresponds to the first state of the
+device, another level - to the second one. A state of the device in the case
+when it has no sensors is implied according to a previous command. Concluding,
+the classification of the devices in this approach is following:
+
+\begin{itemize}
+  \item Single acting device
+	\begin{itemize}
+	  \item with no feedback
+	  \item with single feedback
+	  \item with double feedback
+	\end{itemize} 
+  \item Double acting device
+	\begin{itemize}
+	  \item with no feedback
+	  \item with single feedback
+	  \item with double feedback
+	\end{itemize} 
+\end{itemize} 
+
 
 \section{Diagnosability in DES \ldots}
 
@@ -687,4 +761,5 @@ then the composition of that module with a faulty one would result in a new
 module satisfying the property of local diagnosability, thus improving
 the modular diagnosability property of the system. In the following section we
 provide a formal description of the problem.
+
 
