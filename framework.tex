@@ -139,8 +139,8 @@ use.
 
 The fundamental principle ``divide and concur'' underlies many techniques and
 approaches either used solely at the level of individual engineers and
-programmer or developed at the level of international standard committees and
-organisations. As instances, one can recall object-oriented concepts in
+programmers or developed at the level of international standard committees and
+organisations. For instances, one can recall object-oriented concepts in
 traditional programming principles \cite{farrell_object-oriented_2013}, and
 standards of International Electrotechnical Commission (IEC),
 particularly the legacy IEC 61131-3 \cite{otto_iec_2009} which defines
@@ -244,12 +244,12 @@ due to the high complexity of currently appearing systems, there is a need for
 new approaches and tools that exploit formal methods as an underlying concept.
 
 One of the approaches which uses the object-oriented principles, and focuses on
-formal verification is presented in \cite{sartini_architectures_2010}, which
-introduces a modeling entity called \emph{Generalized Device} and shows how it
-can be used for formal verification in the DES framework. The approach is a
+formal verification is presented in \cite{sartini_architectures_2010}. The
+approach introduces a modeling entity called \emph{Generalized Device} and shows
+how it can be used for formal verification in the DES framework. The approach is a
 refined architecture of a concept of \emph{Generalized Actuator} for industrial
 automated systems \cite{faldella_hierarchical_2008}. The next section gives a
-breve introduction of this concept and the refined approach.
+brief introduction into both the concept and the refined approach.
 
 
 \subsection{Generalized Actuator and Generalized Device}
@@ -362,7 +362,7 @@ two sensors each of them gives the feedback for the correspondent state. In case
 of one sensor one level of its signal corresponds to the first state of the
 device, another level - to the second one. A state of the device in the case
 when it has no sensors is implied according to a previous command. Concluding,
-the classification of the devices in this approach is following:
+a classification of the devices in this approach is the following:
 
 \begin{itemize}
   \item Single acting device
@@ -378,6 +378,29 @@ the classification of the devices in this approach is following:
 	  \item with double feedback
 	\end{itemize} 
 \end{itemize} 
+
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=30em]{gd_sadf_automaton.png}
+	\caption{An automaton representing single acting generalized device with
+	double feedback (the image is borrowed from \cite{sartini_architectures_2010})}
+	\label{fig:gd_sadf_automaton}
+\end{figure}
+
+As an instance, the Figure \ref{fig:gd_sadf_automaton} depicts an automaton
+which represents the single acting generalized device with double feedback.
+
+The approach of generalized actuators and devices allows to construct a complex
+automated system using simple predefined models. Due to the representation of
+the system's models by automata, various DES techniques can be
+applied in order to define and solve control and diagnosis problems. The next
+section proceeds with a description of how the approach of generalized device is
+used for modeling and analyses of faults.
+
+
+\subsubsection{Generalized Device and Fault Diagnosis}
+
 
 
 \section{Diagnosability in DES \ldots}
