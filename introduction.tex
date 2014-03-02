@@ -1,16 +1,74 @@
 
 \chapter{Introduction (3-4 pages)}
 
-(take the book from Zak's table for introduction)
+
+\section{Introducton to Introduction}
+
+Modern society is characterized by the growing demand for the usage of automated
+systems in the everyday life, with constantly increasing complexity of software
+engineering. Industrial automation software engineering traditionally was a
+field which has the most strict requirements and high standards applied, which
+is also reflected in its high cost. Reflecting the importance of the software
+and a growing ratio of the software cost in the costs of machinery, engineers
+and researches put a lot of effort to facilitate the development and maintenance
+of software, increasing its performance and reliability, while preserving or 
+decreasing the cost of its life cycle.
+
+\section{Context}
+
+According to the standard ISO/IEC 12207 \cite{_iso/iec_12207_2008} the
+industrial software development process (life cycle process) can be structured
+into six stages: requirements specification, software design, implementation and
+integration, testing, deployment and maintenance. The implementation and
+the following stages may depend on a particular hardware manufacture, but the
+variety of approaches the developers can use is limited by the standards, such
+as {IEC 61131}, making it less error prone and more reusable. The stage of
+requirements specification consists of analyzing, documenting and validating the
+needs and conditions for technological process, as well as rules, constrains and
+policies for the plant hardware. The most known standard used at this stage
+is the Unified Modeling Language (UML), developed by the Object Management
+Group (OMG) Technology Standards Consortium. This standard facilitates also  
+the next stage, software design, as a Model-Driven Architecture (MDA) approach.
+The industrial software design stage adopts also other numerous approaches,
+such as component based approach, object-oriented and aspect-oriented programming,
+software product line and etc. A survey of the state of the art for software
+engineering methods in industrial automation can be found in
+\cite{vyatkin_software_2013}.
+
+Even if some of the aforementioned approaches try to cover all the stages of
+industrial software development process, their drawback is that they are mainly
+designed for humans, whereas the reliability of systems is mainly a concern of
+machine-oriented formal verification methods. Formal methods apply
+mathematically-based techniques to the development of systems, starting from the
+specification level, and down to the implementation level. These methods proved
+to be effective for safety critical systems, but due to mathematical
+nature of these methods and lack of the tool support their use in industrial
+practice is not yet common. Approaches which exploit formal methods sometimes
+suffer from limitations which are inseparable from these methods, like the state
+explosion problem.
+
+\section{Restatement of the problem}
+
+Nowadays, when the growing complexity of automated systems imposes requirements
+which can be ensured only by formal methods, the researches and engineers
+take two distinguished ways for their approaches. One is mixing of formal
+techniques of ``standard-based'' approaches/tools that are already
+adopted in industry. Despite some successful reports can be found in
+literature, the progress seems low and applicable upon numerous constrains
+for the methods and tools. Another way is a development of new approaches
+which incorporate advantages of both, suitable for humans methodologies, and
+formal techniques.
+
+\section{Restatement of the response}
+
+Your response to the problem
 
 Motivation for this work. What this work about? Philosophical observation.
 Theory and practicing engineers.
 
-Systems development. Modern Requirements. Growing complexity. Goals during
-development. Formal approaches. Formal offline verification and online
-monitoring.
 
-% How the document is organized.
+\section{Road map - How the document is organized}
+
 Chapter two gives the overview of the problem on a real example of the
 industrial automation plant.
 
@@ -23,30 +81,30 @@ diagnosability, and its relation to existing types of diagnosability.
 Chapter five presents a new tool for modeling and simulation.
 
 
-\emph{Formal methods aim to apply mathematically-based techniques to the
-development of computer-based systems, especially at the specification level,
-but also down to the implementation level. This aids early detection and
-avoidance of errors through increased understanding. It is also beneficial for
-more rigorous testing coverage. This talk presents the use of formal methods on
-a real project. The Z notation has been used to specify a large-scale high
-integrity system to aid in air traffic control. The system has been implemented
-directly from the Z specification using SPARK Ada, an annotated subset of the
-Ada programming language that includes assertions and tool support for proofs.
-The Z specification has been used to direct the testing of the software through
-additional test design documents using tables and fragments of Z. In addition,
-Mathematica has been used as a test oracle for algorithmic aspects of the
-system. In summary, formal methods can be used successfully in all phases of the
-lifecycle for a large software project with suitably trained engineers, despite
-limited tool support.}
-
-\emph{Formal methods have been advocated as a means of increasing the
-reliability of systems, especially those which are safety or business critical,
-but the industrial uptake of such methods has been slow. This is due to the
-perceived difficulty of mathematical nature of these methods, the lack of tool
-support, and the lack of precedents where formal methods has been proven to be
-effective. It is even more difficult to develop automatic specification and
-verification tools due to limitations like state explosion, undecidability,
-etc.}
+% \emph{Formal methods aim to apply mathematically-based techniques to the
+% development of computer-based systems, especially at the specification level,
+% but also down to the implementation level. This aids early detection and
+% avoidance of errors through increased understanding. It is also beneficial for
+% more rigorous testing coverage. This talk presents the use of formal methods on
+% a real project. The Z notation has been used to specify a large-scale high
+% integrity system to aid in air traffic control. The system has been implemented
+% directly from the Z specification using SPARK Ada, an annotated subset of the
+% Ada programming language that includes assertions and tool support for proofs.
+% The Z specification has been used to direct the testing of the software through
+% additional test design documents using tables and fragments of Z. In addition,
+% Mathematica has been used as a test oracle for algorithmic aspects of the
+% system. In summary, formal methods can be used successfully in all phases of the
+% lifecycle for a large software project with suitably trained engineers, despite
+% limited tool support.}
+% 
+% \emph{Formal methods have been advocated as a means of increasing the
+% reliability of systems, especially those which are safety or business critical,
+% but the industrial uptake of such methods has been slow. This is due to the
+% perceived difficulty of mathematical nature of these methods, the lack of tool
+% support, and the lack of precedents where formal methods has been proved to be
+% effective. It is even more difficult to develop automatic specification and
+% verification tools due to limitations like state explosion, undecidability,
+% etc.}
 
 \begin{figure}
   \centering
