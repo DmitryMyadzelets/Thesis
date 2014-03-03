@@ -1,84 +1,128 @@
 
-\chapter{Introduction (3-4 pages)}
+\chapter{Introduction}
 
 
-\section{Introducton to Introduction}
+% \section{Introducton to Introduction}
 
 Modern society is characterized by the growing demand for the usage of automated
 systems in the everyday life, with constantly increasing complexity of software
 engineering. Industrial automation software engineering traditionally was a
-field which has the most strict requirements and high standards applied, which
-is also reflected in its high cost. Reflecting the importance of the software
-and a growing ratio of the software cost in the costs of machinery, engineers
-and researches put a lot of effort to facilitate the development and maintenance
-of software, increasing its performance and reliability, while preserving or 
-decreasing the cost of its life cycle.
+field which has the most strict requirements and high standards applied.
+However, it still common the practice when a software design in automation
+consists of writing a ladder logic for programmable logic controller (PLC), with
+partly and ambiguously defined specifications, with no clearly defined software
+architecture, and neither validation nor formal verification of the system.
+Reflecting the importance of the software and a growing ratio of the software
+cost in the costs of machinery, engineers and researches put a lot of effort to
+facilitate the development and maintenance of software, increasing its
+performance and reliability while preserving or decreasing the cost of its life
+cycle.
 
-\section{Context}
+% \section{Context}
 
 According to the standard ISO/IEC 12207 \cite{_iso/iec_12207_2008} the
 industrial software development process (life cycle process) can be structured
 into six stages: requirements specification, software design, implementation and
-integration, testing, deployment and maintenance. The implementation and
-the following stages may depend on a particular hardware manufacture, but the
-variety of approaches the developers can use is limited by the standards, such
-as {IEC 61131}, making it less error prone and more reusable. The stage of
-requirements specification consists of analyzing, documenting and validating the
-needs and conditions for technological process, as well as rules, constrains and
-policies for the plant hardware. The most known standard used at this stage
-is the Unified Modeling Language (UML), developed by the Object Management
-Group (OMG) Technology Standards Consortium. This standard facilitates also  
-the next stage, software design, as a Model-Driven Architecture (MDA) approach.
-The industrial software design stage adopts also other numerous approaches,
-such as component based approach, object-oriented and aspect-oriented programming,
-software product line and etc. A survey of the state of the art for software
-engineering methods in industrial automation can be found in
+integration, testing, deployment and maintenance. The implementation and the
+following stages may depend on a particular hardware manufacture. There are
+hundreds major producers of automation hardware, but the variety of approaches
+the developers can use is limited by the standards, such as {IEC 61131}, making
+it less error prone and more reusable. The stage of requirements specification
+consists of analyzing, documenting and validating the needs and conditions for
+technological process, as well as rules, constrains and policies for the plant
+hardware. The most known standard used at this stage is the Unified Modeling
+Language (UML), developed by the Object Management Group (OMG) Technology
+Standards Consortium. This standard facilitates also the next stage, software
+design, with a Model-Driven Architecture (MDA) approach.
+The industrial software design stage adopts also other numerous techniques, such
+as component based approach, object-oriented and aspect-oriented programming,
+software product line and etc. An extensive survey of the state of the art for
+software engineering methods in industrial automation is presented in
 \cite{vyatkin_software_2013}.
 
-Even if some of the aforementioned approaches try to cover all the stages of
-industrial software development process, their drawback is that they are mainly
-designed for humans, whereas the reliability of systems is mainly a concern of
-machine-oriented formal verification methods. Formal methods apply
-mathematically-based techniques to the development of systems, starting from the
-specification level, and down to the implementation level. These methods proved
-to be effective for safety critical systems, but due to mathematical
-nature of these methods and lack of the tool support their use in industrial
-practice is not yet common. Approaches which exploit formal methods sometimes
-suffer from limitations which are inseparable from these methods, like the state
-explosion problem.
+Even if some of the aforementioned approaches pretend to cover most of the
+stages of industrial software development process, and become a 'de facto'
+industrial standard, it would be hardly possible. Their major drawback is that
+they are mainly designed for humans, whereas the reliability of systems is
+mainly a concern of machine-oriented formal verification methods.
+Formal methods apply mathematically-based techniques to the development of
+systems, starting from the specification level, and down to the implementation
+level. These methods proved to be effective for safety critical systems, but due
+to mathematical nature of these methods and lack of the tools support their use
+in industrial practice is not yet common. Additionally, approaches which exploit
+formal methods sometimes suffer from limitations which are inseparable from
+these methods, like the state explosion problem.
 
-\section{Restatement of the problem}
+% \section{Restatement of the problem}
 
 Nowadays, when the growing complexity of automated systems imposes requirements
 which can be ensured only by formal methods, the researches and engineers
-take two distinguished ways for their approaches. One is mixing of formal
-techniques of ``standard-based'' approaches/tools that are already
-adopted in industry. Despite some successful reports can be found in
-literature, the progress seems low and applicable upon numerous constrains
-for the methods and tools. Another way is a development of new approaches
-which incorporate advantages of both, suitable for humans methodologies, and
-formal techniques.
+take two distinguished ways for their approaches. One is mix of formal
+techniques with ``standard-based'' approaches/tools that are already
+adopted in industry. Despite the fact that some successful reports can be found
+in literature, the progress seems low and applicable only with numerous
+constrains both for the methods and tools. Another way is a development of new
+approaches which incorporate advantages of both, suitable for humans
+methodologies, and formal techniques.
 
-\section{Restatement of the response}
+As soon as the quantity and quality of mathematical methods and their
+implementations will be enough for the current complexity of automated systems,
+and these methods will be encapsulated into integrated development tools as a
+first-class citizen, seamlessly providing the power of formal approaches through
+the easy-to-understand visual modeling process, the development process of
+automated systems will move to the next stage of its evolution. 
 
-Your response to the problem
+% \section{Restatement of the response}
 
-Motivation for this work. What this work about? Philosophical observation.
-Theory and practicing engineers.
+The aim of this work is, in general, to facilitate the process of industrial
+automated systems development, applying formal methods to ensure the reliability
+of a system. Among many existing problems this work considers the problem of
+verification of system's design in terms of diagnosability. Diagnosability
+problem answers the question: either the given system is ready for fault
+diagnosis or not. According to IEC vocabulary \cite{iec_vocabulary} the
+\emph{fault diagnosis} are ``actions taken for fault recognition, fault
+localization and cause identification'', and a \emph{fault} is ``the state of an
+item characterized by inability to perform a required function''.
 
+This work exploits Discrete Event Systems theory
+\cite{cassandras_introduction_2010} and the automata framework. The theory of
+automata is chosen due to its relative simplicity. Indeed, it has just two basic
+entities (state and event) and intuitively understandable graphical
+representation. Taking apart a language theory, which is necessary for
+researches, the automata framework does not require much additional mathematical
+knowledge for automation engineers. This makes it the first candidate as a
+formal mathematical tool for future general purpose integrated development
+environments (IDE) in automation industry.
 
-\section{Road map - How the document is organized}
+As a way to tackle the state explosion problem which arises when the automata
+framework is applied in complex discrete event systems, this work presents a new
+formulation of distributed diagnosability problem. This new formulation
+is used then to enforce the desired property of the system, rather then just
+verifying it.
 
-Chapter two gives the overview of the problem on a real example of the
-industrial automation plant.
+This work also presents structural patterns in terms of automata
+framework. These patterns aimed to decrease computation burden while applying
+verification algorithms.
 
-Chapter three describes the automata framework for discrete event systems,
-modeling approach and how it is used for diagnosability problem.
+At the higher level of the systems' representation a modification of
+``standard'' modular design approach is used, suitable for UML design tools.
+Particularly, this work extends an approach of \emph{Generalized Device},
+recently developed in the University of Bologna
+\cite{faldella_hierarchical_2008}, \cite{sartini_architectures_2010}.
 
-Chapter four presents a new type of diagnosability - modular virtual
-diagnosability, and its relation to existing types of diagnosability. 
+To validate the concepts developed during the research, a special tool was
+created. This tool exploits web-technologies in order to provide zero-time
+access to it, possibility for easy modifications for other problems, and
+opportunity for further enhancement by community.
 
-Chapter five presents a new tool for modeling and simulation.
+% \section{Road map - How the document is organized}
+
+The next chapter gives the overview of the problem of fault diagnosis on a real
+example of the industrial automation plant. Chapter three describes the automata
+framework for discrete event systems, modeling approach and how it is used for
+diagnosability problem. Chapter four presents a new type of diagnosability -
+modular virtual diagnosability, and its relation to existing types of
+diagnosability. Chapter five introduces a new tool for modeling and simulation.
 
 
 % \emph{Formal methods aim to apply mathematically-based techniques to the
@@ -105,9 +149,3 @@ Chapter five presents a new tool for modeling and simulation.
 % effective. It is even more difficult to develop automatic specification and
 % verification tools due to limitations like state explosion, undecidability,
 % etc.}
-
-\begin{figure}
-  \centering
-  text
-  \caption{Foo}
-\end{figure}
