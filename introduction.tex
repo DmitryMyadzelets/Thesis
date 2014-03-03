@@ -8,10 +8,10 @@ Modern society is characterized by the growing demand for the usage of automated
 systems in the everyday life, with constantly increasing complexity of software
 engineering. Industrial automation software engineering traditionally was a
 field which has the most strict requirements and high standards applied.
-However, it still common the practice when a software design in automation
-consists of writing a ladder logic for programmable logic controller (PLC), with
-partly and ambiguously defined specifications, with no clearly defined software
-architecture, and neither validation nor formal verification of the system.
+However, it is still common practice when a software design in automation
+consists of writing a ladder logic for programmable logic controller (PLC) with
+partially and ambiguously defined specifications, without clearly defined
+software architecture, and neither validation nor formal verification of the system.
 Reflecting the importance of the software and a growing ratio of the software
 cost in the costs of machinery, engineers and researches put a lot of effort to
 facilitate the development and maintenance of software, increasing its
@@ -26,7 +26,7 @@ into six stages: requirements specification, software design, implementation and
 integration, testing, deployment and maintenance. The implementation and the
 following stages may depend on a particular hardware manufacture. There are
 hundreds major producers of automation hardware, but the variety of approaches
-the developers can use is limited by the standards, such as {IEC 61131}, making
+the developers can use is limited by the standards, such as {IEC 61131} making
 it less error prone and more reusable. The stage of requirements specification
 consists of analyzing, documenting and validating the needs and conditions for
 technological process, as well as rules, constrains and policies for the plant
@@ -40,7 +40,7 @@ software product line and etc. An extensive survey of the state of the art for
 software engineering methods in industrial automation is presented in
 \cite{vyatkin_software_2013}.
 
-Even if some of the aforementioned approaches pretend to cover most of the
+Even if some of the aforementioned approaches pretend to cover the most of the
 stages of industrial software development process, and become a 'de facto'
 industrial standard, it would be hardly possible. Their major drawback is that
 they are mainly designed for humans, whereas the reliability of systems is
@@ -48,22 +48,22 @@ mainly a concern of machine-oriented formal verification methods.
 Formal methods apply mathematically-based techniques to the development of
 systems, starting from the specification level, and down to the implementation
 level. These methods proved to be effective for safety critical systems, but due
-to mathematical nature of these methods and lack of the tools support their use
-in industrial practice is not yet common. Additionally, approaches which exploit
-formal methods sometimes suffer from limitations which are inseparable from
-these methods, like the state explosion problem.
+to mathematical nature of these methods and lack of the supporting tools their
+use in industrial practice is not common yet. Additionally, approaches which
+exploit formal methods sometimes suffer from limitations which are inseparable from
+these methods like the state explosion problem.
 
 % \section{Restatement of the problem}
 
 Nowadays, when the growing complexity of automated systems imposes requirements
 which can be ensured only by formal methods, the researches and engineers
-take two distinguished ways for their approaches. One is mix of formal
-techniques with ``standard-based'' approaches/tools that are already
-adopted in industry. Despite the fact that some successful reports can be found
-in literature, the progress seems low and applicable only with numerous
-constrains both for the methods and tools. Another way is a development of new
-approaches which incorporate advantages of both, suitable for humans
-methodologies, and formal techniques.
+take two distinguished ways to satisfy them. One is a mix of formal
+techniques with ``standard-based'' approaches/tools which are already
+adopted in industry. Despite of the fact that some successful reports can be
+found in literature, the progress in this way seems low, and applicable only
+with numerous constrains both for the methods and the tools. Another way is a
+development of new approaches which incorporate advantages of both
+methodologies, the suitable for humans, and the formal techniques.
 
 As soon as the quantity and quality of mathematical methods and their
 implementations will be enough for the current complexity of automated systems,
@@ -74,52 +74,53 @@ automated systems will move to the next stage of its evolution.
 
 % \section{Restatement of the response}
 
-The aim of this work is, in general, to facilitate the process of industrial
-automated systems development, applying formal methods to ensure the reliability
-of a system. Among many existing problems this work considers the problem of
-verification of system's design in terms of diagnosability. Diagnosability
+The aim of this work, in general, is to facilitate the process of industrial
+automated systems development applying formal methods to ensure the reliability
+of systems. From many existing problems, for this work has been chosen the
+problem of verification of system's design in terms of diagnosability. Diagnosability
 problem answers the question: either the given system is ready for fault
-diagnosis or not. According to IEC vocabulary \cite{iec_vocabulary} the
+diagnosis or not. According to the IEC vocabulary \cite{iec_vocabulary} the
 \emph{fault diagnosis} are ``actions taken for fault recognition, fault
 localization and cause identification'', and a \emph{fault} is ``the state of an
 item characterized by inability to perform a required function''.
 
 This work exploits Discrete Event Systems theory
-\cite{cassandras_introduction_2010} and the automata framework. The theory of
+\cite{cassandras_introduction_2010} and its automata framework. The theory of
 automata is chosen due to its relative simplicity. Indeed, it has just two basic
 entities (state and event) and intuitively understandable graphical
 representation. Taking apart a language theory, which is necessary for
-researches, the automata framework does not require much additional mathematical
-knowledge for automation engineers. This makes it the first candidate as a
-formal mathematical tool for future general purpose integrated development
-environments (IDE) in automation industry.
+researches, the automata framework does not require much of an additional
+mathematical knowledge for automation engineers. This makes it the first
+candidate as a formal mathematical tool for future general purpose integrated
+development environments (IDE) in automation industry.
 
 As a way to tackle the state explosion problem which arises when the automata
-framework is applied in complex discrete event systems, this work presents a new
-formulation of distributed diagnosability problem. This new formulation
+framework is applied for complex discrete event systems, this work presents a
+new formulation of distributed diagnosability problem. This new formulation
 is used then to enforce the desired property of the system, rather then just
 verifying it.
 
 This work also presents structural patterns in terms of automata
-framework. These patterns aimed to decrease computation burden while applying
-verification algorithms.
+framework. These patterns are aimed to decrease computation burden while
+applying verification algorithms.
 
 At the higher level of the systems' representation a modification of
-``standard'' modular design approach is used, suitable for UML design tools.
-Particularly, this work extends an approach of \emph{Generalized Device},
+``standard'' modular design approach is used, which is suitable for UML design
+tools.
+Particularly, this work extends the approach of \emph{Generalized Device},
 recently developed in the University of Bologna
 \cite{faldella_hierarchical_2008}, \cite{sartini_architectures_2010}.
 
-To validate the concepts developed during the research, a special tool was
+To validate the concepts developed during the research, a software tool was
 created. This tool exploits web-technologies in order to provide zero-time
-access to it, possibility for easy modifications for other problems, and
-opportunity for further enhancement by community.
+access to it, possibility for easy modifications in order to solve other
+formal problems, and opportunity for further enhancement by community.
 
 % \section{Road map - How the document is organized}
 
 The next chapter gives the overview of the problem of fault diagnosis on a real
 example of the industrial automation plant. Chapter three describes the automata
-framework for discrete event systems, modeling approach and how it is used for
+framework for discrete event systems, modeling approach, and how it is used for
 diagnosability problem. Chapter four presents a new type of diagnosability -
 modular virtual diagnosability, and its relation to existing types of
 diagnosability. Chapter five introduces a new tool for modeling and simulation.
