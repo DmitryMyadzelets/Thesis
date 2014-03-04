@@ -1,13 +1,14 @@
 
-\chapter{Overview of \ldots Industrial Automation Plant (15-20 pages)}
+\chapter{Failure Diagnosis at Industrial Automation Plant}
 
-\section{Problem}
+\section{Case Study of the Automated System}
 
+An instance of real automated system is exploited to explain the problem of
+failure diagnosis. It is dust cleaner at an aluminium smelter. The Figure
+\ref{fig:pi_diagram} depicts a simplified Piping and Instrumentation (P\&I) of
+the system.
 
-\section{Real Example}
-
-The Figure \ref{fig:pi_diagram} depicts a simplified Piping and Instrumentation
-(P\&I) diagram of a dust cleaning system at an aluminium smelter. 
+\subsection{Technological process}
 
 \begin{figure}
   \includegraphics[width=\textwidth, keepaspectratio, angle=0] 
@@ -17,16 +18,138 @@ The Figure \ref{fig:pi_diagram} depicts a simplified Piping and Instrumentation
   \label{fig:pi_diagram}
 \end{figure}
 
-Description of an technological process with control loops
+For the given system two flows can be distinguished in the technological
+process.
+The first is the air which is blown trough a series of containers (the figure
+depicts only one container, for simplicity). Each container is equipped with an
+electrostatic filter.
+The second flow is the flow of a dust. Dust comes with the air, sticks to
+the filter, and then falls down to the bunker. Periodically the dust collected
+in the bunker is transported out to a silos.
 
-Description of the control system (Siemens, etc.) (picture of PLC, Control
-station and etc, showing distributed nature of the system)
+For the proper dust cleaning, the following parameters of the air flow have to
+be maintained: a constant pressure difference between the output and the input
+pressures of the container, and temperature at the input of the container. The
+pressure is regulated by the valve $V$--2, which changes the area flow before
+the pump $P$--1.
+The temperature is regulated by the valve $V$--1 which changes the area flow 
+of a preheated air. The air at the entrance of the filter is, thus, a mix of
+the the polluted air and the preheated air. The temperature of this mix should
+be higher of a certain point such that no condensation inside of the container is
+guaranteed.
 
-Description of possible failures
+When the amount of the dust collected at the bottom of the container reaches a
+necessary volume, i.e. reaches a certain level, the dust is removed by the screw
+conveyer. The gate valve $V$--3 is normally opened, since the screw of the
+conveyer blocks the flow of dust automatically when it is stopped. The belt
+conveyer, in its turn, starts to work whenever one of the screw conveyers start.
+It delivers the dust to a dust bucket.
 
-Problem of diagnosis 
+The dust bucket collects the dust until a volume of the dust is enough to pass
+it down, to the pneumatic container. Then the gate valve $V$--4 opens and the
+dust fills the container. Then the gate valve $V$--4 closes and the gate valve
+$V$--5 opens allowing the compressed air come to the container. Under high
+pressure the mix of dust and air is transported to the silos.
 
-$LT3$
+Periodically, in order to prevent sticking of the dust to the walls of the
+container with electrostatic filters, the vibration machine $M$--1 has to be
+switch on for a few seconds.
+
+
+\subsection{Control System}
+
+% Description of the control system (Siemens, etc.) (picture of PLC, Control
+% station and etc, showing distributed nature of the system)
+
+The control system consists of a PLC (Siemens Simatic S7--300
+\cite{simatic_s7_300}), remote acquisition modules and an operator station
+(with Siemens WinCC software) connected via industrial network. The PLC is
+mounted near the field equipment, the operator station is located a few hundred
+meters away. 
+
+The control systems has a few control cycles. Starting in the bottom-up
+direction, the first cycle controls emptiness of the dust bucket with two level
+sensors, $LT3$ and $LT4$. When a level of the dust reaches the high level
+sensor $LT3$, the system start to empty the bucket with the pneumatic container
+until a level of the dust reaches the low level sensor $LT4$. The weight meter
+$WT1$ is used to collect statistic, and its measurements can be also used to
+evaluate the amount of the dust in the container. The air flow meter $FT1$ is
+aimed to collect statistical data too.
+
+The second control cycle regulated the filling of the dust bucket. When the
+dust level in the bucket is lower then the high level sensor $LT3$, and there is
+an enabling signal from the upper (with respect to the material flow) control
+cycle, it turns on the belt conveyer and enables a signal to one of the upper
+control cycles (each container with its filter has its own control cycle).
+Either the level of the dust in the bucket reaches the high level sensor $LT3$
+or there is no any enabling signals from the upper control cycles, the belt
+conveyer stops.
+
+The third control cycle regulates the level of the dust in the container
+with the filter (the cycle is the same for each container). When the dust level
+reaches the high level sensor $LT1$, it gives enabling signal to the below
+control cycle of the belt conveyer and waits for enabling signal from it. After
+receiving the enabling signal, the control cycle switches on the screw conveyer.
+Ether the container becomes empty, i.e. the dust level decreases below the low
+level sensor $LT2$, or the control cycle receives disabling signal from the
+below control cycle, it switches the screw conveyer off.
+
+The forth control cycle regulates an order the containers with the filters
+should be emptied. If more then one container are ready, i.e. the level of the
+dust reached its high level sensor, the first container has a priority, since
+the speed it is filling with dust is normally faster. The the second container
+and etc.
+
+The fifth control cycle switches on vibration machines periodically, but only
+when the container is being emptied.
+
+All the actuators of the system can be in tree states: disabled for operation,
+manual or automatic control. The PLC receives a signal correspondent to the
+current state of each actuator.
+
+
+\subsection{Failures of the system}
+
+The system can be affected be different types of failures, which may be
+classified into the following categories:
+
+\begin{itemize}
+  \item Failures of the technological process
+  \item Failures of the technological devices
+  \item Failures of electric and electronic components of the control system
+\end{itemize}
+
+Moreover, the failures can be external or internal with respect to the given
+system. Some of the possible failures are described further. 
+
+\subsubsection{Failures of the technological process}
+
+The technological failures might be caused by deviation of the
+properties of materials involved in the process. Particularly in this system, a
+deviation of the dust or air humidity can result in that the dust sticks to the
+filter, to the walls of the container and to pipes, and obstructs the flow of
+the material. Whereas the temperature of the air (low value of which is the main
+reason for the condensation) is controlled, the humidity is not measured. 
+
+The air, coming to the pneumatic container has neither a temperature nor
+humidity control. Additionally, the rise of the material humidity may happen due
+to a leak of rainwater from the building's roof, and etc.
+
+In general, technological failures is hard to predict, since usually there is
+little statistical information for a particular process, if any. 
+
+\subsubsection{Failures of the technological devices}
+
+Malfunction of field devices, probably, is the most frequent reason the
+automatic systems fail. Firstly, the field devices are exposed to hard
+environmental conditions, such as temperature, vibration, humidity. Secondly,
+they are normally complex, composed of many other items components, and thus
+a failure rate of a complex device is higher then the highest failure rate of
+its items.
+ 
+ The rate of failure Mean time between failures (MTBF) is the predicted elapsed
+ time between inherent failures of a system during operation
+
 
 
 \section{Literature}
