@@ -145,12 +145,118 @@ automatic systems fail. Firstly, the field devices are exposed to hard
 environmental conditions, such as temperature, vibration, humidity,
 electromagnetic field, mechanical impact and etc. Secondly, they are normally
 complex devices, composed of many other components, and thus the failure rate of
-a complex device is higher then the highest failure rate of its items.
- 
- The rate of failure Mean time between failures (MTBF) is the predicted elapsed
- time between inherent failures of a system during operation
+a complex device is higher then the highest failure rate of its modules.
+It is common that manufactures proved some parameters as Mean time between
+failures (MTBF) for their equipment, but there is no information
+about types of failures. 
 
-Put some statistical example from Internet!
+A common solution adopted in industry is that all the actions performed under
+each individual device, conditions under with the equipment is used, a time
+duration it works, and etc. are journalized. These statistical information is
+later used to plan and perform the maintaining and repairing. 
+
+There exists international initiatives which gather the data collected by users
+of equipment in a centralized database, in order to provide realistic data about
+different types of technological devices. For example, plant and equipment
+taxonomies developed by the Process Reliability Database Project (PERD)
+\cite{reliabililty_database}.
+
+
+\subsubsection{Failures of electric and electronic components}
+
+Due to enormous amount electric and especially electronic components used in
+modern manufacturing industry, it is quite impossible to make a classification
+of all the failures which might occur, and it is seems useless to have such
+information at the level of industrial automation, since a fault of a single
+component most likely results in the failure of entire device it contains.
+Instead, complex characteristics are used in order to be able to estimate 
+possible faults. One of the well know parameters is the MTBF. A relatively
+modern standard IEC 61511 defines a set of characteristics.
+
+\paragraph{Mean time between failures (MTBF)} is a statistical mean value for
+error-free operation (between two failures) of an electronic device during the
+normal working life. The MTBF does not apply to an individual component, it
+always refers to the phase with constant failure rate (i.e.
+without early or wear failures). The higher the MTBF, the less often the
+component fails and the more reliable it is. In addition to the MTBF value, the
+environment and operating conditions should be taken into consideration. If a
+device is operated under conditions beyond its specification (e.g. at extremely
+high ambient temperatures or subject to a massive EMC load), then the MTBF
+values are no longer valid and large numbers of failures might occur.
+
+This term is based on the assumption that when a failure occurs, the system
+does not generally remain in the down state, but is renewed or repaired. The
+time required for renewal or repair (i.e. from the start of the down state to
+the restoration of the up state) is known as  the Mean Time to Repair (MTTR),
+often also called  Mean Down Time (MDT). These characteristics are the most
+common parameters related to reliability which are provide by manufactures
+in the documentation for their equipment.
+
+As an instance, the Table \ref{tbl:siemens_mtbf} shows some values MTBF for the
+equipment used in the previously described system. This data are provided by the
+manufacture \cite{siemens_mtbf}.
+
+\begin{table}[t]
+\caption{MTBF values for some SIEMENS Simatic components}
+\centering
+	\begin{tabular}{l l r}
+	\\	
+	Part Number & Type Description & MTBF (years) \\
+	\hline 
+	6ES7321-1FF01-0AA0	& 8 Pt. AC Input	& 5,4 \\
+	6ES7314-1AC00-0AB0	& CPU 314	& 22,2 \\
+	6ES7321-1BH00-0AA0	& SM 321, DI 16 x DC24V	& 28,0 \\
+	6ES7331-7NF00-0AB0	& AI 8 channels	& 76,0 \\
+	6ES7951-0FD00-0AA0	& Memory Card	& 90,2 \\
+	6ES7322-1BH01-0AA0	& DO 16 x DC 24V, 0,5 A	& 105,7 \\
+	6ES7340-1AH01-0AE0	& CP 340	& 278,3 \\
+	6ES7960-1AA04-5AA0	& Patch cable 1m	& 394,9 \\
+	6ES7964-2AA04-0AB0	& DP-interface module	& 703,4 \\
+	6ES7972-0BA12-0XA0	& profibus connector	& 19120,4 \\
+	6ES7368-3BB00-0AA0	& Cable	& 317097,9
+	\end{tabular}
+	\label{tbl:siemens_mtbf}
+\end{table}
+
+
+\paragraph{Safety standards {IEC 61508/IEC 61511}} define a concept of
+functional safety as a safety instrumented function calculated for electrical,
+electronic and programmable electronic systems.
+The standards require a quantitative proof for the risk, based on calculating
+the probabilities of dangerous failures. This calculation is carried out for the
+complete safety loop, consisting of sensor, PLC and actuator. The standards
+define the following steps for evaluation of safety:
+\begin{itemize}
+  \item Risk definition and assessment according to detailed probabilities of
+  failure from sensor over controller to actuator for the overall component life
+  time 
+  \item Specification and implementation of measures for risk reduction
+  \item Use of suitable instrumentation (evaluated or certified) 
+  \item Periodic test for correct operation of the safety functions
+\end{itemize}
+Some of the calculated parameters are following:
+\begin{itemize}
+  \item Percentage of failures without the potential to put the safety-related system into a dangerous 
+or fail-to-function state
+  \item Average probability of failure on demand
+  \item Failure rate for all safe detected failures
+  \item Failure rate for all safe undetected failures
+  \item Failure rate for all dangerous detected failures
+  \item Failure rate for all dangerous undetected failures
+\end{itemize}
+The calculations are made for every single component of a system. 
+Clearly, a complete quantitative evaluation can be determined only for
+relatively simple and small devices, such as film resistors, transistors, relays
+and etc. Characteristics of complex components such as processors and memory for
+PLC are determined partially.
+
+The complexity of the underlining approach for these standards and a
+correspondent high cost restricts its application only for so-called Safety
+Instrumented Systems (SIS) that are designed and used to prevent or mitigate
+hazardous events, to protect people or the environment or prevent damage to
+process equipment.
+% For additional infor read this: 
+% http://www.samson.de/pdf_en/w02360en.pdf
 
 \section{Literature}
 
