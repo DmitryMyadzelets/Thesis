@@ -111,16 +111,20 @@ the current state of each actuator is received by the PLC.
 \subsection{Failures of the system}
 
 The system can be affected by different types of failures, which may be
-classified into the following categories:
+classified into the following categories with respect to likelihood the failure
+occurs (the first type has the highers rate of occurrence):
 
 \begin{itemize}
   \item Failures of the technological process
-  \item Failures of the technological devices
+  \item Failures of mechanical devices
   \item Failures of electric and electronic components of the control system
 \end{itemize}
 
 Moreover, the failures can be external or internal with respect to the given
-system. Some of the possible failures are described further. 
+system. Yet another type of failure is one when malfunction of the system's
+behavior is caused by an inconsistent human (operator) intrusion; it has left
+outside of the scope. Some of the possible failures are described further,
+according to the above classification.
 
 \subsubsection{Failures of the technological process}
 
@@ -138,17 +142,17 @@ to a leak of rainwater from the building's roof, and etc.
 In general, technological failures are hard to predict, since there is
 usually a little of statistical information for the particular process, if any. 
 
-\subsubsection{Failures of the technological devices}
+\subsubsection{Failures of the mechanical devices}
 
-Malfunction of field devices, probably, is the most frequent reason the
-automatic systems fail. Firstly, the field devices are exposed to hard
+Malfunction of field mechanical devices, probably, is the most frequent reason
+the automatic systems fail. Firstly, the field devices are exposed to hard
 environmental conditions, such as temperature, vibration, humidity,
 electromagnetic field, mechanical impact and etc. Secondly, they are normally
 complex devices, composed of many other components, and thus the failure rate of
 a complex device is higher then the highest failure rate of its modules.
 It is common that manufactures proved some parameters as Mean time between
 failures (MTBF) for their equipment, but there is no information
-about types of failures. 
+about types of failures.
 
 A common solution adopted in industry is that all the actions performed under
 each individual device, conditions under with the equipment is used, a time
@@ -161,6 +165,25 @@ different types of technological devices. For example, plant and equipment
 taxonomies developed by the Process Reliability Database Project (PERD)
 \cite{reliabililty_database}.
 
+The above presented system has following devices with mechanical parts and
+parts which can be affected mechanically by the material:
+\begin{itemize}
+  \item Butterfly valves $V$--1, $V$--2 and gate valves $V$--3, $V$--4, $V$--5.
+  The weakest part of a valve is its actuator, which contains a plenty of
+  moving components. Beside this, the valve's core is subject to abrasion. 
+  \item The screw conveyer and the belt conveyer. These devices have a lot of
+  moving components either, where the belt as the weakest part.  
+  \item Electric motors $M$--1 -- 3 and pump $P$--1, which
+  are subject to mechanical and electric damages.
+  \item Weight meter $WT1$, with its fore tension meters which are subject to
+  degradation.
+  \item Fork level meters $LT1$ -- $4$. The forks are subject to abrasion.
+  \item Pressure meters $PT1$, $PT2$. The drive mechanism of a pressure meter is
+  the subject to stacking, dirt and oil clogging. 
+\end{itemize}
+
+All the above potential mechanical failures, the most of the listed above devices
+contain electronic and electric components, which can have their one failures. 
 
 \subsubsection{Failures of electric and electronic components}
 
@@ -258,8 +281,174 @@ process equipment.
 % For additional infor read this: 
 % http://www.samson.de/pdf_en/w02360en.pdf
 
-\section{Literature}
+\subsection{Examples of the systems' failures}
 
-\subsection{Industrial}
+This work does not consider the question of faults prevention. The fact of a
+fault occurrence has to be assumed, since the problem of the failure is not
+only that it may lead the necessity to interrupt the technological process,
+delay for delivery of spare parts and row materials. The major problem is that
+one failure can sequentially cause other failures which may spread further
+and so forth, with exponential growth, provoking a catastrophic impact at the
+end.
 
-\subsection{Academic}
+As an example, the system presented in this chapter was subjected to 
+some failures observed by the author of this work. These failures are
+interesting from the point of view of their propagation.
+
+In the first case the high level sensor $LT3$ failed while the system was at the
+state of refilling the dust bucket. Since one of the conditions the control
+system has to stops the filling is that the dust bucket is full, it was
+delivering more and more material. The material overflowed the bucket in great
+quantity, causing clogging of ventilation holes of the control system (which
+later resulted in some spare parts change), and blocking entrance to the
+building. The failure was spotted occasionally; elimination of its consequences
+took a few days. It was discovered later, that the failure of the fork level
+sensor was caused by blocking it with a wet material that, in its turn was
+caused by a high humidity in the building. Thus, the technological failure has
+propagated to a failure of sensor, and later to a failure of electronic
+components.
+
+Another example is related not to a failure of particular equipment, but to the
+control system. In this case the shaft of the motor $M$--2 was left not
+connected to the screw conveyer after a maintenance service. Thus, when the
+motor is switched on, the screw conveyer does not rotates and blocks the flow of
+material. When the system started to empty the first container, i.e.
+the control cycle responsible for unload of the container with electrostatic
+filter had enabling signal to the below control cycle, and the control cycle
+responsible for the filling of the dust bucket, in its turn, had an enabling
+signal for the upper control cycle, the system was found infinitely trying to
+fill the dust bucket from the first container. If not spotted, this failure
+could lead to the overfilling of the container, clogging of the filters and air
+channels, and pollution of the environment.
+
+These illustrative examples of failures are showing importance of the failures
+detection. If not a particular single fault can not be detected, at least one
+the propagating effects should be observed. The earlier a failure is detected
+the less damaging impact it leads to. The evidence of this fact can be stressed
+by a numerous examples and case studies: \cite{james_failure},
+\cite{forensic_failre_analysis}, \cite{arora_failures_2007} to mention a few.
+
+
+\section{How to Deal with Failures?}
+% Overview of Failure Detection and Diagnostic Approaches
+
+% From an industrial perspective, to-do list for failures:  
+%  . Prevent
+%  . Detect. 
+%  		. What is necessary to detect, and what is not? FMEA
+%  		. Is it possible to detect? Formal methods. 
+%  . Diagnose
+%  		. Formal methods
+%  . Reconfigure the system (fault tolerance)
+%  		. Formal methods
+
+
+\subsection{Prevent, Detect, Isolated and Recover}
+
+From the point of view of an automation engineer a failure is an event which has
+to be, firstly, \emph{prevented}, then \emph{detected} and \emph{diagnosed}.
+It is clear that nobody can guarantee that a failure can not occur under all
+circumstances. As it was shown by examples in the previous section, failures
+also tend to propagate, causing other failures with a greater impact.
+Thus, a general assumption is that the failures are not avoidable, but the
+failure propagation may be prevented.
+
+Determinization of all the potential failures is a separate difficult task.
+This problem is addressed with the knowledge based approach and analytical
+methods at the design stage while the development of a new system.
+Assuming that any failure which was determined can occur, the next step is to
+figure out what negative impact of each failure (of type of failures) is
+necessary to detect, ans which is not. The failure detection may be an expensive
+process, in terms of time, increasing complexity of the system, and costs.
+One of the most exhaustive approaches addressing the task to determine failures
+and to evaluate them is the Failure Mode and Effects Analysis (FMEA). 
+
+The next step, after all the possible system's failures are found and
+evaluated is to decide if each failure can be detected. The problem is that the
+effects of a failure may be difficult to observe. There can be a lack of
+the technological process parameters deviation, lack of equipment (sensors) or
+time (performance). Even if observed, the failure may be not easy to distinguish
+from a normal system's behaviour. Moreover, it might happen that the
+observed effects caused by one failure can not be distinguished (or, in other
+words, isolated) from effects caused by another failure. These two failures may
+required different reactions, thus they has to be distinguished. The problem of
+failure detection and isolation is know as a diagnosability problem.
+
+After a failure is detected and analysed, the system usually is desired to
+continue operating properly, possibly at a reduced level of performance, but not
+to fail completely. Such property of systems is called \emph{fault tolerance}.
+In industrial applications the property of fault tolerance is usually achieved
+by redundancy, i.e. is by duplication of critical components or functions of a
+system. The major form of redundancy in manufacturing are:
+\begin{itemize}
+  \item Hardware redundancy, such as double module redundancy or triple module
+  redundancy
+  \item Information redundancy, such as error detection and correction methods. 
+  \item Functional redundancy, when the same input produces an equivalent
+  output through different media or different principles
+\end{itemize}
+
+For example, in the dust cleaning systems, presented in this work, the three
+containers with electrostatic filters may be considered as a form of hardware
+redundancy. A level of dust in the dust bucket can be measured by mean of its
+weight and by the fork level sensors, thus, providing a form of information
+redundancy. When the system works in the non-automatic mode, based on decisions
+of its operator, actuation of motors can be performed both via the
+software control system and locally by hardware buttons - functional
+redundancy. 
+
+The problem of fault-tolerance is out the scope of this work. We proceed
+with a brief description of the FMEA as a pure industrial approach,
+and formal methods as an academic response to the problem of failures diagnosis.
+
+
+\subsection{Failure Mode and Effects Analysis}
+% http://medqi.bsd.uchicago.edu/documents/FailureModesandEffectsAnalysis_FMEA_1.pdf
+% https://static.squarespace.com/static/515082bbe4b0910b244269db/t/516d6e4ce4b0f84b6313c3ed/1366126156359/FMEA%20Webinar%20core%20tools.pdf
+
+FMEA is an exhaustive analysis of systems, an analytical tool to identify,
+quantify, prioritize and evaluate the risk of possible failures in order to
+reduce risk of failures, ensure that failures are detectable and prevent failure
+from happening. FMEA is described in the {IEC 60812} standard, and consists of:
+\begin{itemize}
+  \item System analysis - how interactions among systems may fail
+  \item Design analysis - how product design may fail
+  \item Process analysis - how processes that make the product might fail
+  \item Design analysis -  focuses on how machinery that perform processes might fail
+\end{itemize}
+ 
+A chart with steps which are necessary to perform according to FMEA methodology
+is depicted in Figure \ref{fig:fmea_chart}.
+
+\begin{figure}[th]
+  \includegraphics[width=\textwidth, keepaspectratio, angle=0]
+  {fmea_chart.pdf}
+  \caption{The necessary steps for FMEA methodology}
+  \label{fig:fmea_chart}
+\end{figure}
+
+FEMA involves reviewing as many components, assemblies, and subsystems as
+possible to identify failure modes, and their causes and effects. It also
+involves a lot of human resources: experts and practitioners in particular
+industrial fields \cite{tague_quality_2010}.
+That is why this tool is considered as a relatively expensive approach, and is
+adapted mostly for life-critical systems, related to military area, automotive,
+gas and oil industry, health-care and life-support activity. There are other,
+less costly but yet knowledge based analytical approaches, presented in
+literature, for instance the adapted for industrial use Process Mapping
+\cite{what_is_a_process_map}, and State analyses
+\cite{ruiz_state_2000}
+
+\subsection{Formal methods}
+
+While FEMA is the first step of a system reliability study, the formal methods
+augment \ldots
+
+. Simulation
+. Emulation
+. Validation
+. Verification
+\ldots
+
+\subsection{Failure Detection}
+
