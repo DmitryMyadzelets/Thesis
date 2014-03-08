@@ -361,7 +361,8 @@ figure out what negative impact of each failure (of type of failures) is
 necessary to detect, ans which is not. The failure detection may be an expensive
 process, in terms of time, increasing complexity of the system, and costs.
 One of the most exhaustive approaches addressing the task to determine failures
-and to evaluate them is the Failure Mode and Effects Analysis (FMEA). 
+and to evaluate them is the Failure Mode and Effects Analysis (FMEA). Another
+technique which can help uncover potential problems is a simulation process.
 
 The next step, after all the possible system's failures are found and
 evaluated is to decide if each failure can be detected. The problem is that the
@@ -398,8 +399,9 @@ software control system and locally by hardware buttons - functional
 redundancy. 
 
 The problem of fault-tolerance is out the scope of this work. We proceed
-with a brief description of the FMEA as a pure industrial approach,
-and formal methods as an academic response to the problem of failures diagnosis.
+with a brief description of the FMEA as a pure industrial approach, simulation
+process which is widely used in both industrial and academic fields, and formal
+methods as an academic response to the problem of failures diagnosis.
 
 
 \subsection{Failure Mode and Effects Analysis}
@@ -439,13 +441,35 @@ literature, for instance the adapted for industrial use Process Mapping
 \cite{what_is_a_process_map}, and State analyses
 \cite{ruiz_state_2000}
 
+\subsection{Simulation}
+
+Simulation is the imitation of the operation of a real-world process or system
+over time\cite{banks_introduction_1999}. In industrial practice it is used as
+the imitation of the real-life technological processes and equipment. It usually
+includes generation of a software model which reflects the supposed system's
+behaviour. It is also a common case when simulations involve hardware devices
+and entire subsystems, such as networks, sensors and actuators, and even real
+physical objects and media. Either existing and conceptual systems can be
+modeled with simulation. The main goal of simulations is validation of system's
+behaviour while a real system is not accessible, it is being designed, or it may
+be dangerous to use its processes and machines. Simulation is also used in
+performance optimisation \cite{tamimi_simulation_2012} and scientific modeling
+\cite{sharda_best_2011}. The main issue of this approach is how an imitated
+system is close to the model, i.e. how quality and quantity of information
+provided for simulation reflects the processes and machines' behaviour in the
+real life.
+
+
 \subsection{Formal methods}
 
-While FEMA is the first step of a system reliability study, the formal methods
-augment \ldots
+The above described Failure Mode and Effect Analysis the first step of a
+system reliability study. The formal methods augment \ldots
 
-. Simulation
-. Emulation
+Formal methods
+What formal methods are
+
+. Simulation (it is not a formal method)
+. Emulation (that is out of this topic)
 . Validation
 . Verification
 \ldots
