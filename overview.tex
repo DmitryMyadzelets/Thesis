@@ -465,17 +465,50 @@ life.
 
 \subsection{Formal methods}
 
-The above described Failure Mode and Effect Analysis the first step of a
-system reliability study. The formal methods augment \ldots
+The Failure Mode and Effect Analysis is the first step of a system reliability
+study. The Simulation can augment this analysis with a reality-like experience
+of failures and of how the automated system would behave. However, only formal
+methods can ensure reliability of a manufacturing system design
+\cite{holloway_why_1997}. Formal methods apply logic and mathematics to
+development process of systems and their analysis during operations. The are
+used for specification, development and verification of software and hardware.
 
-Formal methods
-What formal methods are
+The formal methods have been used in industrial automaton for a half of century,
+providing distinct field of research, development and application, mainly
+for control engineering due to its importance. Nowadays, formal methods have
+their own design programming languages as  \cite{spivey_z_1992} for instance,
+and tools as \cite{event_b_web}, \cite{atelier_b_web} and \cite{nusmv} for
+example.
 
-. Simulation (it is not a formal method)
-. Emulation (that is out of this topic)
-. Validation (also aout )
-. Verification
-\ldots
+\begin{figure}[th]
+  \includegraphics[width=\textwidth, keepaspectratio, angle=0]
+  {forma_methods_in_design.pdf}
+  \caption{Design process of automated systems}
+  \label{fig:forma_methods_in_design}
+\end{figure}
+
+The Figure \ref{fig:forma_methods_in_design} depicts a generic model of a
+manufacturing system design process. The design process of a particular system
+starts, in most of the cases, with informal description of technological
+processes. It specifies the system's behaviour in a not strictly semantically
+and syntactically defined form. Additionally to the verbal form, the description
+includes P\&I diagrams, equations and algorithms expressed in block diagrams.
+The main problem with informal specifications is that they do not facilitate
+tests for completeness, unambiguity and consistency of the system.
+
+Until nowadays, the common approach is when after the stage of informal
+specification immediately begins its direct implementation into a
+code for {PLC} with a programming language. Instead, when applying formal
+methods, the implementation stage follows after formalization of informal
+descriptions into formal specification. Formalisation is performed by
+humans, and involves conversion of textual and graphical information into the
+form of a formal language or another representation (for instance, automata).
+
+Formal specifications can be translated directly into programming languages
+\cite{maclay_click_2000} by a design tool. This step eliminates the error prone
+interpretation by humans ensuring that the system will behave explicitly as it
+was specified.
+
 
 \subsection{Failure Detection}
 
