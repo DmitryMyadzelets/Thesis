@@ -490,7 +490,7 @@ example.
 The Figure \ref{fig:forma_methods_in_design} depicts a generic model of a
 manufacturing system design process. The design process of a particular system
 starts, in most of the cases, with informal description of technological
-processes. It specifies the system's behaviour in a not strictly semantically
+processes. It specifies the system's behaviour in not a strictly semantically
 and syntactically defined form. Additionally to the verbal form, the description
 includes P\&I diagrams, equations and algorithms expressed in block diagrams.
 The main problem with informal specifications is that they do not facilitate
@@ -506,9 +506,39 @@ form of a formal language or another representation (for instance, automata).
 
 Formal specifications can be translated directly into programming languages
 \cite{maclay_click_2000} by a design tool. This step eliminates the error prone
-interpretation by humans ensuring that the system will behave explicitly as it
+interpretation by humans ensuring that the system will behave exactly as it
 was specified.
 
+Formal specification of the system brings opportunity to apply 
+\emph{verification} techniques to the design process. Verification is used
+to prove some properties of the system's specification. These properties are
+independent from the modeled system, such as, for example, existence of
+deadlocks in the discrete-event systems approach.
+Verification is closely related to \emph{Model checking} ``technique for
+verifying finite state concurrent systems such as sequential circuit designs and
+communication protocols. It has a number of advantages over traditional
+approaches that are based on simulation, testing, and deductive
+reasoning''\cite{clarke_model_1999}. Model checking verification considers a
+system as state-based model specified using, for instance, automata framework,
+and specifications of properties written in temporal logic.
 
-\subsection{Failure Detection}
+A formal verification approach can be a model based or non model based. In 
+model based approaches a model of the studied object is included into analysis.
+This can be a model of technological process or of manufacturing equipment. In
+non model based approaches the formal representation of specifications does not
+include a model of the object. These approaches assume that, literally,
+everything can happen. An example of this approach is development of a system
+with a few formally described controllers, where the whole system, i.e. the
+composition of the concurrent acting controllers needs to be verified for
+deadlocks absence.
+
+Due to importance of the problem of failures analysis for modern complex
+automated systems, formal method tools are widely used to support it.
+Whenever the specification of a system is accessible in a formal form, many
+formal approaches can be applied for offline failure analyses of the system's
+design and its online failures monitoring during its operation. The following
+chapter describes a formal theoretical framework for discrete event systems,
+a model based approach for manufacturing systems design suitable for formal
+analysis, and how failures of systems can be modeled in the context of this
+approach formally.
 
