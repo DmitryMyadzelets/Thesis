@@ -9,130 +9,13 @@
 \chapter{Diagnosis-oriented Modeling and Verification Framework}
 \label{chap:framework}
 
-\section{DES Theoretical Framework}
-
-Discrete Event Systems (DES) are systems, the dynamic of which is characterized
-by asynchronous occurrence of \emph{events}. An event is a fundamental concept
-which can be viewed and described as ``something happened'', either in systems
-designed by humans or in nature. Events have no property of continuation, they
-are instant, and can be observed only at discrete points in time. The second
-fundamental concept, characterizing a DES, is a state. A state is viewed as a
-result of \emph{temporally ordered} discrete events, occurred starting from a
-moment when the system was at its \emph{initial state}. The initial state of a
-DES characterizes the system before occurrence of any event. In reality, this
-characteristic may be seen as an assumption or ``agreement'' for the given
-system. Being at a certain state, when an event occurs, the system makes a
-\emph{transition} to another state.
-
-The examples of events are: switching a light on, pressing a button, a 
-moment of rising a temperature above a certain level. The correspondent states
-are: the light is on, the button is down, the temperature is high.
-
-Historically, all the system's events are thought as of an \emph{alphabet}.
-Temporally ordered, they form \emph{words} which, consequently, form a
-\emph{language}. At this level of abstraction DES are studied by the
-\emph{language theory} \cite{aho_theory_1968}.
-
-Formal language theory is closely related to \emph{Automata theory}
-\cite{hopcroft_introduction_2007}. Automata are used as one of the modeling
-formalisms for DES. A single automaton can be represented as a directed graph,
-and it is, probably, the simplest way a complex system's behaviour can be graphically
-and formally described and conceived by humans.
-
-The next section gives the preliminaries from theories of languages and
-automata, used in this document.
-
-
-\subsection{Notation}
-
-The notation used in this document is the one in
-\cite{cassandras_introduction_2010}. For the benefit of the reader we place here
-the most essential notation necessary for understanding of the further material.
-
-Let $\Sigma$ be a finite set of events. A sequence of events is a string.
-$\Sigma^*$ denotes a set of all finite strings over $\Sigma$.
-$L\subseteq\Sigma^*$ is a language over $\Sigma$. Given strings $s$ and $t$,
-$st$ is their concatenation. Given strings $s$ and $w$, $w$ is a prefix of $s$
-if exists $t$ such that $wt = s$. Prefix closure of $L$, denoted by
-$\overline{L}$ is a set of all prefixes of all the strings in $L$.
-If $\overline{L} = L$ then $L$ is prefix-closed. The post language of $L$ after
-a string $s$ is denoted as $L/s$, i.e. $L/s := \{t\mid st \in L\}$. We
-write $\sigma \in s$ if the event $\sigma \in \Sigma$ appears in the string $s
-\in \Sigma^*$. If $\{s\}$ is a singleton, we write $s$ for operations on
-languages.
-
-An automaton $G$ is a tuple $$G := \left< X,\Sigma,\delta,x_0, X_m \right>,$$
-where $X$ is a set of states, $x_0 \in X$ is an initial state, $X_m \subseteq X$
-is the set of marked states, and $\delta: X \times \Sigma \rightarrow X$ is the
-transition function.
-We say a language $L := \mathcal{L}(G)$ is generated or recognized by the
-automaton $G$. In this paper we assume that for each language there is always a
-correspondent automaton, and vice versa. The marked language $L_m \subseteq L$
-is intended to make a part of the automaton's behaviour distinguishable in a
-certain context.
-
-Some events of DES can not be observed. To reflect that the set of events
-$\Sigma$ is partitioned into disjointed sets of observable events $\Sigma_o$ and
-not observable events $\Sigma_{ou}$, i.e. $\Sigma = \Sigma_o~\dot{\cup}~
-\Sigma_{ou}$.
-$M: \Sigma^* \rightarrow \Sigma_o^*$ denotes natural projection that
-erases unobservable events.
-% ; $\epsilon$ means the empty string. 
-The correspondent inverse projection is $M^{-1}: \Sigma_o^* \rightarrow
-2^{\Sigma^*}$.
-
-Let $I := \{1,2,\ldots,n\} \subset  \mathbb{N}$ be an index set. A system is
-defined by a set of automata $\{G_{i \in I}\}$ and a correspondent set of
-languages $\{L_{i \in I}\}$. We use the term \emph{local} in context of the
-automata and languages from these sets. The \emph{global} language of the system
-is defined by the parallel composition \cite{cassandras_introduction_2010} of
-its local languages:
-$L := \parallel_{i \in I} L_i$.
-The natural projection for the local languages is defined as 
-$P_i := \Sigma^* \rightarrow \Sigma_i^*$. We extend it to the system's languages
-as follows: $P_i(L) := \{s\mid s\in L_{i}\}$, and 
-$P_i^{-1}(L_{i}) := \{s \mid s \in L, P_i(s) \in L_i\}, ~i \in I$.
-We also define natural projection over observable events for the index set: 
-$M_i :\Sigma_i^* \rightarrow \Sigma_{i,o}^*$, natural projection over common
-events:
-$P_{i,c} : \Sigma_i^* \rightarrow (\Sigma_i \cap \bigcup_{j\neq
-i}^I\Sigma_j)^*$, and natural projection over observable and common events:
-$P_{i,co} : (\Sigma_i \cup \Sigma_o)^* \rightarrow (\Sigma_{o} \cup (\Sigma_i
-\cap \bigcup_{j\neq i}^I\Sigma_j))^*$. All the above projections, as well as
-the correspondent inverse projections, are defined also for languages in the
-usual manner.
-
-
-\subsection{Abstraction by decomposition}
-
-For model checking and verification of DES the state explosion problem is one of
-the main limitations for their application in industry. The most important
-technique to deal with the state explosion problem is abstraction. The basic
-idea of abstraction is that some parts of a given system \emph{do not have
-effect} on particular properties, and hence, these parts can be
-\emph{eliminated} from the system's design.
-
-One of the most effective abstraction techniques, compositional reasoning
-\cite{berezin_compositional_1998}, deals with complex systems in order to reduce
-its complexity by breaking into smaller parts, checking its properties and then
-deducing the system correctness. These parts do not necessary reflect the real
-structure of a system if any. On the other hand, the most of systems are
-already structured in reality. Their structure is understood by humans, the
-properties of their parts can be described and checked easier relatively to the
-complex system. Then the models of the system's parts along with their
-properties can be reused.
-
-The next section describes a modeling approach of applying design patterns for
-functional design of DES and verification of system's properties. The approach
-exploits automata and language theories, and is mainly oriented for industrial
-use.
-
-% When a system is built from its components, the state explosion problem rises on
-% the parallel (synchronous) composition of component's models. Then it seems
-% rational to modify the description of a complex system such that a parallel
-% composition of component's models can be avoided, and tune the analysis
-% techniques to suit the new description.
-
+This first part of the chapter presents a modeling approach for design of
+manufacturing systems which exploits idea of decomposition of a system into modules, and presents them
+in a form of UML blocks. It is shown then, how the modules are
+represented internally by automata, and how the failures can be modeled. The
+second part of this chapter gives a necessary introduction into a formal
+notation for discrete event systems in terms of languages and automata,
+and describes different types of diagnosability.
 
 \section{Modeling Framework}
 
@@ -163,7 +46,7 @@ attempt to create instrumental and theoretical bridges. The most
 promising results seem to be reached in formalizing Unified Modeling Language
 (UML), Statecharts, and general purpose programming languages as C. 
 
-\begin{figure}[!ht]
+\begin{figure}[t]
 	\centering
 	\includegraphics{uml_state_machine.png}
 	\begin{tikzpicture}[->,>=stealth, node distance=4cm, auto, shorten >=1pt,
@@ -201,8 +84,8 @@ promising results seem to be reached in formalizing Unified Modeling Language
 	;
 	\end{tikzpicture}
 
-	\caption{Example of an UML diagram (at top) and its representation by
-	the Mealy automaton}
+	\caption{Example of an UML Statechart diagram (at top) and its representation
+	by the Mealy automaton}
 	\label{fig:example_of_UML_with_Mealy}
 \end{figure}
 
@@ -423,7 +306,136 @@ part.}
 
 
 
-\section{Diagnosability in DES \ldots}
+\section{Discrete Event Systems Framework for Diagnosability Verification}
+
+\subsection{Introduction}
+
+Discrete Event Systems (DES) are systems, the dynamic of which is characterized
+by asynchronous occurrence of \emph{events}. An event is a fundamental concept
+which can be viewed and described as ``something happened'', either in systems
+designed by humans or in nature. Events have no property of continuation, they
+are instant, and can be observed only at discrete points in time. The second
+fundamental concept, characterizing a DES, is a state. A state is viewed as a
+result of \emph{temporally ordered} discrete events, occurred starting from a
+moment when the system was at its \emph{initial state}. The initial state of a
+DES characterizes the system before occurrence of any event. In reality, this
+characteristic may be seen as an assumption or ``agreement'' for the given
+system. Being at a certain state, when an event occurs, the system makes a
+\emph{transition} to another state.
+
+The examples of events are: switching a light on, pressing a button, a 
+moment of rising a temperature above a certain level. The correspondent states
+are: the light is on, the button is down, the temperature is high.
+
+Historically, all the system's events are thought as of an \emph{alphabet}.
+Temporally ordered, they form \emph{words} which, consequently, form a
+\emph{language}. At this level of abstraction DES are studied by the
+\emph{language theory} \cite{aho_theory_1968}.
+
+Formal language theory is closely related to \emph{Automata theory}
+\cite{hopcroft_introduction_2007}. Automata are used as one of the modeling
+formalisms for DES. A single automaton can be represented as a directed graph,
+and it is, probably, the simplest way a complex system's behaviour can be graphically
+and formally described and conceived by humans.
+
+The next section gives the preliminaries from theories of languages and
+automata, used in this document.
+
+
+\subsection{Notation}
+
+The notation used in this document is the one in
+\cite{cassandras_introduction_2010}. For the benefit of the reader we place here
+the most essential notation necessary for understanding of the further material.
+
+Let $\Sigma$ be a finite set of events. A sequence of events is a string.
+$\Sigma^*$ denotes a set of all finite strings over $\Sigma$.
+$L\subseteq\Sigma^*$ is a language over $\Sigma$. Given strings $s$ and $t$,
+$st$ is their concatenation. Given strings $s$ and $w$, $w$ is a prefix of $s$
+if exists $t$ such that $wt = s$. Prefix closure of $L$, denoted by
+$\overline{L}$ is a set of all prefixes of all the strings in $L$.
+If $\overline{L} = L$ then $L$ is prefix-closed. The post language of $L$ after
+a string $s$ is denoted as $L/s$, i.e. $L/s := \{t\mid st \in L\}$. We
+write $\sigma \in s$ if the event $\sigma \in \Sigma$ appears in the string $s
+\in \Sigma^*$. If $\{s\}$ is a singleton, we write $s$ for operations on
+languages.
+
+An automaton $G$ is a tuple $$G := \left< X,\Sigma,\delta,x_0, X_m \right>,$$
+where $X$ is a set of states, $x_0 \in X$ is an initial state, $X_m \subseteq X$
+is the set of marked states, and $\delta: X \times \Sigma \rightarrow X$ is the
+transition function.
+We say a language $L := \mathcal{L}(G)$ is generated or recognized by the
+automaton $G$. In this paper we assume that for each language there is always a
+correspondent automaton, and vice versa. The marked language $L_m \subseteq L$
+is intended to make a part of the automaton's behaviour distinguishable in a
+certain context.
+
+Some events of DES can not be observed. To reflect that the set of events
+$\Sigma$ is partitioned into disjointed sets of observable events $\Sigma_o$ and
+not observable events $\Sigma_{ou}$, i.e. $\Sigma = \Sigma_o~\dot{\cup}~
+\Sigma_{ou}$.
+$M: \Sigma^* \rightarrow \Sigma_o^*$ denotes natural projection that
+erases unobservable events.
+% ; $\epsilon$ means the empty string. 
+The correspondent inverse projection is $M^{-1}: \Sigma_o^* \rightarrow
+2^{\Sigma^*}$.
+
+Let $I := \{1,2,\ldots,n\} \subset  \mathbb{N}$ be an index set. A system is
+defined by a set of automata $\{G_{i \in I}\}$ and a correspondent set of
+languages $\{L_{i \in I}\}$. We use the term \emph{local} in context of the
+automata and languages from these sets. The \emph{global} language of the system
+is defined by the parallel composition \cite{cassandras_introduction_2010} of
+its local languages:
+$L := \parallel_{i \in I} L_i$.
+The natural projection for the local languages is defined as 
+$P_i := \Sigma^* \rightarrow \Sigma_i^*$. We extend it to the system's languages
+as follows: $P_i(L) := \{s\mid s\in L_{i}\}$, and 
+$P_i^{-1}(L_{i}) := \{s \mid s \in L, P_i(s) \in L_i\}, ~i \in I$.
+We also define natural projection over observable events for the index set: 
+$M_i :\Sigma_i^* \rightarrow \Sigma_{i,o}^*$, natural projection over common
+events:
+$P_{i,c} : \Sigma_i^* \rightarrow (\Sigma_i \cap \bigcup_{j\neq
+i}^I\Sigma_j)^*$, and natural projection over observable and common events:
+$P_{i,co} : (\Sigma_i \cup \Sigma_o)^* \rightarrow (\Sigma_{o} \cup (\Sigma_i
+\cap \bigcup_{j\neq i}^I\Sigma_j))^*$. All the above projections, as well as
+the correspondent inverse projections, are defined also for languages in the
+usual manner.
+
+
+\subsection{Abstraction by decomposition}
+
+For model checking and verification of DES the state explosion problem is one of
+the main limitations for their application in industry. The most important
+technique to deal with the state explosion problem is abstraction. The basic
+idea of abstraction is that some parts of a given system \emph{do not have
+effect} on particular properties, and hence, these parts can be
+\emph{eliminated} from the system's design.
+
+One of the most effective abstraction techniques, compositional reasoning
+\cite{berezin_compositional_1998}, deals with complex systems in order to reduce
+its complexity by breaking into smaller parts, checking its properties and then
+deducing the system correctness. These parts do not necessary reflect the real
+structure of a system if any. On the other hand, the most of systems are
+already structured in reality. Their structure is understood by humans, the
+properties of their parts can be described and checked easier relatively to the
+complex system. Then the models of the system's parts along with their
+properties can be reused.
+
+The modeling approach, described in this chapter, exploits automata framework
+and, which makes the idea of abstraction applicable for it.
+
+% theories, and is mainly oriented for industrial use .by applying the design patterns for and verification of system's properties. The approach
+% exploits automata and language theories, and is mainly oriented for industrial
+% use.
+
+% When a system is built from its components, the state explosion problem rises on
+% the parallel (synchronous) composition of component's models. Then it seems
+% rational to modify the description of a complex system such that a parallel
+% composition of component's models can be avoided, and tune the analysis
+% techniques to suit the new description.
+
+
+\section{Diagnosability of DES}
 
 In Discrete-Event Systems, diagnosis of a fault is a problem of deciding whether
 or not the fault occurred, under partial observation of the system's events.
