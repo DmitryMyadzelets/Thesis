@@ -1,11 +1,17 @@
 
-\chapter{Failure Diagnosis at Industrial Automation Plant}
+\chapter{Failure Diagnosis for Industrial Automation Plant}
 \label{chap:problem_description}
+
+This chapter uses an example of industrial automation plant to present the
+problem of fault diagnosis. After a short description of the technological
+process it shows two cases of failures. Then the types of failures are
+discussed, and what approaches are adopted in industrial and academic
+practices.
 
 \section{Case Study of the Automated System}
 
 An instance of the real automated systems is exploited to explain the problem of
-failure diagnosis. It is dust cleaner at an aluminium smelter. The Figure
+failure diagnosis. It is a dust cleaner at an aluminium smelter. The Figure
 \ref{fig:pi_diagram} depicts a simplified Piping and Instrumentation (P\&I) of
 the system.
 
@@ -151,23 +157,13 @@ environmental conditions, such as temperature, vibration, humidity,
 electromagnetic field, mechanical impact and etc. Secondly, they are normally
 complex devices, composed of many other components, and thus the failure rate of
 a complex device is higher then the highest failure rate of its modules.
-It is common that manufactures proved some parameters as Mean time between
-failures (MTBF) for their equipment, but there is no information
-about types of failures.
-
 A common solution adopted in industry is that all the actions performed under
 each individual device, conditions under with the equipment is used, a time
 duration it works, and etc. are journalized. These statistical information is
-later used to plan and perform the maintaining and repairing. 
-
-There exists international initiatives which gather the data collected by users
-of equipment in a centralized database, in order to provide realistic data about
-different types of technological devices. For example, plant and equipment
-taxonomies developed by the Process Reliability Database Project (PERD)
-\cite{reliabililty_database}.
+later used to plan and perform the maintaining and repairing.
 
 The above presented system has following devices with mechanical parts and
-parts which can be affected mechanically by the material:
+parts which can be affected mechanically (e.g. by the flow of a material):
 \begin{itemize}
   \item Butterfly valves $V$--1, $V$--2 and gate valves $V$--3, $V$--4, $V$--5.
   The weakest part of a valve is its actuator, which contains a plenty of
@@ -194,93 +190,9 @@ of all the failures which might occur, and it is seems useless to have such
 information at the level of industrial automation, since a fault of a single
 component most likely results in the failure of entire device it contains.
 Instead, complex characteristics are used in order to be able to estimate 
-possible faults. One of the well know parameters is the MTBF. A relatively
-modern standard IEC 61511 defines a set of characteristics.
-
-\paragraph{Mean time between failures (MTBF)} is a statistical mean value for
-error-free operation (between two failures) of an electronic device during the
-normal working life. The MTBF does not apply to an individual component, it
-always refers to the phase with constant failure rate (i.e.
-without early or wear failures). The higher the MTBF, the less often the
-component fails and the more reliable it is. In addition to the MTBF value, the
-environment and operating conditions should be taken into consideration. If a
-device is operated under conditions beyond its specification (e.g. at extremely
-high ambient temperatures or subject to a massive EMC load), then the MTBF
-values are no longer valid and large numbers of failures might occur.
-
-This term is based on the assumption that when a failure occurs, the system
-does not generally remain in the down state, but is renewed or repaired. The
-time required for renewal or repair (i.e. from the start of the down state to
-the restoration of the up state) is known as  the Mean Time to Repair (MTTR),
-often also called  Mean Down Time (MDT). These characteristics are the most
-common parameters related to reliability which are provide by manufactures
-in the documentation for their equipment.
-
-As an instance, the Table \ref{tbl:siemens_mtbf} shows some values MTBF for the
-equipment used in the previously described system. This data are provided by the
-manufacture \cite{siemens_mtbf}.
-
-\begin{table}[t]
-\caption{MTBF values for some SIEMENS Simatic components}
-\centering
-	\begin{tabular}{l l r}
-	\\	
-	Part Number & Type Description & MTBF (years) \\
-	\hline 
-	6ES7321-1FF01-0AA0	& 8 Pt. AC Input	& 5,4 \\
-	6ES7314-1AC00-0AB0	& CPU 314	& 22,2 \\
-	6ES7321-1BH00-0AA0	& SM 321, DI 16 x DC24V	& 28,0 \\
-	6ES7331-7NF00-0AB0	& AI 8 channels	& 76,0 \\
-	6ES7951-0FD00-0AA0	& Memory Card	& 90,2 \\
-	6ES7322-1BH01-0AA0	& DO 16 x DC 24V, 0,5 A	& 105,7 \\
-	6ES7340-1AH01-0AE0	& CP 340	& 278,3 \\
-	6ES7960-1AA04-5AA0	& Patch cable 1m	& 394,9 \\
-	6ES7964-2AA04-0AB0	& DP-interface module	& 703,4 \\
-	6ES7972-0BA12-0XA0	& profibus connector	& 19120,4 \\
-	6ES7368-3BB00-0AA0	& Cable	& 317097,9
-	\end{tabular}
-	\label{tbl:siemens_mtbf}
-\end{table}
-
-
-\paragraph{Safety standards {IEC 61508/IEC 61511}} define a concept of
-functional safety as a safety instrumented function calculated for electrical,
-electronic and programmable electronic systems.
-The standards require a quantitative proof for the risk, based on calculating
-the probabilities of dangerous failures. This calculation is carried out for the
-complete safety loop, consisting of sensor, PLC and actuator. The standards
-define the following steps for evaluation of safety:
-\begin{itemize}
-  \item Risk definition and assessment according to detailed probabilities of
-  failure from sensor over controller to actuator for the overall component life
-  time 
-  \item Specification and implementation of measures for risk reduction
-  \item Use of suitable instrumentation (evaluated or certified) 
-  \item Periodic test for correct operation of the safety functions
-\end{itemize}
-Some of the calculated parameters are following:
-\begin{itemize}
-  \item Percentage of failures without the potential to put the safety-related system into a dangerous 
-or fail-to-function state
-  \item Average probability of failure on demand
-  \item Failure rate for all safe detected failures
-  \item Failure rate for all safe undetected failures
-  \item Failure rate for all dangerous detected failures
-  \item Failure rate for all dangerous undetected failures
-\end{itemize}
-The calculations are made for every single component of a system. 
-Clearly, a complete quantitative evaluation can be determined only for
-relatively simple and small devices, such as film resistors, transistors, relays
-and etc. Characteristics of complex components such as processors and memory for
-PLC are determined partially.
-
-The complexity of the underlining approach for these standards and a
-correspondent high cost restricts its application only for so-called Safety
-Instrumented Systems (SIS) that are designed and used to prevent or mitigate
-hazardous events, to protect people or the environment or prevent damage to
-process equipment.
-% For additional infor read this: 
-% http://www.samson.de/pdf_en/w02360en.pdf
+possible faults. One of the well know parameters is the Mean time between
+failures (MTBF). Another, relatively modern standard IEC 61511 also defines a
+set of characteristics (MTBF and IEC 61511 are described briefly later).
 
 \subsection{Examples of the systems' failures}
 
@@ -323,7 +235,7 @@ could lead to the overfilling of the container, clogging of the filters and air
 channels, and pollution of the environment.
 
 These illustrative examples of failures are showing importance of the failures
-detection. If not a particular single fault can not be detected, at least one
+detection. If a particular single fault can not be detected, at least one
 the propagating effects should be observed. The earlier a failure is detected
 the less damaging impact it leads to. The evidence of this fact can be stressed
 by a numerous examples and case studies: \cite{james_failure},
@@ -344,7 +256,7 @@ by a numerous examples and case studies: \cite{james_failure},
 %  		. Formal methods
 
 
-\subsection{Prevent, Detect, Isolated and Recover}
+\subsection{Prevent, Detect, Isolate and Recover}
 
 From the point of view of an automation engineer a failure is an event which has
 to be, firstly, \emph{prevented}, then \emph{detected} and \emph{diagnosed}.
@@ -355,18 +267,11 @@ Thus, a general assumption is that the failures are not avoidable, but the
 failure propagation may be prevented.
 
 Determinization of all the potential failures is a separate difficult task.
-This problem is addressed with the knowledge based approach and analytical
-methods at the design stage while the development of a new system.
-Assuming that any failure which was determined can occur, the next step is to
-figure out what negative impact of each failure (of type of failures) is
-necessary to detect, ans which is not. The failure detection may be an expensive
-process, in terms of time, increasing complexity of the system, and costs.
-One of the most exhaustive approaches addressing the task to determine failures
-and to evaluate them is the Failure Mode and Effects Analysis (FMEA). Another
-technique which can help uncover potential problems is a simulation process.
+This problem is addressed with the different qualitative and quantitative 
+analytical methods at the design stage while the development of a new system.
 
 The next step, after all the possible system's failures are found and
-evaluated is to decide if each failure can be detected. The problem is that the
+evaluated, is to decide if each failure can be detected. The problem is that the
 effects of a failure may be difficult to observe. There can be a lack of
 the technological process parameters deviation, lack of equipment (sensors) or
 time (performance). Even if observed, the failure may be not easy to distinguish
@@ -399,10 +304,15 @@ of its operator, actuation of motors can be performed both via the
 software control system and locally by hardware buttons - functional
 redundancy. 
 
-The problem of fault-tolerance is out the scope of this work. We proceed
-with a brief description of the FMEA as a pure industrial approach, simulation
-process which is widely used in both industrial and academic fields, and formal
-methods as an academic response to the problem of failures diagnosis.
+The problem of fault-tolerance is out the scope of this work. We proceed with a
+brief description of some qualitative and quantitative analytical approaches
+adopted in industry, such as Failure Mode and Effects Analysis (FMEA), Mean time
+between failures (MTBF), reliability online databases and IEC 61511
+standard. Then a Simulation approach is described as a way for failure
+validation, and, finally, the formal methods approach. Some of these approaches
+can be considered as pure industrial ones, while other widely used in both
+industrial and academic fields. The formal methods is seen as a pure academic
+response to the problem of failures diagnosis.
 
 
 \subsection{Failure Mode and Effects Analysis}
@@ -412,7 +322,13 @@ methods as an academic response to the problem of failures diagnosis.
 FMEA is an exhaustive analysis of systems, an analytical tool to identify,
 quantify, prioritize and evaluate the risk of possible failures in order to
 reduce risk of failures, ensure that failures are detectable and prevent failure
-from happening. FMEA is described in the {IEC 60812} standard, and consists of:
+from happening. Assuming that any failure which was determined can occur, it
+is necessary to figure out what negative impact of each failure (of type of
+failures) can be, i.e. what failures must to be detected, what are wished to
+be detected, and what are not, since the failure detection may be an expensive
+process in terms of time, increasing complexity and costs of the whole system.
+
+FMEA is described in the {IEC 60812} standard, and consists of:
 \begin{itemize}
   \item System analysis - how interactions among systems may fail
   \item Design analysis - how product design may fail
@@ -437,10 +353,110 @@ industrial fields \cite{tague_quality_2010}.
 That is why this tool is considered as a relatively expensive approach, and is
 adapted mostly for life-critical systems, related to military area, automotive,
 gas and oil industry, health-care and life-support activity. There are other,
-less costly but yet knowledge based analytical approaches, presented in
+less costly but yet similar knowledge based analytical approaches, presented in
 literature, for instance the adapted for industrial use Process Mapping
-\cite{what_is_a_process_map}, and State analyses
-\cite{ruiz_state_2000}
+\cite{what_is_a_process_map}, and State analyses \cite{ruiz_state_2000}.
+
+
+\subsection{Mean time between failures (MTBF)} 
+MTBF is a statistical mean value for error-free operation (between two failures)
+of an electronic device during the normal working life. The MTBF does not apply
+to an individual component, it always refers to the phase with constant failure
+rate (i.e. without early or wear failures). The higher the MTBF, the less often
+the component fails and the more reliable it is. In addition to the MTBF value, the
+environment and operating conditions should be taken into consideration. If a
+device is operated under conditions beyond its specification (e.g. at extremely
+high ambient temperatures or subject to a massive EMC load), then the MTBF
+values are no longer valid and large numbers of failures might occur.
+
+This term is based on the assumption that when a failure occurs, the system does
+not generally remain in the down state, but is renewed or repaired. The time
+required for renewal or repair (i.e. from the start of the down state to the
+restoration of the up state) is known as  the Mean Time to Repair (MTTR), often
+also called  Mean Down Time (MDT). These characteristics are the most common
+parameters related to reliability which are provide by manufactures in the
+documentation for their equipment.
+
+As an instance, the Table \ref{tbl:siemens_mtbf} shows some values MTBF for the
+equipment used in the previously described system. This data are provided by the
+manufacture \cite{siemens_mtbf}.
+
+\begin{table}[t]
+\caption{MTBF values for some SIEMENS Simatic components}
+\centering
+	\begin{tabular}{l l r}
+	\\	
+	Part Number & Type Description & MTBF (years) \\
+	\hline 
+	6ES7321-1FF01-0AA0	& 8 Pt. AC Input	& 5,4 \\
+	6ES7314-1AC00-0AB0	& CPU 314	& 22,2 \\
+	6ES7321-1BH00-0AA0	& SM 321, DI 16 x DC24V	& 28,0 \\
+	6ES7331-7NF00-0AB0	& AI 8 channels	& 76,0 \\
+	6ES7951-0FD00-0AA0	& Memory Card	& 90,2 \\
+	6ES7322-1BH01-0AA0	& DO 16 x DC 24V, 0,5 A	& 105,7 \\
+	6ES7340-1AH01-0AE0	& CP 340	& 278,3 \\
+	6ES7960-1AA04-5AA0	& Patch cable 1m	& 394,9 \\
+	6ES7964-2AA04-0AB0	& DP-interface module	& 703,4 \\
+	6ES7972-0BA12-0XA0	& profibus connector	& 19120,4 \\
+	6ES7368-3BB00-0AA0	& Cable	& 317097,9
+	\end{tabular}
+	\label{tbl:siemens_mtbf}
+\end{table}
+
+
+\subsection{Knowledge-based Databases}
+
+It is common that hardware vendors provide some parameters as MTBF for their
+equipment, but there is no information about complex types of failures. Since
+each relatively big manufacture usually has it is own history records for the
+equipment, an idea to unite such historical data seems to be a relevant
+responses to the problem. There exists international initiatives which gather
+the data collected by users of equipment in a centralized database, in order to provide realistic data about
+different types of technological devices. For example, plant and equipment
+taxonomies developed by the Process Reliability Database Project (PERD)
+\cite{reliabililty_database}.
+
+
+\subsubsection{Safety standards {IEC 61508/IEC 61511}}
+
+These standards is the quantitative approach for the failures analysis.  
+They define a concept of functional safety as a safety instrumented
+function calculated for electrical, electronic and programmable electronic systems.
+The standards require a quantitative proof for the risk, based on calculating
+the probabilities of dangerous failures. This calculation is carried out for the
+complete safety loop, consisting of sensor, PLC and actuator. The standards
+define the following steps for evaluation of safety:
+\begin{itemize}
+  \item Risk definition and assessment according to detailed probabilities of
+  failure from sensor over controller to actuator for the overall component life
+  time 
+  \item Specification and implementation of measures for risk reduction
+  \item Use of suitable instrumentation (evaluated or certified) 
+  \item Periodic test for correct operation of the safety functions
+\end{itemize}
+Some of the calculated parameters are following:
+\begin{itemize}
+  \item Percentage of failures without the potential to put the safety-related system into a dangerous 
+or fail-to-function state
+  \item Average probability of failure on demand
+  \item Failure rate for all safe detected failures
+  \item Failure rate for all safe undetected failures
+  \item Failure rate for all dangerous detected failures
+  \item Failure rate for all dangerous undetected failures
+\end{itemize}
+The calculations are made for every single component of a system. 
+Clearly, a complete quantitative evaluation can be determined only for
+relatively simple and small devices, such as film resistors, transistors, relays
+and etc. Characteristics of complex components such as processors and memory for
+PLC are determined partially.
+
+The complexity of the underlining approach for these standards and a
+correspondent high cost restricts its application only for so-called Safety
+Instrumented Systems (SIS) that are designed and used to prevent or mitigate
+hazardous events, to protect people or the environment or prevent damage to
+process equipment.
+% For additional infor read this: 
+% http://www.samson.de/pdf_en/w02360en.pdf
 
 \subsection{Simulation}
 
@@ -537,9 +553,13 @@ Due to importance of the problem of failures analysis for modern complex
 automated systems, formal method tools are widely used to support it.
 Whenever the specification of a system is accessible in a formal form, many
 formal approaches can be applied for offline failure analyses of the system's
-design and its online failures monitoring during its operation. The following
-chapter describes a formal theoretical framework for discrete event systems,
-a model based approach for manufacturing systems design suitable for formal
-analysis, and how failures of systems can be modeled in the context of this
-approach formally.
+design and its online failures monitoring during its operation. 
 
+The next Chapter \ref{chap:framework} describes an UML model based 
+modeling approach for manufacturing systems design, and how this approach is
+used to reflect failures, such that it is suitable for formal analysis due to
+exploiting the automata framework at the internal layer. Then the
+mathematical notation for discrete event systems is briefly presented,
+different definitions of diagnosability are given, as well as an idea
+underlining a new notion of diagnosability which is described in details in the
+following Chapter \ref{chap:theory}.
