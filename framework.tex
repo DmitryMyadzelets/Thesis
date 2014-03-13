@@ -159,8 +159,7 @@ procedure with following characteristics:
 	\includegraphics[width=30em]{ga_blocks.png}
 	\includegraphics[width=30em]{ga_automaton.png}
 	\caption{GA with two types of interfaces (top) and its underlining
-	formal representation by the automaton (bottom)
-	(the image is borrowed from \cite{faldella_hierarchical_2008})}
+	formal representation by the automaton (bottom)}
 	\label{fig:ga_blocks}
 \end{figure}
 
@@ -184,8 +183,9 @@ heater; when temperature reaches a required level the ``Stop'' event switches it
 
 The above described two types of GA can be implemented as Functional Blocks
 (FB) in terms of IEC 61131-3 standard, as depicted in Figure
-\ref{fig:ga_blocks}. Besides the essential inputs and outputs necessary to
-perform the above described types of actions, the blocks have other inputs and
+\ref{fig:ga_blocks}
+\footnote{The image is borrowed from \cite{faldella_hierarchical_2008}}. 
+Besides the essential inputs and outputs necessary to perform the above described types of actions, the blocks have other inputs and
 outputs related to the low level of processes, and to some additional
 information related to the high level. 
 
@@ -266,45 +266,127 @@ a classification of the devices in this approach is the following:
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=30em]{gd_sadf_automaton.png}
-	\caption{An automaton representing single acting generalized device with
-	double feedback (the image is borrowed from \cite{sartini_architectures_2010})}
-	\label{fig:gd_sadf_automaton}
+% 	\includegraphics[width=30em]{dadf.png}
+	\includegraphics[width=30em]{dadf.pdf}
+	\caption{Device with Double Actuation and Double Feedback (DADF) and its
+	connection to a physical device (valve)}
+	\label{fig:dadf}
+\end{figure}
+ 
+As an instance, the Figure \ref{fig:dadf} depicts the device with double
+activation and double feedback. It abstracts a physical device, the valve
+in this example, for a higher level GA.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=30em]{levels_ga_gd.pdf}
+	\caption{Hierarchical relation of system's components: high level logic of
+	plant, GAs, GDs and physical devices}
+	\label{fig:levels_ga_gd}
 \end{figure}
 
-As an instance, the Figure \ref{fig:gd_sadf_automaton} depicts an automaton
-which represents the single acting generalized device with double feedback.
+The approach of generalized actuators and devices allows to construct complex
+automated systems using simple predefined models, as it is shown at the Figure
+\ref{fig:levels_ga_gd}.
+  
+Due to representation of the system's models by automata, various DES techniques
+can be applied in order to define and solve control and diagnosis problems for
+entire system. To preserve the level of abstraction, however,
+additional information necessary for a required problem has to be encapsulated
+into modules. Particularly, possible failure behaviour should be incorporated
+into modules for the diagnosability problem.
 
-The approach of generalized actuators and devices allows to construct a complex
-automated system using simple predefined models. Due to the representation of
-the system's models by automata, various DES techniques can be
-applied in order to define and solve control and diagnosis problems. The next
-section proceeds with a description of how the approach of generalized device is
-used for modeling and analyses of faults.
-
-
-\subsubsection{Generalized Device and Fault Diagnosis}
-
-This section briefly describes an approach for modular module-building of
-complex systems, presented in \cite{sartini_methodology_2010}. The methodology
-extends the approach of generalized device towards the better reusability, and
-suitability for formal verification techniques. However, it concentrates on
-modeling aspects rather then verification procedures. 
-
-Bearing in mind that the high-level modeling was covered by the General
-Actuator concept, the low-level modeling  \ldots
-
-\emph{Here goes the general description of the low-level modeling (individual
-components, physical coupling, control policies), and then the fault modeling
-part.}
-
-% Models of:
-% individual hardware components
-% physical coupling
-% control logic (policy) = control actions of high level (manages its sequence)
-% and low level (implementation)
+The next section proceeds with a description of how the approach of generalized
+device is used for modeling and analyses of faults.
 
 
+\subsubsection{Generalized Device and Failures Diagnosis}
+
+This section briefly describes an approach for building structured formal
+models, presented in \cite{sartini_methodology_2010}. The methodology extends
+the approach of generalized device to facilitate diagnosis verification
+and monitoring problems. The authors present each GD as a composition of
+automata, where automata reflect control logic and a model of physical device,
+decomposed into sensors, actuators, components and their constrains. For the
+sake of simplicity, the approach is presented further with a small illustrative
+example. The example shows the idea of decomposition with two components of a
+hypothetical device (think of a valve from the system given in Chapter
+\ref{chap:problem_description}), their constrains and how failures are modeled.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[scale=0.8]{do.pdf}
+	\caption{Automaton representing digital output}
+	\label{fig:do}
+\end{figure}
+
+The Figure \ref{fig:do} depicts a model of digital output (a
+model of digital input would be equal). The automaton has two states,
+reflecting the low and high levels of signal. The event labels of the automaton
+are correspondent to digital signal states as shown in the table
+\ref{tbl:do_events}. The states of a signal are treated as events because
+they are seen as readings (two values) of a variable (either it is output or
+input) in a program in PLC, while the cyclical program execution.
+
+\begin{table}[t]
+\caption{Correspondence of automata event labels to digital output signals}
+\centering
+	\begin{tabular}{l l}
+	\\	
+	Label & Digital output signal state\\
+	\hline
+	do\_lo & Digital output signal is low\\
+	do\_hi & Digital output signal is high\\
+	\end{tabular}
+	\label{tbl:do_events}
+\end{table}
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[scale=0.7]{relay.pdf}
+	\includegraphics[scale=0.7]{do2relay.pdf} 
+	\includegraphics[scale=0.7]{do+relay.pdf} 
+	\caption{Automata models of Relay (top left, constrains (top right), and 
+	result of composition (bottom)}
+	\label{fig:do+relay}
+\end{figure}
+
+In major of cases, a digital output is linked to an actuator, there is an
+intermediate signal amplifier, e.g. an electromagnetic relay. It acts also as an
+galvanic isolation of the PLC and the field device. 
+
+In this example, the behaviour of the relay is related to the behaviour of
+digital output, i.e. it is constrained by the digital output. A model of the
+relay, a model of constrain and the resulting composition of all the
+aforementioned components is depicted in the Figure \ref{fig:do+relay}.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[scale=0.7]{relay_f0}
+	\caption{Failure model of the relay (example of the broken coil) }
+	\label{fig:relay_f0}
+\end{figure}
+
+For illustration of a failure lets pick one of the possible relays failures,
+e.g. broken coil. The correspondent model of the relay with this failure is
+depicted in the Figure \ref{fig:relay_f0} (event $f0$ states for the failure
+event). Similar to the this failure, a ``stuck on'' relay's failure can be
+modeled.
+
+As the the approach of GD assumes, almost any field device can be decomposed
+into simple components, as ones described in the above example. The failure
+models for such components can be easily determined. More complex components can
+be then composed by using the simple models and constrain automata. Thus, a
+set of predefined models can be exploited for building a library of GD. Since
+all the models include failure behaviour, formal diagnosability analysis
+techniques can be applied.
+
+In the Chapter \ref{chap:theory} a part of the work is devoted to an extension
+of the above failure modeling approach such that a failure behaviour can be
+modeled without failure events, by state marking. It will be shown how a failure
+behaviour can be separated from a non-failure one automatically, for further
+diagnosability analysis.
+ 
 
 \section{Discrete Event Systems Framework for Diagnosability Verification}
 
