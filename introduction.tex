@@ -5,23 +5,23 @@
 
 % \section{Introducton to Introduction}
 
-Modern society is characterized by the growing demand for usage of automated
-systems in the everyday life, while the systems require software engineering
+Modern society is characterized by the growing demand for the use of automated
+systems in the everyday life, and these systems require software engineering
 with constantly increasing complexity. Industrial automation software
-engineering was traditionally a field having the most strict requirements and
-high standards applied. However, it is still a common practice when an
-automation software design consists of writing a ladder logic for programmable
+engineering has traditionally been a field with the most strict requirements
+and highest standards applied. However, it is still a common practice for an
+automation software design to consist of writing a ladder logic for programmable
 logic controller (PLC) with partially and ambiguously determined specifications,
 without clearly defined software architecture, and no formal verification of the
 system.
 Reflecting the importance of the software and a growing ratio of the software
-cost in the costs of machinery, engineers and researches put a lot of efforts to
-facilitate the development and maintenance of software, increasing its
+cost to the costs of machinery, engineers and researches put a lot of effort
+toward facilitating the development and maintenance of software, increasing its
 performance and reliability while decreasing the cost of its life cycle. One of
 the major established trends is use of standardised component solutions for
 industrial automation systems aiming at portability, reusability,
 interoperability and reconfiguration of applications. Another tendency is
-a growing number of formal methods - mathematical approaches supporting
+the growing number of formal methods - mathematical approaches supporting
 decisions making process during systems design and operations.
 
 \section*{Design Process of Industrial Systems}
@@ -32,9 +32,9 @@ into six stages: requirements specification, software design, implementation and
 integration, testing, deployment and maintenance. Starting from the
 implementation the stages mainly depend on a particular vendor of hardware
 and a dedicated software - supervisory control acquisition system (SCADA).
-There are hundreds major producers of automation hardware and software, but the
-variety of ways the developers can write programs is limited by the standards,
-such as {IEC 61131} making it less error prone and more reusable. In other
+There are hundreds of major producers of automation hardware and software, but
+the variety of ways the developers can write programs is limited by the standards,
+such as {IEC 61131}, making them less error prone and more reusable. In other
 words, this sequence of stages is quite mature. 
 
 The stage of requirements specification consists of analyzing, documenting and
@@ -45,7 +45,7 @@ Management Group (OMG) Technology Standards Consortium. This standard
 facilitates also the next stage, software design, with a Model-Driven
 Architecture (MDA) approach. The industrial software design stage adopts
 numerous methods, such as component based approach, object-oriented and
-aspect-oriented programming, software product line and etc (see
+aspect-oriented programming, and software product line, etc (see
 \cite{vyatkin_software_2013} for an extensive survey of the state of the art for
 software engineering methods in industrial automation).
 
@@ -53,20 +53,20 @@ software engineering methods in industrial automation).
 
 The major drawback of the aforementioned industrial software
 development process is that it is mainly designed for humans, whereas the
-reliability and other important properties of systems are mainly the concern of
+reliability and other important properties of systems in large part depend on
 machine-oriented formal verification methods. Formal methods apply
-mathematically-based techniques to the development of systems, starting from the
-specification level, and down to the implementation level. These methods proved
+mathematically-based techniques to the development of systems, from the
+specification level to the implementation level. These methods proved
 to be effective, especially for safety critical systems, but due to their
 mathematical nature and lack of the supporting tools the use of formal methods
 in industrial practice is not common yet. The problem is that mathematical
-notations requires to have additional knowledge for development engineers,
-creates psychological barrier to them, and that the 'de facto' development
-process does not incorporate a formal representation. 
+notation requires to have additional knowledge on the part of the development
+engineers, creating a psychological barrier for them, and also that the 'de
+facto' development process does not incorporate a formal representation.
 
 A way to overcome the above problem is to mix formal techniques with
 ``standard-based'' approaches/tools which are already adopted in industry. If
-a non formal (or semi-formal) system's representation has the ability to be
+a non formal (or semi-formal) systems representation has the ability to be
 translated into a completely formal form, then mathematical techniques can be
 applied. Examples of such approaches are \cite{dong_model_2001}, where authors
 extend UML representation with a ``collaboration diagram'' and translate it to
@@ -76,17 +76,18 @@ translate Simulink diagrams into input/output extended finite automata.
 
 Even though the translation into a mathematical representation gives the
 opportunity to apply formal techniques, the requirements for the system's
-properties should be expressed in a formal way again by engineers, which rises
-the above mentioned problems. Thus, despite of the fact that some successful
-reports can be found in literature, the progress in this way seems low
+properties should again be expressed in a formal way by engineers, which
+raises the above mentioned problems. Thus, despite of the fact that some
+successful reports can be found in literature, progress along these lines seems
+minimal
 % , andapplicable only with numerous constrains both for the methods and the tools
 . 
 
 Another solution to overcome the problem is the development of new approaches
 which incorporate advantages of both methodologies, the one suitable for humans,
-and the formal techniques. Nowadays, when the growing complexity of automated
-systems imposes requirements which can be ensured only by formal methods, the
-relevant response may be the creation of modeling techniques when the models
+and the other using formal techniques. Nowadays, when the growing complexity of
+automated systems imposes requirements which can be met only by formal methods,
+the relevant response may be the creation of modeling techniques when the models
 already encapsulate their formal representations. Thus, the underlining
 mathematical nature would be ``hidden'' from engineers, and verification of
 important properties can be performed automatically. An example of such approach
@@ -104,11 +105,11 @@ techniques which efficiently exploit the modular nature of the systems such
 that the correspondent computational burden remains at an acceptable level.
 
 As soon as the quantity and quality of mathematical methods and their
-implementations will be enough for the current complexity of automated systems,
-and these methods will be encapsulated into integrated development tools as a
+implementations is sufficient for the current complexity of automated systems,
+and these methods can be encapsulated into integrated development tools as a
 first-class citizen, seamlessly providing the power of formal approaches through
 the easy-to-understand visual modeling process, the development process of
-automated systems will move to the next stage of its evolution. 
+automated systems will move to the next stage of its evolution.
 
 \section*{Contribution}
 
@@ -122,12 +123,12 @@ diagnosis or not. According to the IEC vocabulary \cite{iec_vocabulary} the
 localization and cause identification'', and a \emph{fault} is ``the state of an
 item characterized by inability to perform a required function''.
 
-This work exploits Discrete Event Systems theory
+To achieve the goals, this work exploits Discrete Event Systems theory
 \cite{cassandras_introduction_2010} and its automata framework. The theory of
 automata is chosen due to its relative simplicity. Indeed, it has just two basic
-entities (state and event) and intuitively understandable graphical
+entities (state and event) and intuitively intelligible graphical
 representation. Taking apart a language theory, which is necessary for
-researches, the automata framework does not require much of an additional
+research, the automata framework does not require much additional
 mathematical knowledge for automation engineers. This makes it the first
 candidate as a formal mathematical tool for future general purpose integrated
 development environments (IDE) in automation industry.
@@ -135,8 +136,8 @@ development environments (IDE) in automation industry.
 The main contributions are following:
 \begin{itemize}
   \item A new formulation of distributed diagnosability problem. This 
-  formulation is used then to enforce the desired property of the system, rather
-  then just verifying it. This approach tackles the state explosion problem
+  formulation is then used to enforce the desired property of the system,
+  rather then just verifying it. This approach tackles the state explosion problem
   which arises when the automata framework is applied for complex discrete event
   systems.
   \item Presented new structural patterns, in terms of automata
@@ -148,20 +149,20 @@ The main contributions are following:
   developed in the University of Bologna \cite{faldella_hierarchical_2008},
   \cite{sartini_architectures_2010}. This work extends it towards formalization
   of failures representation in order to apply the developed algorithms. It
-  allows to embed  formal approach into a higher level of the systems'
-  representation of ``standard'' modular design process, similar to one
+  allows the embedding of a formal approach into a higher level of the
+  systems' representation of ``standard'' modular design process, similar to one
   exploiting UML design tools.
   \item To validate the concepts developed during the research, a software tool
   was created. This tool exploits web-technologies in order to provide zero-time
-  access to it, possibility for easy modifications in order to solve other
-  formal problems, and opportunity for further enhancement by community.
+  access to it, the possibility for easy modifications in order to solve other
+  formal problems, and opportunities for further enhancement by community.
 \end{itemize}
 
 
 \section*{Organization}
 
 Chapter \ref{chap:problem_description} gives an overview of the problem of
-fault diagnosis on a real example of the industrial automation plant. It
+fault diagnosis in a real example of an industrial automation plant. It
 provides a short description of the technological process with a couple of
 illustrative failures. The types of failures are discussed, and how particular
 system's failures can be determined, evaluated and treated. 
@@ -182,7 +183,7 @@ Chapter \ref{chap:simulation} introduces a new tool for modeling and simulation
 with automata. An application of the tool to the example of the real system
 presented in the Chapter \ref{chap:problem_description} is shown.
 
-The conclusions for the work are given at the end.  
+The conclusions for the work are given at the end. 
 
 % \emph{Formal methods aim to apply mathematically-based techniques to the
 % development of computer-based systems, especially at the specification level,
