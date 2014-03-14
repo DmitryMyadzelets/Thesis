@@ -92,8 +92,26 @@ depicted in Figure \ref{fig:lib_2do_fail3}. Here the failures are modeled using
 state-based failure approach.
 
 
+\section{Actuator}
 
-\section{Valves}
+Automaton model of a double actuation device is depicted in the Figure
+\ref{fig:lib_act}. Actually, it has two actuating parts, denoted in the figure
+by  prefixes $a$ and $b$. Each actuating part is equal to two-state digital
+component model. In the composition of these two components simultaneous $hi$
+state is forbidden, i.e. $a\_hi \Rightarrow b\_lo$ and $b\_hi \Rightarrow
+a\_lo$.
+
+
+\begin{figure}[th]
+	\centering
+	\includegraphics[scale=0.7]{lib_act.pdf}
+	\caption{Model of an actuator}
+	\label{fig:lib_act}
+\end{figure}
+
+
+
+\section{Valve}
 
 The most known model of a valve is depicted in the Figure \ref{fig:lib_valve}.
 The model reflects a wide variety of valves, e.g. gate valves, butterfly valves,
