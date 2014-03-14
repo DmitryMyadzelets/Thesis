@@ -8,7 +8,18 @@
 \chapter{Virtual Modular Diagnosability}
 \label{chap:theory}
 
-We define our goal as to make a given system modularly diagnosable. Lets assume
+This chapter presents the virtual modular diagnosability, a new type of
+diagnosability. After a formal definition of the notion, it proceeds with an
+analysis of a simple system which consists of two modules, modeled by automata.
+This analysis exposes structural conditions for the models, such that
+a verification whether the models satisfy these conditions allows to infer
+diagnosability property of their composition, i.e of the entire system. Then
+these conditions are rewritten for a general case, i.e. a system that consists
+of an arbitrary number of components. The chapter then presents algorithms which
+facilitate diagnosability verification in a efficient way. At the end, a
+simple abstract example shows application of this approach.  
+
+The final goal is to make a given system modularly diagnosable. Lets assume
 that the system is diagnosable globally with respect to a given fault. It
 implies that it is always possible to find a subset of the system's modules,
 such that it contains a faulty module, and all the modules from the subset can
@@ -16,8 +27,6 @@ be composed into one locally diagnosable module. Each module in the subset helps
 to detect and distinguish the fault by sequences of its observable events. The
 assumption also implies that not each module of the system can or may
 participate in the fault detection and distinguishing process. 
-
-Firstly, we define virtual modular diagnosability formally.
 
 \section{Formal Definition}
 
