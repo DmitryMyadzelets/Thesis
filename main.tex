@@ -29,8 +29,8 @@
 %     \begin{mdframed}[linecolor=black!0,backgroundcolor=blue!5]
 % }{
 %     \end{mdframed}
-%   \end{originalfigure}
-% }
+%   \end{originalfigure} 
+% } 
 
 % URL in bibliography 
 \usepackage{url}
@@ -41,7 +41,9 @@
 \newfloat{alg}{t}{lop}
 \floatname{alg}{Algorithm}
 
- 
+% Logarithmic plots in the simulation 
+\usepackage{pgfplots}
+
 \begin{document}
 
 \include{cover}
@@ -56,8 +58,8 @@
 \include{framework}
 \include{thetheory}
  
-\chapter{Simulation}
-\label{chap:simulation}
+\include{simulation}
+
 % \section{Real example}
 
 \chapter{Conclusions}

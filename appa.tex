@@ -1,4 +1,5 @@
 \chapter{Automata models}
+\label{chap:automata_models}
 
 Here a set of automata models for some industrial entities is given. The
 models are given both with no failure and failure behaviour. Failures are
@@ -72,12 +73,12 @@ component, the model of the component itself or models of constrains.
 	\centering
 	\includegraphics[scale=0.7]{lib_do2do_fail.pdf}
 	\includegraphics[scale=0.7]{lib_2do_fail2.pdf}
-	\caption{The cause-effect fault model (left), and the resulting composition of
-	two components (right)}
+	\caption{The cause-effect fault automaton model (left), and the resulting
+	composition of two components (right)}
 	\label{fig:lib_2do_fail2}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!th]
 	\centering
 	\includegraphics[scale=0.7]{lib_do2do_fail3.pdf}
 	\includegraphics[scale=0.7]{lib_2do_fail3.pdf}
@@ -92,40 +93,22 @@ depicted in Figure \ref{fig:lib_2do_fail3}. Here the failures are modeled using
 state-based failure approach.
 
 
-\section{Actuator}
-
-Automaton model of a double actuation device is depicted in the Figure
-\ref{fig:lib_act}. Actually, it has two actuating parts, denoted in the figure
-by  prefixes $a$ and $b$. Each actuating part is equal to two-state digital
-component model. In the composition of these two components simultaneous $hi$
-state is forbidden, i.e. $a\_hi \Rightarrow b\_lo$ and $b\_hi \Rightarrow
-a\_lo$.
-
-
-\begin{figure}[th]
-	\centering
-	\includegraphics[scale=0.7]{lib_act.pdf}
-	\caption{Model of an actuator}
-	\label{fig:lib_act}
-\end{figure}
-
-
-
 \section{Valve}
 
-The most known model of a valve is depicted in the Figure \ref{fig:lib_valve}.
+The most known physical model of a valve is depicted in the Figure
+\ref{fig:lib_valve}.
 The model reflects a wide variety of valves, e.g. gate valves, butterfly valves,
 ball valves, etc. In general, five states if this type of equipment can be
-distinguished: two boundary states (closed and open), two movement
-states (opening, closing) and stop in an intermediate position. 
+distinguished: two boundary states (closed and open), two movement states
+(opening, closing) and stop in an intermediate position.
 
 The ``stop'' position of the gate valve model can be marked as faulty,
 since gate valves must usually stay either closed or open.
 
-\begin{figure}[H]
+\begin{figure}[!th]
 	\centering
 	\includegraphics[scale=0.7]{lib_valve.pdf}
-	\caption{Model of a valve}
+	\caption{Automaton model of a valve}
 	\label{fig:lib_valve}
 \end{figure}
 
@@ -143,33 +126,117 @@ automaton similar to the one shown in the Figure \ref{fig:lib_2do} can be used.
 	\centering
 	\includegraphics[scale=0.7]{lib_sensor1.pdf}
 	\includegraphics[scale=0.7]{lib_valve2sensor1.pdf}	
-	\caption{Model of the sensor and the constrain model for the sensor--valve
+	\caption{Automata of a sensor and a constrain model for the sensor--valve
 	relationship}
 	\label{fig:lib_valve2sensor1}
 \end{figure}
 
 Let the valve to have two sensor: one for the closed state and another
-one for the open state. The coupling diagram of such system is shown in the
+one for the open state. An inference diagram of such system is shown in the
 Figure \ref{fig:lib_id_valve+2sensors}. It reflects the coupling of all the
 correspondent models, e.g. valve, two sensors ($S1$, $S2$) and their
 constrains. The result of the composition of is depicted in the Figure
 \ref{fig:lib_valve+2sensors}. The purpose of the figure is to show the level of
 complexity of such simple system.
 
-\begin{figure}[H]
+A fault model of the valve's sensors is equal to the one depicted in the Figure
+\ref{fig:lib_dido_fail}.
+
+\begin{figure}[!th]
 	\centering
 	\includegraphics[scale=0.7]{lib_id_valve+2sensors.pdf}
-	\caption{Coupling diagram of a valve with two sensors}
+	\caption{Inference diagram of a valve with two sensors}
 	\label{fig:lib_id_valve+2sensors}
 \end{figure}
 
-
+ 
 \begin{figure}[th]
 	\centering
 	\includegraphics[scale=0.7]{lib_valve+2sensors.pdf}
-	\caption{Model of a valve with two sensors (open and close)}
+	\caption{Automaton of a valve with two sensors (open and close)}
 	\label{fig:lib_valve+2sensors}
 \end{figure}
+
+
+\subsection{Valve with actuator} 
+
+Automaton model of a double actuation device for a valve is depicted in the
+Figure \ref{fig:lib_act} (think of an bidirectional motor). Actually, it has two
+actuating parts, denoted in the figure by  prefixes $a$ and $b$. Part $a$ is responsible for the ``opening''
+movement, part $b$ is responsible for the ``closing'' movement. Each actuating
+part is equal to the two-state digital component model, presented before.
+In the composition of these two components a consequent execution of events
+$a_hi$ and $b_hi$ is forbidden, i.e. it is necessary that $a\_hi \Rightarrow
+b\_lo$ and $b\_hi \Rightarrow a\_lo$.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.7]{lib_act.pdf}
+	\caption{Automaton of a valve actuator}
+	\label{fig:lib_act}
+\end{figure}
+
+
+\begin{figure}[!ht]
+	\centering  
+	\includegraphics[scale=0.7]{lib_valve2actuator_a.pdf}
+	\includegraphics[scale=0.7]{lib_valve2actuator_b.pdf}
+	\caption{Automata of the valve actuator constrains}
+	\label{fig:lib_valve2actuator_a}
+\end{figure}
+
+The actuation devices are coupled with the physical valve model through a 
+constrain automaton, similar to described above. The constrain automata for
+the valve are shown in the Figure \ref{fig:lib_valve2actuator_a}. 
+The result of the composition of the valve, actuator and constrains is depicted
+in the Figure \ref{fig:lib_valve+actuator}. Marked states are correspond to the
+``stop'' state of the valve, which may be considered as a fault for a
+gate valve.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.7]{lib_valve+actuator.pdf}
+	\caption{Automaton of a valve with actuator}
+	\label{fig:lib_valve+actuator}
+\end{figure}
+
+
+\subsection{Valve with sensors and actuator}
+
+Automaton which represents the complete model, i.e. the composition of the valve
+with two sensors and the actuator has 63 states and 424 transitions. A
+correspondent inference diagram is shown in the Figure
+\ref{fig:lib_valve+2sensors+actuator}. Meaning of the nodes names is explained
+in the table below.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.7]{lib_valve+2sensors+actuator.pdf}
+	\caption{Inference diagram of a valve with two sensor and an actuator (see
+	Table \ref{tbl:id_valve+2sensors+actuator} for the nodes names description)}
+	\label{fig:lib_valve+2sensors+actuator}
+\end{figure}
+
+\begin{table}[!ht]
+\caption{Nodes labels of the inference diagram of the valve, sensors and
+actuator}
+\centering
+	\begin{tabular}{l l}
+	\\	
+	Node label & Description\\
+	\hline
+	v1 & Valve\\
+	v1so & Sensor ``Open"\\
+	v1sc & Sensor ``Closed"\\
+	v1-v1so & Constrain of the valve to the sensor ``Open"\\
+	v1-v1sc & Constrain of the valve to the sensor ``Closed"\\
+	a & Actuator\\
+	a\_a-v1 & Constrain of the valve to the actuator's part ``Opening"\\
+	a\_b-v1 & Constrain of the valve to the actuator's part ``Closing"
+	\end{tabular}
+	\label{tbl:id_valve+2sensors+actuator}
+\end{table}
+
 
 
 \clearpage

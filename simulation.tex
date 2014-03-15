@@ -1,0 +1,159 @@
+\chapter{Design, Simulation and Verification Tool}
+\label{chap:simulation}
+
+Tools overview
+
+Tools for simulation. What is good and what is bad
+
+My tool for design and simulation.
+
+
+\section{Diagnosability verification of the system}
+
+In this section the problem of diagnosability verification of the system
+presented in the Chapter \ref{chap:problem_description} is studied. In order to
+validate the theoretical approach and the algorithms introduced in this work a
+formal model of the system has to be constructed. The model contains automata
+of the component types listed in the Table \ref{tbl:system_modules}.
+Moreover, the model contains automata which describe supervisory control
+policy for each control cycle. 
+
+\begin{table}[!ht]
+\caption{Modules of the system depicted in the Figure \ref{fig:pi_diagram}}
+\centering
+	\begin{tabular}{l c}
+	\\	
+	Module name & Number of modules \\
+	\hline
+	Butterfly valve	& 2 \\
+	Gate valve	& 3 \\
+	Screw conveyer	& 1 \\
+	Vibrator		& 1 \\
+	Belt conveyer	& 1 \\
+	Fork level sensor	& 4 \\
+	Air pump	& 1 \\
+	\hline
+	\end{tabular}
+	\label{tbl:system_modules}
+\end{table}
+
+Automata models of the system's physical components are constructed according to
+design patterns of the Generalized Device approach. Types of automata 
+and composition techniques used to model this system are presented in
+Appendix \ref{chap:automata_models}. 
+
+The resulting inference diagram of the system is depicted in the Figure
+\ref{fig:system_id}. The diagram is built automatically by the simulation tool.
+It is interesting to see how the nodes which represent the control policy
+automata link all the nodes representing filed devices into the whole.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.5]{system_id.pdf}
+	\caption{Inference diagram of the system depicted in the Figure
+	\ref{fig:pi_diagram}}
+	\label{fig:system_id}
+\end{figure}
+
+
+\subsection{Global model of the system} 
+
+Global monolithic model of a system is required for verification of
+centralized diagnosability. An attempt to construct the global model of a
+real complex system usually faces the states explosion problem. 
+
+The presented system with the current design consists of \emph{53}
+automata. Using the simulation tool, an attempt to construct the monolithic
+model was made. Table \ref{tbl:sync_growth} shows the growth of the automaton of
+the monolithic model by means of states and transitions. The correspondent plot
+is depicted in the Figure \ref{fig:sync_growth}. 
+
+The given system has relatively low complexity. Construction of the global model
+using another tool like NuSMV \cite{nusmv} is likely possible. However, the
+tool used in this case has performance not optimised yet, and the construction
+of the global model was not achieved due to the time limit.
+
+\begin{table}[!ht]
+\caption{Growth of the centralized model during parallel composition}
+\centering
+	\begin{tabular}{c r r l}
+	\\	
+	Number of modules & States & Transitions & Time spent, min:sec.ms \\
+	\hline
+	2 & 10 & 46 & 0:0.4 \\
+	3 & 20 & 132 & 0:0.37 \\
+	4 & 22 & 122 & 0:0.5 \\
+	5 & 21 & 96 & 0:0.3 \\
+	6 & 63 & 498 & 0:0.12 \\
+	7 & 63 & 460 & 0:0.44 \\
+	8 & 63 & 424 & 0:0.11 \\
+	9 & 315 & 2939 & 0:0.78 \\
+	10 & 630 & 7138 & 0:0.406 \\
+	11 & 1260 & 16796 & 0:1.627 \\
+	12 & 1386 & 17014 & 0:1.686 \\
+	13 & 1323 & 14952 & 0:1.282 \\
+	14 & 3969 & 58086 & 0:7.701 \\
+	15 & 3969 & 55692 & 0:8.579 \\
+	16 & 3969 & 53424 & 0:9.866 \\
+	17 & 19845 & 318717 & 3:43.389 \\ 	
+	18 & 39690 & 716814 & 23:41.914 \\ 
+	\hline
+	\end{tabular}
+	\label{tbl:sync_growth}
+\end{table}
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ymode=log,
+    log ticks with fixed point,
+    extra x ticks={2,18}
+]
+\addplot table {
+	2 10
+	3 20
+	4 22
+	5 21
+	6 63
+	7 63
+	8 63
+	9 315
+	10 630
+	11 1260
+	12 1386
+	13 1323
+	14 3969
+	15 3969
+	16 3969
+	17 19845
+	18 39690 
+};
+\addplot table {
+	2 46
+	3 132
+	4 122
+	5 96
+	6 498
+	7 460
+	8 424
+	9 2939
+	10 7138
+	11 16796
+	12 17014
+	13 14952
+	14 58086
+	15 55692
+	16 53424
+	17 318717 	
+	18 716814 
+};
+\end{axis}
+\end{tikzpicture}
+	\caption{Growth of the numbers of states (curve with round dots) and
+	transitions (curve with square dots) while the growth of the number of modules
+	in the centralized systems model}
+	\label{fig:sync_growth}
+\end{figure}
+
+
