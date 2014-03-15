@@ -457,6 +457,7 @@ by\par
 \par
 \@prevdegrees
 \par
+\vskip 16
 \choosecase{Submitted to the\\} \choosecase{\@department} \\
 \choosecase{in fulfillment of the requirements for the}
 \choosecase{\@degreeword} 
@@ -470,16 +471,19 @@ at the
 \par
 \@copyrightnotice
 \par
-\vskip 2\baselineskip
+\vskip 1\baselineskip
 % \signature{Author}{\@department \\ \@thesisdate}
 % \par
 % \vfill
-\unvbox\@titlesupervisor
+Thesis Supervisor: Andrea Paoli
 \par
 \vfill
 % \signature{Accepted by}{\@chairmanname \\ \@chairmantitle}
 % \vfill
-{\copyright\ \Mit\ \@degreeyear.  All rights reserved}
+XXII Cycle
+\par
+2011 -- 2014
+% {\copyright\ \Mit\ \@degreeyear.  All rights reserved}
 
 \end{titlepage}}
 
