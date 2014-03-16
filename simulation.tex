@@ -65,19 +65,20 @@ real complex system usually faces the states explosion problem.
 The presented system with the current design consists of \emph{53}
 automata. Using the simulation tool, an attempt to construct the monolithic
 model was made. Table \ref{tbl:sync_growth} shows the growth of the automaton of
-the monolithic model by means of states and transitions. The correspondent plot
-is depicted in the Figure \ref{fig:sync_growth}. 
+the monolithic model by means of states, transitions and time spent for each
+iteration.
+The correspondent plot is depicted in the Figure \ref{fig:sync_growth}. 
 
 The given system has relatively low complexity. Construction of the global model
 using another tool like NuSMV \cite{nusmv} is likely possible. However, the
 tool used in this case has performance not optimised yet, and the construction
-of the global model was not achieved due to the time limit.
+of the global model was performed only partially due to the time limit.
 
 \begin{table}[!ht]
 \caption{Growth of the centralized model during parallel composition}
 \centering
 	\begin{tabular}{c r r l}
-	\\	
+	\\
 	Number of modules & States & Transitions & Time spent, min:sec.ms \\
 	\hline
 	2 & 10 & 46 & 0:0.4 \\
@@ -85,7 +86,7 @@ of the global model was not achieved due to the time limit.
 	4 & 22 & 122 & 0:0.5 \\
 	5 & 21 & 96 & 0:0.3 \\
 	6 & 63 & 498 & 0:0.12 \\
-	7 & 63 & 460 & 0:0.44 \\
+	7 & 63 & 460 & 0:0.10 \\
 	8 & 63 & 424 & 0:0.11 \\
 	9 & 315 & 2939 & 0:0.78 \\
 	10 & 630 & 7138 & 0:0.406 \\
@@ -94,7 +95,7 @@ of the global model was not achieved due to the time limit.
 	13 & 1323 & 14952 & 0:1.282 \\
 	14 & 3969 & 58086 & 0:7.701 \\
 	15 & 3969 & 55692 & 0:8.579 \\
-	16 & 3969 & 53424 & 0:9.866 \\
+	16 & 3969 & 53424 & 0:7.866 \\
 	17 & 19845 & 318717 & 3:43.389 \\ 	
 	18 & 39690 & 716814 & 23:41.914 \\ 
 	\hline
@@ -155,5 +156,55 @@ of the global model was not achieved due to the time limit.
 	in the centralized systems model}
 	\label{fig:sync_growth}
 \end{figure}
+
+
+\subsection{Example of a failure verification}
+
+For a demonstration of diagnosability verification with the developed tool
+the instance of a hypothetical technological failure is taken (though it could
+be a real case for the given system). A part of the material flow
+description, given by a technologist is following.
+
+Consider the P\&I diagram of the system  depicted in the Figure
+\ref{fig:pi_diagram}. Volumes of the filter container and of the dust bucket are
+chosen according to a speed the filter container fills up, the dust bucket
+unloads and a speed of the material transportation by the both screw and
+belt conveyers. When the filter container is filled, it takes two times to
+load and unload the dust bucket. Due to physical limits of the process, the
+filter conveyer can not be emptied with one load--unload cycle of the dust
+bucket, neither the filter container can be full after two unload cycles.
+An automaton model which may describe this technological process is depicted in
+the Figure \ref{fig:system_failure02}.
+
+The automaton reflects also possible failures (shown with the marked state of
+the automaton).
+If the filter container is empty just after one unload, this may be a symptom of the screw conveyer breakage,
+destruction of the pipe or its connection to the valve. If the filter container
+is full after three unload cycles, it may be a sign of low dust bucket
+performance, pipes clogging, etc.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.7]{system_failure02.pdf}
+	\caption{Model of a technological process failure}
+	\label{fig:system_failure02}
+\end{figure}
+
+The failure automata model does not contain any observable events. Thus, the
+model is not diagnosable locally. However, the model can be linked to the fork
+level sensors $LT1$ and $LT3$ as with digital signals via cause-effect automata
+(see description in the Appendix \ref{chap:automata_models}).
+
+The diagnosability of the system was verified using the tool presented earlier.
+The forward-propagation algorithm performed 356 compositions of the modules in
+less then a second. During the failure propagation through the inference diagram
+(see Figure \ref{fig:system_id}) six modules where updated while a little
+complexity growth was observed. The verification has shown that in the diagnosis
+of the failure two modules of the system participate, the sensors $LT1$ and
+$LT3$. According to the approach of this work, these modules can be treated as
+one virtual module. This virtual module can be used to build diagnoser for
+online monitoring of the system, particularly for detection of the above
+described failure.
+
 
 
