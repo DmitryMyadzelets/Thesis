@@ -27,25 +27,27 @@ approaches either used solely at the level of individual engineers and
 programmers or developed at the level of international standard committees and
 organisations. For instances, one can recall object-oriented concepts in
 traditional programming principles \cite{farrell_object-oriented_2013}, and
-standards of International Electrotechnical Commission (IEC),
-particularly the legacy IEC 61131-3 \cite{otto_iec_2009} which defines
-programming languages for programmable logic controllers (PLC), and the modern
-IEC 61499 \cite{vyatkin_iec_2009} which represents a component solution for
-distributed industrial automation systems aiming at portability, reusability,
+standards of International Electrotechnical Commission (IEC), particularly the
+legacy IEC 61131-3 \cite{otto_iec_2009} which defines programming languages for
+programmable logic controllers (PLC), and the modern IEC 61499
+\cite{vyatkin_iec_2009} which represents a component solution for distributed
+industrial automation systems aiming at portability, reusability,
 interoperability and reconfiguration of distributed applications.
 
 Many Integrated Development Environments (IDE) used in industrial world satisfy
 all the requirements and standards in order to facilitate the process of
-development, enrollment and maintenance of a complex system. They
-exploit object-oriented concepts as classes with their instances, inheritance
-and encapsulation. However, these concepts were not initially created bearing in
-mind the purpose of formal verification. As a consequence, the tools widely used
-in industry nowadays do not generally support approaches for DES raising in the
-scientific world. As a response for the growing demand for intersection of
-classical development process with formal techniques many researches
-attempt to create instrumental and theoretical bridges. The most
-promising results seem to be reached in formalizing Unified Modeling Language
-(UML), Statecharts, and general purpose programming languages as C. 
+development, enrollment and maintenance of a complex system. They exploit
+object-oriented concepts as classes with their instances, inheritance and
+encapsulation (for instance, as in  \cite{serna_design_2010},
+\cite{steinegger_design_2013} and \cite{zoitl_guidelines_2013}). However, these
+concepts were not initially created bearing in mind the purpose of formal
+verification. As a consequence, the tools widely used in industry nowadays do
+not generally support approaches for DES raising in the scientific world. As a
+response for the growing demand for intersection of classical development
+process with formal techniques many researches attempt to create instrumental
+and theoretical bridges. The most promising results seem to be reached in
+formalizing Unified Modeling Language (UML), Statecharts, and general purpose
+programming languages as C.
 
 \begin{figure}[t]
 	\centering
@@ -208,7 +210,7 @@ following steps:
 The last two steps in the above described design procedure encapsulate a logic
 specific for a given process. Potentially, the complexity of internal
 implementations of GAs is not limited. Thus, the functional blocks
-correspondent to the GAs can became very specific, such that it would be
+corresponding to the GAs can became very specific, such that it would be
 possible to reuse them only at the same plant, or for a technologically similar
 processes. A designer of a GA must be aware of this problem, and maintain
 simplicity of the internal implementation. Instead of increasing the complexity
@@ -243,7 +245,7 @@ devices.
 The common feature of the both, single and double acting devices is that they
 have two clearly distinguished states. In order to detect what the current state
 of a device stays in, it is usually equipped with one or two sensors. In case of
-two sensors each of them gives the feedback for the correspondent state. In case
+two sensors each of them gives the feedback for the corresponding state. In case
 of one sensor one level of its signal corresponds to the first state of the
 device, another level - to the second one. A state of the device in the case
 when it has no sensors is implied according to a previous command. Concluding,
@@ -324,7 +326,7 @@ hypothetical device (think of a valve from the system given in Chapter
 The Figure \ref{fig:do} depicts a model of digital output (a
 model of digital input would be equal). The automaton has two states,
 reflecting the low and high levels of signal. The event labels of the automaton
-are correspondent to digital signal states as shown in the table
+are corresponding to digital signal states as shown in the table
 \ref{tbl:do_events}. The states of a signal are treated as events because
 they are seen as readings (two values) of a variable (either it is output or
 input) in a program in PLC, while the cyclical program execution.
@@ -369,7 +371,7 @@ aforementioned components is depicted in the Figure \ref{fig:do+relay}.
 \end{figure}s
 
 For illustration of a failure lets pick one of the possible relays failures,
-e.g. broken coil. The correspondent model of the relay with this failure is
+e.g. broken coil. The corresponding model of the relay with this failure is
 depicted in the Figure \ref{fig:relay_f0} (event $f0$ states for the failure
 event). Similar to the this failure, a ``stuck on'' relay's failure can be
 modeled.
@@ -407,7 +409,7 @@ system. Being at a certain state, when an event occurs, the system makes a
 \emph{transition} to another state.
 
 The examples of events are: switching a light on, pressing a button, a 
-moment of rising a temperature above a certain level. The correspondent states
+moment of rising a temperature above a certain level. The corresponding states
 are: the light is on, the button is down, the temperature is high.
 
 Historically, all the system's events are thought as of an \emph{alphabet}.
@@ -435,7 +437,7 @@ Let $\Sigma$ be a finite set of events. A sequence of events is a string.
 $\Sigma^*$ denotes a set of all finite strings over $\Sigma$.
 $L\subseteq\Sigma^*$ is a language over $\Sigma$. Given strings $s$ and $t$,
 $st$ is their concatenation. Given strings $s$ and $w$, $w$ is a prefix of $s$
-if exists $t$ such that $wt = s$. Prefix closure of $L$, denoted by
+if it exists $t$ such that $wt = s$. Prefix closure of $L$, denoted by
 $\overline{L}$ is a set of all prefixes of all the strings in $L$.
 If $\overline{L} = L$ then $L$ is prefix-closed. The post language of $L$ after
 a string $s$ is denoted as $L/s$, i.e. $L/s := \{t\mid st \in L\}$. We
@@ -449,7 +451,7 @@ is the set of marked states, and $\delta: X \times \Sigma \rightarrow X$ is the
 transition function.
 We say a language $L := \mathcal{L}(G)$ is generated or recognized by the
 automaton $G$. In this paper we assume that for each language there is always a
-correspondent automaton, and vice versa. The marked language $L_m \subseteq L$
+corresponding automaton, and vice versa. The marked language $L_m \subseteq L$
 is intended to make a part of the automaton's behaviour distinguishable in a
 certain context.
 
@@ -460,11 +462,11 @@ not observable events $\Sigma_{ou}$, i.e. $\Sigma = \Sigma_o~\dot{\cup}~
 $M: \Sigma^* \rightarrow \Sigma_o^*$ denotes natural projection that
 erases unobservable events.
 % ; $\epsilon$ means the empty string. 
-The correspondent inverse projection is $M^{-1}: \Sigma_o^* \rightarrow
+The corresponding inverse projection is $M^{-1}: \Sigma_o^* \rightarrow
 2^{\Sigma^*}$.
 
 Let $I := \{1,2,\ldots,n\} \subset  \mathbb{N}$ be an index set. A system is
-defined by a set of automata $\{G_{i \in I}\}$ and a correspondent set of
+defined by a set of automata $\{G_{i \in I}\}$ and a corresponding set of
 languages $\{L_{i \in I}\}$. We use the term \emph{local} in context of the
 automata and languages from these sets. The \emph{global} language of the system
 is defined by the parallel composition \cite{cassandras_introduction_2010} of
@@ -481,7 +483,7 @@ $P_{i,c} : \Sigma_i^* \rightarrow (\Sigma_i \cap \bigcup_{j\neq
 i}^I\Sigma_j)^*$, and natural projection over observable and common events:
 $P_{i,co} : (\Sigma_i \cup \Sigma_o)^* \rightarrow (\Sigma_{o} \cup (\Sigma_i
 \cap \bigcup_{j\neq i}^I\Sigma_j))^*$. All the above projections, as well as
-the correspondent inverse projections, are defined also for languages in the
+the corresponding inverse projections, are defined also for languages in the
 usual manner.
 
 
@@ -524,8 +526,8 @@ In Discrete-Event Systems, diagnosis of a fault is a problem of deciding whether
 or not the fault occurred, under partial observation of the system's events.
 The problem was defined in \cite{sampath_diagnosability_1995} where the authors
 consider a monolithic model of a system. This definition and new definitions
-of diagnosability problem, emerged later, may be grouped as, for example, in
-\cite{su_global_2005}, where an approach can be centralized as in
+of diagnosability problem, emerged later, may be grouped as it is make, for
+example, in \cite{su_global_2005}, where an approach can be centralized as in
 \cite{sampath_diagnosability_1995}, \cite{jiang_polynomial_2001} and
 \cite{yoo_polynomial-time_2002}, 
 decentralized as in \cite{debouk_coordinated_1998},
@@ -638,8 +640,8 @@ the current state of the diagnoser a decision on the fault occurrence is made.
 The structure is depicted in Figure \ref{fig_centralized}.
 
 \subsection{Decentralized diagnosability}
-This approach also exploits the entire model built from its modules, but several
-local sites perform observations using only local diagnosers.
+This approach also exploits the entire model of a system built from its modules,
+but several local sites perform observations using only local diagnosers.
 The diagnosers do not communicate to each other, but they provide necessary
 information (via a protocol) to a central decision node. This architecture is
 depicted in Figure \ref{fig_decentralized}.
@@ -650,24 +652,22 @@ The distributed approach does not require to built the entire model of the
 system. The architecture implies that the system has a set of observation spots,
 and each spot observes only one module of the system. A communication among
 observation spots is possible in order to make a decision about a fault
-occurrence. 
+occurrence.
 
+% In \cite{basilio_computation_2012} the authors search for a
+% minimal even-base, e.g. a minimal set of observable events, that ensures
+% diagnosability for a given language (module).
 
 The notion of modular diagnosability meets the same architectural implications,
 and we refer to it as to the distributed approach when the amount of information
-the observation spots communicate to each other is equal to zero.
+the observation spots communicate to each other is equal to zero. 
 
-Distributed approach does not require to built an entire model of the system.
-The approach implies that the system has a set of observation spots, carrying
-diagnosability information (diagnosers), each observing only a part of the
-system (a subset of the modules, composed). Diagnosers can communicate to each
-other in order to decide if a fault occurred. In general, the bigger the
-observation spots for the same system, the less communications among the spots
-is required.
+For the distributed approach, in general, the bigger the observation spots for
+the same system, the less communications among the spots is required.
 Figure \ref{fig:curves} shows that the average size of a composed module grows
 while the system's modules are composed together (we imply that each module is
 represented by automata, and the size of a module is reflected by the number of
-states of a correspondent automaton).
+states of a corresponding automaton).
 The shape of this curve depends mostly on the order the modules are taken for
 the composition, but the initial point, when the system has maximal modularity,
 and the final point, when all the modules are composed into one monolithic
@@ -688,7 +688,7 @@ diagnosers' sizes.
 
 In our approach, given a system with an initial natural modularity, we search
 for a point, when the system is modular diagnosable. If the system is diagnosable,
-then this point can always be found. The modules correspondent to that
+then this point can always be found. The modules corresponding to that
 modularity we call \emph{virtual}, since they differ from natural modules and
 used only to build diagnosers.
 
@@ -770,7 +770,7 @@ A faulty language defined in the event-based approach can be simply converted
 into a faulty specification by marking faulty strings, and erasing fault events.
 Then, we can assume that if fault events are defined, then faulty specifications
 can also be defined. Consequently, a set of different types of faults requires a
-correspondent set of specifications.
+corresponding set of specifications.
 Thus, a method suitable for the specification-based approach implies that it can
 be adopted for the event-based approach. In this paper, for the sake of
 unification, we use specification-based approach. For this reason the
@@ -806,8 +806,8 @@ The language is diagnosable if all its faults are diagnosable.
 The two above definitions altogether are similar to the Definition 1 in
 \cite{sampath_diagnosability_1995}. We recall the statement in
 \cite{contant_diagnosability_2006} proved by Theorem 2, that the global
-language of the system is not diagnosable only if exists at least one non-diagnosable
-local language. If all the local languages are diagnosable then the global
+language of the system is not diagnosable only if it exists at least one
+non-diagnosable local language. If all the local languages are diagnosable then the global
 language is diagnosable. We refer to this property as to a local diagnosability
 property:
 
@@ -833,7 +833,7 @@ indistinguishable in one module becomes distinguishable due to the
 composition with another module:
 
 \begin{definition}[Modular diagnosability] Given the set of local languages
-$\{L_{i \in I}\}$ and its correspondent sets $\{L_{i,f}\}$ and
+$\{L_{i \in I}\}$ and its corresponding sets $\{L_{i,f}\}$ and
 $\{L_{i,nf}\}$. The global language $L := \parallel L_i$ is \emph{modularly
 diagnosable} with respect to
 $M_i: \Sigma^* \rightarrow \Sigma_{i,o}^*$ 

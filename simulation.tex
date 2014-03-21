@@ -1,11 +1,121 @@
 \chapter{Design, Simulation and Verification Tool}
 \label{chap:simulation}
 
-Tools overview
+This chapter describes a design, simulation and verification software tool
+developed by the author during the research period. In order to show the
+motivation underlined the tool development a breve observation of existing
+publicly accessible tools is presented, as well as requirements for such
+software. Then an application of the tool is demonstrated on the
+example of industrial plant, which is described in the Chapter
+\ref{chap:problem_description}.
 
-Tools for simulation. What is good and what is bad
 
-My tool for design and simulation.
+\section{Requirements for Formal Tools}
+
+According to the survey, that was presented in
+\cite{blackburn_requirements_1998}, the industrial and research communities,
+\emph{there is a need for “light-weight” formal methods and associated tools,
+where engineers can “push-the-button” and have powerful evaluations and analysis
+take place}. More than one decade later, this need has been even grown, and
+requirements the authors imposed are still actual. Shortly, the requirements are:
+\begin{itemize}
+  \item Formal methods should be ``invisible'' and automatic
+  \item Usage of open standards for sharing formal results
+  \item Easy to use (either in academic or industrial field)
+  \item Modular structure, lightweight architecture
+  \item Scalable for real world problems
+\end{itemize}
+
+Nowadays, numerous commercial software tools can be found on market and even
+more accessible with no charge. Verilog hardware description language
+\cite{verilog}, Event-B and Roding \cite{event_b_web}, ProB model checker
+\cite{theprob}, Pessoa \cite{pessoa} to mention a few. These tools aimed for  
+complex task and are capable to solve heave industrial-like problems. The
+lightweight academical response is GOAL \cite{goal}, DESUMA \cite{desuma},
+TCT \cite{tct}, Supremica \cite{supremica}, etc.
+
+Some of the tools are of high quality, other are easier to use. But the major
+drawback of the aforementioned software is that it is closed for modification,
+which makes it is almost impossible to use it for a research, for creation and
+validation of new formal techniques. An appropriate software tool for the
+studying and research purpose is desired to be easy to access, working on most
+of hardware and software platforms, flexible for changes, and with an intuitive
+user interface design.
+
+Bearing in mind the above motivation, a specialised software tool was created in
+frame of this work. Its primary goal was a validation of concepts developed
+during the research. It provides simple access and zero-time enrollment time on
+general operational systems due to the exploiting web-technologies. It was
+thought as a Free Open Source Software (FOSS) tool with potential of enhancement
+by a wide community interested in it. 
+
+The main disadvantage of the web-based underlining approach is a relatively low
+performance due to the nature of the programming languages used. However, the
+last trends in web development show that this issue can be overcome in a near
+future.
+
+\section{Tool Description}
+
+The charasterics of software tool developed during the research project are
+summarised in the Table \ref{tbl:tool_commands}. The objects and operations
+allow to cover many tasks while formal techniques development. Additional
+methods can be easily implemented. 
+
+As a programming language a general purpose web-oriented language was chosen,
+the JavaScript. For the sake of memory efficiency, a set--based approach was
+chosen for automata structural representation (see \ref{soft_methods_2005} for
+the approaches). The current graphical implementation exploits  Scalable
+Vector Graphics (SVG) \cite{web_svg}. This allows use of any graphical
+representation (e.g. automata, influence diagrams) to be used with no
+translation in the most of types of documents. An instance of the screen of the
+tool is shown in the Figure \ref{fig:editor_screen}.
+
+
+\begin{table}[!ht]
+\caption{Objects and operations available with the tool}
+\centering
+	\begin{tabular}{l l }
+	\\	
+	Object & Operations\\
+	\hline
+	Sets & Binary, Numbers, Strings and Objects operations \\
+	Sets & Operations on triples (for graph edges/transitions) \\
+	Graph & Manipulations with edges and nodes \\
+	Graph & Breadth-First Search (BFS) in a graph \\
+	Graph & Depth-First Search (DFS) in a graph \\
+	Graph & Automatic layout\\
+	Automata & Parallel composition of two automata \\
+	Automata & Intersection (full synchronisation)\\
+	Automata & Kleene closure \\
+	Automata & Subtraction \\
+	Automata & Emptiness verification \\
+	Automata & Copying operation \\
+	Automata & Projection to a given set of events \\
+	Automata & Complement operation \\
+	Automata & Reachability operation \\
+	DES & Centralized management of the events set\\
+	DES & Creation of a module in frame of the DES\\
+	DES & Creation of an external module \\
+	DES & Computation of common events of two automata \\
+	DES & Representation of the system with as the inference diagram \\
+	Diagnosability & Fault states and events support \\ 
+	Diagnosability & Computations of automata deterministic w.r.t. a failure
+	history\\
+	Diagnosability & Computation of fault-reachable and fault-non reachable
+	languages\\
+	
+	\hline
+	\end{tabular}
+	\label{tbl:tool_commands}
+\end{table}
+
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.5]{editor_screen.png}
+	\caption{View of the simulator in a browser window}
+	\label{fig:editor_screen}
+\end{figure}
 
 
 \section{Diagnosability verification of the system}
@@ -18,7 +128,7 @@ of the component types listed in the Table \ref{tbl:system_modules}.
 Moreover, the model contains automata which describe supervisory control
 policy for each control cycle. 
 
-\begin{table}[!ht]
+\begin{table}[th]
 \caption{Modules of the system depicted in the Figure \ref{fig:pi_diagram}}
 \centering
 	\begin{tabular}{l c}
@@ -67,7 +177,7 @@ automata. Using the simulation tool, an attempt to construct the monolithic
 model was made. Table \ref{tbl:sync_growth} shows the growth of the automaton of
 the monolithic model by means of states, transitions and time spent for each
 iteration.
-The correspondent plot is depicted in the Figure \ref{fig:sync_growth}. 
+The corresponding plot is depicted in the Figure \ref{fig:sync_growth}. 
 
 The given system has relatively low complexity. Construction of the global model
 using another tool like NuSMV \cite{nusmv} is likely possible. However, the
@@ -151,7 +261,7 @@ of the global model was performed only partially due to the time limit.
 };
 \end{axis}
 \end{tikzpicture}
-	\caption{Growth of the numbers of states (curve with round dots) and
+	\caption{Growth of the number of states (curve with round dots) and
 	transitions (curve with square dots) while the growth of the number of modules
 	in the centralized systems model}
 	\label{fig:sync_growth}

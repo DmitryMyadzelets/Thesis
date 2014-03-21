@@ -46,7 +46,7 @@ For the sake of simplicity, we assume that a language may have only one type of
 fault. We assume that $(\forall i \in I)\left[ L_i = P_i(L)\right]$. The
 motivation for this assumption is following. Most of real-life complex systems
 are of high modularity, where each module is presented as a small model along
-with correspondent faults as, for example, in \cite{sartini_methodology_2010}.
+with corresponding faults as, for example, in \cite{sartini_methodology_2010}.
 When properly designed, such systems have neither deadlocks nor trajectories
 which never executed. In practice, such assumption may require construction of a
 supervisor, and verification that a local language of each module is globally
@@ -106,7 +106,7 @@ some strings of another module due to concurrency? No parallel composition shoul
 used in order to answer the questions. Otherwise, the problem would reduce to
 the problem of local diagnosability.
 
-We suppose that the system consists only of two modules with the correspondent
+We suppose that the system consists only of two modules with the corresponding
 languages $L_1$ and $L_2$. The language of the system is $L := L_1 \parallel
 L_2$. Suppose that only one module has a faulty behaviour: $L_1 := L_{1,f}
 ~\dot{\cup}~ L_{1,nf}$.
@@ -151,7 +151,7 @@ language $L$ if and only if:
 In order to prove sufficiency of (\ref{lem:obs}) we use its converse relation
 and prove by contradiction that the change of observation (\ref{def:obs}) is
 necessary.
-Assume $\exists w \in L$ and $\exists s \in L_1$ such that
+Assume it $\exists w \in L$ and $\exists s \in L_1$ such that
 $M(w)= M_1(s)$ and, therefor, (\ref{def:obs}) is false. Let $\exists
 \sigma \in \Sigma_1 \cap \Sigma_2$ such that $\sigma \in w$ and also
 (\ref{lem:obs1}) holds. Then may $\exists u \sigma \in \overline{w}$ such that
@@ -533,8 +533,8 @@ system of two languages, for an arbitrary couple of languages as follows.
 \label{lem:distinguished}
 Given a tuple $\left< L_i, L_j, s, u\right> \mid i, j \in \mathbb{N}, i\neq j$
 and $s, u \in L_i$. The strings $s, u$ are
-distinguished in the language $L_i \parallel L_j$ if for the string $s$ exists
-an adjacent observable support $K_j \subseteq L_j$ which satisfies the
+distinguished in the language $L_i \parallel L_j$ if for the string $s$ it
+exists an adjacent observable support $K_j \subseteq L_j$ which satisfies the
 condition:
 \end{lemma} 
 \begin{equation}
@@ -610,19 +610,75 @@ observable events toward the faulty module, according to the rest of the lemmas'
 requirements.
 
 
-\section{Algorithms for diagnosability by virtual modules}
+\section{Inference Diagram}
+
+The \emph{inference diagram} is a graph which reflects the structure of a
+system.
+The nodes of the graph are corresponded to the system's modules, the edges show that
+a property of one module either is inferred by others or is inferring
+properties of others. For the most of cases, the nodes are linked with edges if
+the event sets of corresponding modules have common events.   
+
+The notion of inference diagram is similar to the \emph{interaction graph} in
+\cite{fabre_distributed_2005} and to the \emph{network graph} in
+\cite{su_global_2005} (though it is not defined formally there).
+
+The inference diagram is defined over the set of languages as
+follows:
+\begin{definition}
+Given a set $S := \{L_i\mid i\in \mathbb{N}\}$. We define a binary relation
+$R(S)$ for each pair $L_i, L_j \in S$ as following:
+\begin{equation}
+	\left<L_i, L_j \right> \in R(S) \Rightarrow 
+	\Sigma_i \cap \Sigma_j \neq \emptyset.
+\end{equation}
+\end{definition}
+
+For any $L_i, L_j, L_k \in S$ the relation
+$R$ is:
+\begin{enumerate}
+  \item Reflexive: $\left<L_i, L_i \right> \in R$.
+  \item Symmetric: $\left<L_i, L_j \right> \in R \Leftrightarrow 
+  		\left<L_j,L_i \right> \in R$.
+  \item Non-transitive: 
+  		$\{\left<L_i, L_j \right>, \left<L_j, L_k \right>\} \in R
+  		\not \Rightarrow \left<L_i, L_k \right> \in R$.  
+\end{enumerate}
+
+The inference diagram is used implicitly in the algorithms in the next section.
+Besides its mathematical meaning the diagram has a representative value during
+systems design process. An example of inference diagram for a part of the
+system, presented on the Figure \ref{fig:pi_diagram}, is depicted in the Figure
+\ref{fig:id_example}. It shows how models of the system modules are related to
+each other. Particularly, the valve $V4$ consists of models of sensors,
+actuator, the physical valve and some constraints, such that all the
+corresponding nodes are linked. The nodes of the graph, corresponding to
+the fork sensors $LT3$ and $LT4$ are not linked to others. However, when a model
+of the control cycle will be added, these nodes become connected, reflecting
+the corresponding dependencies.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.7]{id_example.pdf}
+	\caption{Example of Inference Diagram}
+	\label{fig:id_example}
+\end{figure}
+
+
+
+\section{Algorithms for diagnosability verification with virtual modules}
 \label{sec:algorithms}
 
 Assume that a language with a faulty behaviour and a language which has an
 observable support are given. Then, it's required to verify if the observable
 support is either for the faulty or non-faulty sublanguages. If it is true, then the
-correspondent modules can be composed into a virtual module.
+corresponding modules can be composed into a virtual module.
 According to the Lemma \ref{lem:virtual_module_is_diagnosable}, in order to
 decide if the virtual module is diagnosable we need to verify the necessary
 conditions for all the strings $P_i^{-1}(L_{i,f})$ and $P_i^{-1}(L_{i,nf})$,
 projected to the local languages of other modules $\{j \in I\mid j \neq i\}$.
 Those local projections are the basic elements our algorithms operate with. In the sequel we
-refer to the correspondent local sublanguages as to \emph{co-faulty} and
+refer to the corresponding local sublanguages as to \emph{co-faulty} and
 \emph{co-non-faulty} ones. A formal definition of these sublanguages is
 presented below, and then an algorithm which computes the co-faulty
 and co-non-faulty sublanguages for all the system's modules, is given. 
@@ -724,7 +780,7 @@ co-non-faulty languages of all the modules}
 		\State $F_j \leftarrow \emptyset, N_j \leftarrow \emptyset$
 	\EndFor
 	\Procedure{propagate-fn}{$k$, $F_k$, $N_k$}
-		\ForAll{$j \in I \mid j\neq i, \Sigma_j \cap \Sigma_k \neq \emptyset,
+		\ForAll{$j \in I \mid j\neq k, \Sigma_j \cap \Sigma_k \neq \emptyset,
 				\Sigma_{j,c}\neq \emptyset$} 
 			\State $F'_j \leftarrow P_{j,c}(F_k \parallel C_j)$
 			\label{alg:fcf_partial_begin}
@@ -871,8 +927,8 @@ strings are broken. In case (a) we pick another module $k \in I$ satisfying
 requirements of the Algorithm \ref{alg:propagate-d} for further processing and
 verification. In case (b) we may construct a virtual module of the faulty module
 $i$ and the module $k$ and declare that the fault is diagnosable with respect to
-the virtual module $\{i, k\}$ and stop, or continue and check if exists another
-module which can also be used to build a virtual module. In case (c) we should
+the virtual module $\{i, k\}$ and stop, or continue and check if it exists
+another module which can also be used to build a virtual module. In case (c) we should
 pick additional module satisfying requirements of the Algorithm
 \ref{alg:propagate-d} and continue the process until all the indistinguishable
 strings are broken. The following section analyzes what may be considered as a
@@ -885,7 +941,7 @@ system as many as possible, i.e. to have the maximal cardinality of the
 partition $J$.
 Given an initial set of languages, let rank of $J$ be equal to 0, i.e. $|J| =
 |I|$. Let $F$ denotes the subset of languages with faults, and $M$ denotes the
-subset of languages with correspondent observable supports.
+subset of languages with corresponding observable supports.
 Assume that it is always possible to make the system modularly diagnosable with
 respect to some virtual modules. Then we know that $(\forall f \in F)~\exists m
 \in M$. Let $F \cap M = \emptyset$ and $|M| \geq |F|$. Then, to make the system
@@ -1417,3 +1473,67 @@ from the observation of $L_{1,nf}$ which is $\{o_1\}$}
 \label{fig:L1_extended}
 \end{figure}
 
+
+\section{Related approaches}
+
+The notion of virtual modular diagnosability was initially introduced in this
+work. However, this approach can be decomposed into a few techniques, and a
+few works, each solving similar problems, can be found in literature. These
+studies are described in the following.
+
+An interesting approach is developed in \cite{rudie_minimal_1999},
+\cite{rudie_minimal_2003} and \cite{lin_minimal_2007} where the authors start
+from the assumption that the modules of a system require communication to each
+other in order to make a decision (e.g. about a failure), but the information
+they exchange can be redundant. They try to minimize communications globally and
+provide a solution with exponential time complexity. This approach is
+completely different to the one presented in this work, since it does not change
+modularity of the system. However, the idea to reduce redundant communication
+may result in a higher modularity in our context.
+
+In \cite{ye_incremental_2009} and \cite{ye_general_2012} the authors verify
+distributed diagnosability where the failures are presented as ``patterns'',
+i.e. as sequences of events, rather then singular fault events. 
+The modularity of the system doesn't change, however there some similarities
+in the failure modeling and the algorithms. The notion
+of patterns in that work can be seen equal to the specification-based (or
+state-based) failure representation in our work. The diagnosability property is
+verified incrementally, without construction of the global language. The authors
+use reduction of the languages with respect to observable and common events, but
+do it simultaneously. Their algorithms differ from the algorithms in our
+approach, since here the forward-back two way propagation computation is used in
+order to reduce space complexity even more.
+
+The work \cite{fabre_partial_2007} describes partial order techniques for
+distributed event systems and underlines their importance for solving
+a variety of problems without computing global language of a system. The
+authors use notion of ``interaction graph" similar to the notion of ``inference
+diagram'' and explore it in a similar manner, but they do not address problems
+of diagnosability verification.  
+ 
+A work presented in \cite{su_global_2005} is also similar in terms of the
+algorithm. The authors introduce notion of \emph{global consistency}, which
+assumes that observable projection of each module's language accounts all the
+interaction with other languages of the system, i.e. a sublanguage 
+$L'_i \subseteq M_i(L_i)$ is globally consistent if 
+$L'_i = M_i(\parallel_j(M_j(L_j)))$, where $i, j \in I$. After achieving global
+consistency the local diagnosers are computed, and a global decision on a
+failure occurrence is performed based on decisions of each diagnoser. The
+algorithm for computation of globally consistent projections differs from ours
+since it defines all the observable information firstly, and only then
+applies a knowledge about failures. In our algorithm the failure information is
+propagated firstly with no space growth. Then the backward propagation algorithm
+collects an observable information only for indistinguishable strings. Thus, the
+state complexity of our approach may be lower. However, all the advantages of
+the authors' approach, such the heuristic node selection procedure, can applied
+for our approach too.
+
+In \cite{pencole_diagnosability_2004} the authors present the approach which is
+the closest to the our, since they introduce a notion of \emph{subsystem}, which
+is equal to the notion of virtual module in a sense that a failure originated
+from one module of the subsystem is diagnosable using observations of the
+modules of the same subsystem. The algorithms are different. Beside this, our
+work arguments the aforementioned approach with inference diagram exploration,
+sufficient and necessary conditions for diagnosability (i.e.
+diagnosability-related structural patterns) and the heuristic procedure for
+the creation of the locally diagnosable subsystems.

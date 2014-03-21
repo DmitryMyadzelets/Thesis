@@ -1,0 +1,78 @@
+
+\chapter{Conclusions and future work}
+\label{chap:conclusions}
+
+
+\emph{``We are stuck with technology when what we really want is just stuff that
+works'' -- Douglas Adams, The Salmon of Doubt}.
+
+The main aim of this research was to bring the fascinating beauty of formal
+mathematical approaches closer to everyday practices of industrial
+development engineers in order to enhance the routine process of 
+the automated systems creation.
+
+As shown in this work, the major obstacle for application of formal methods in
+the industrial systems development process seems to be a lack of appropriate
+design techniques and tools. Despite the fact that the formal approaches are
+generally quite mature, and in the field of Discrete Event Systems particularly,
+there is still a room for improvements.
+As a confirmation, one can observe that every-day design processes, decision
+assistance, programming tools and languages are often outdated from the
+perspective of what could be used nowadays.
+
+To show the current situation in industry the Chapter
+\ref{chap:problem_description} describes, with a help of an industrial plant
+real example, what quantitative and qualitative methods are used nowadays,
+besides the formal approaches, in order to achieve desired properties of
+industrial systems.
+
+A few goals were persuaded in this work. The first one is the modeling
+approach for the manufacturing systems design. The effort has been taken in
+the development of formal representations of widely used industrial components.
+For this approach the framework of formal languages and automata has
+been chosen. The choice is based on high availability of formal approaches
+using this framework, which somehow confirms efficiency of these formalisms on
+the one hand, and a relative simplicity of the mathematical notation and graphical
+representation of automata models on the other hand, bearing in mind that the
+results of the research should be understood by a wide community of industrial
+engineers, with a little or no effort.
+
+The automata design patterns, developed and validated during this research,
+incorporate both nominal and faulty behaviours. This approach appeared to be
+possible after decomposition of hardware components into small predefined
+models. These models may efficiently abstract details of the
+formal representation, and ``hide'' them from a designer of an
+industrial system.
+In order to increase the level of abstraction, thus enhancing usability and
+reusability, the formal models are encapsulated into UML-like blocks of
+Generalised Devices. This modeling process, as well as an essential mathematical
+notation for discrete event systems in terms of languages and automata, and
+diagnosability types are described in Chapter \ref{chap:framework}.
+
+Use of the formal methods often corresponds with a problem of exponential
+explosion which may make the a solution for the problem intractable. The
+diagnosability analysis is not an exception. Approaches which rely on modular
+nature of the complex system use a variety of notions and algorithmic techniques
+in order to tackle the computational burden. This work has introduced a new
+definition of diagnosability and a notion of virtual modules. It can be seen
+as an algorithmic ``trick'' which combines the existing modules of the system
+into new modules (which do not correspond to real components, and that
+is why they are called ``virtual'') in a way that the system with the new
+modularity is modular diagnosable. The theoretical part of this work is covered
+in Chapter \ref{chap:theory}.
+
+The final goal of the research was to focus on applicability of the developed
+concepts. In order to validate the algorithms which verify diagnosability and
+provide information for construction of virtual modules, a software tool has
+been created. It is described in the Chapter \ref{chap:simulation}. There an
+application of this tool for an instance of failure in the real
+industrial process is demonstrated and compared with the centralized approach.
+
+Concluding, modeling and theoretical approaches have been developed and then 
+validated with a software tool, proving efficiency of the concepts.
+Particularly, the performance advantage with respect to the centralized approach
+is obvious. The advantages and disadvantages of the method with comparison to
+other algorithmic techniques, even if they differ from the theoretical point of
+view, has to be checked in the future.
+Additional effort is also required for performance optimisations of the
+developed software tool.
