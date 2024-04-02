@@ -1,0 +1,114 @@
+
+\begin{figure}[t]
+\begin{tikzpicture}[->,>=stealth, node distance=5cm, auto, shorten >=1pt,
+semithick, initial text=,	
+	every node/.style={scale=1},
+    every state/.style={fill=green!40,text=black, minimum size=5em},
+    accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+    ]
+% \draw[help lines] (0,-2) grid (6,2);
+% G1
+\node[initial,state] (0)              {$Off$};
+\node[state]         (1) [right of=0] {$On$};
+
+\path
+(0)	edge [bend left] 		 node {$on$} (1)
+(1)	edge [bend left] 		 node {$off$} (0)
+;
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[t]
+\begin{tikzpicture}[->,>=stealth, node distance=5cm, auto, shorten >=1pt,
+semithick, initial text=,	
+	every node/.style={scale=1},
+    every state/.style={fill=green!40,text=black, minimum size=5em},
+    accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+    ]
+% \draw[help lines] (0,-2) grid (6,2);
+% G1
+\node[initial,state] (0)              {$Closed$};
+\node[state]         (1) [right of=0] {$Closing$};
+\node[state]         (2) [below of=0] {$Opening$};
+\node[state]         (3) [below of=1] {$Opened$};
+\node[state, fill=red]         (4) [below of=2] {$Fault$};
+\path
+(0)	edge [left] 		 node {$open$} (2)
+(2)	edge [below] 		 node {$opened$} (3)
+(3)	edge [right] 		 node {$close$} (1)
+(1)	edge [above] 		 node {$closed$} (0)
+(2)	edge [bend left] 		 node {$close$} (1)
+(1)	edge [bend left] 		 node {$open$} (2)
+
+(2)	edge [bend right, text=red] 		 node {$stop$} (4)
+(4)	edge [bend right] 		 node [right] {$release$} (2)
+;
+\end{tikzpicture}
+\end{figure}
+
+
+\begin{figure}[t]
+\begin{tikzpicture}[->,>=stealth, node distance=5cm, auto, shorten >=1pt,
+semithick, initial text=,	
+	every node/.style={scale=0.8},
+    every state/.style={fill=green!40,text=black, minimum size=5em},
+    accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+    ]
+% \draw[help lines] (0,-2) grid (6,2);
+% G1
+% \node[initial,state] (0)              {$Closed$};
+% \node[state]         (1) [right of=0] {$Closing$};
+% \node[state]         (2) [below of=0] {$Opening$};
+% \node[state]         (3) [below of=1] {$Opened$};
+
+\node[state, fill=red]  (00) [] {$Closed$};
+\node[state, fill=red]  (11) [right of=00] {$Closing$};
+\node[state, fill=red]  (22) [below of=00] {$Opening$};
+\node[state, fill=red]  (33) [below of=11] {$Opened$};
+\node[state, fill=red, initial]   (4) [left of=22]{$Fault$};
+
+\path
+% (0)	edge [left] 		 node {$open$} (2)
+% (2)	edge [below] 		 node {$opened$} (3)
+% (3)	edge [right] 		 node {$close$} (1)
+% (1)	edge [above] 		 node {$closed$} (0)
+% (2)	edge [bend left] 		 node {$close$} (1)
+% (1)	edge [bend left] 		 node {$open$} (2)
+
+(00)	edge [left] 		 node {$open$} (22)
+(22)	edge [below] 		 node {$opened$} (33)
+(33)	edge [right] 		 node {$close$} (11)
+(11)	edge [above] 		 node {$closed$} (00)
+(22)	edge [bend left] 		 node {$close$} (11)
+(11)	edge [bend left] 		 node {$open$} (22)
+
+
+% (2)	edge [bend right, text=red] 		 node {$stop$} (4)
+(22)edge [bend right, text=red] 		 node {$stop$} (4)
+(4)	edge [bend right] 		 node [] {$release$} (22)
+;
+\end{tikzpicture}
+\end{figure}
+
+
+\begin{figure}[t]
+\begin{tikzpicture}[->,>=stealth, node distance=5cm, auto, shorten >=1pt,
+semithick, initial text=,	
+	every node/.style={scale=1},
+    every state/.style={fill=green!40,text=black, minimum size=5em},
+    accepting/.style={double distance=1.5pt, outer sep=0.75pt+\pgflinewidth}
+    ]
+% \draw[help lines] (0,-2) grid (6,2);
+% G1
+\node[initial,state] (0)              {$$};
+\node[state]         (1) [right of=0] {$$};
+\node[state]         (2) [right of=1] {$$};
+
+\path
+(0)	edge [] 		 node {$open$} (1)
+(1)	edge [bend right] 		 node [above] {$opened$} (0)
+	edge [] node {$stop$} (2)
+(2)	edge [bend left] 		 node [above] {$tout$} (0)
+;
+\end{tikzpicture}
+\end{figure}

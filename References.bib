@@ -1,0 +1,991 @@
+@book{cassandras_introduction_2010,
+	edition = {2nd ed. 2008},
+	title = {Introduction to Discrete Event Systems},
+	isbn = {1441941193},
+	publisher = {Springer},
+	author = {Cassandras, Christos G. and Lafortune, St{\'e}phane},
+	month = oct,
+	year = {2010}
+}
+
+@book{soft_methods_2005,
+	edition = {1st},
+	title = {{Methods of Supervisory Control - A Software Implementation}},
+	publisher = {Friedrich-Alexander-Universitat Erlangen-Nürnberg},
+	author = {Opitz, Bernd},
+	year = {2005},
+}
+
+@techreport{myadzelets_virtual_2013,
+	type = {{arXiv} e-print},
+	title = {Virtual Modules in Discrete-Event Systems: Achieving Modular Diagnosability},
+	shorttitle = {Virtual Modules in Discrete-Event Systems},
+	url = {http://arxiv.org/abs/1311.2850},
+	institution = {Univercity of Bologna, CASY},
+	number = {1311.2850},
+	urldate = {2013-11-13},
+	author = {Myadzelets, Dmitry and Paoli, Andrea},
+	month = nov,
+	year = {2013}
+}
+
+@article{lin_opacity_2011,
+	title = {Opacity of discrete event systems and its applications},
+	volume = {47},
+	issn = {0005-1098},
+	doi = {10.1016/j.automatica.2011.01.002},
+	abstract = {In this paper, we investigate opacity of discrete event systems. We define two types of opacities: strong opacity and weak opacity. Given a general observation mapping, a language is strongly opaque if all strings in the language are confused with some strings in another language and it is weakly opaque if some strings in the language are confused with some strings in another language. We show that security and privacy of computer systems and communication protocols can be investigated in terms of opacity. In particular, two important properties in security and privacy, namely anonymity and secrecy, can be studied as special cases of opacity. We also show that by properly specifying the languages and the observation mapping, three important properties of discrete event systems, namely observability, diagnosability, and detectability, can all be reformulated as opacity. Thus, opacity has a wide range of applications. Also in this paper we provide algorithms for checking strong opacity and weak opacity for systems described by regular languages and having a generalized projection as the observation mapping.},
+	number = {3},
+	journal = {Automatica},
+	author = {Lin, Feng},
+	month = mar,
+	year = {2011},
+	keywords = {Anonymity, Detectability, diagnosability, Discrete event systems, observability, Opacity, Secrecy},
+	pages = {496--503}
+}
+
+@inproceedings{moreira_polynomial_2010,
+	title = {Polynomial time verification of decentralized diagnosability of discrete event systems},
+	abstract = {Failure diagnosis is an important task in large complex systems and as such this problem has received in the last years considerable attention in the literature. The first step to diagnose failure occurrences in discrete event systems is the verification of the system diagnosability. Several works in the literature have addresses this problem using either diagnosers or verifiers for the centralized and decentralized architectures. In this paper a new polynomial time algorithm to verify the decentralized diagnosability property of a discrete event system is proposed. The algorithm has lower computational complexity than other methods proposed in the literature and can also be applied to the centralized case.},
+	booktitle = {American Control Conference {(ACC)}, 2010},
+	author = {Moreira, {M.V.} and Jesus, {T.C.} and Basilio, {J.C.}},
+	month = jul,
+	year = {2010},
+	keywords = {computational complexity, decentralized diagnosability, discrete event system, Discrete event systems, failure diagnosis, large complex systems, large-scale systems, multivariable systems, polynomial time verification, system diagnosability verification},
+	pages = {3353 --3358},
+}
+	
+@inproceedings{sartini_methodology_2010,
+	title = {A methodology for modular model-building in discrete automation},
+	doi = {10.1109/ETFA.2010.5641244},
+	abstract = {Our objective is to develop a general and versatile approach for building structured formal models of complex automated systems in order to facilitate their control and diagnosis. For this purpose, we present a methodology that builds the complete model of a system by composing models of the individual hardware components, their physical coupling, and the associated control logic. We choose to employ a hierarchical decomposition that separates the control logic into a high level that manages the sequence of control actions and a low level that implements the control actions. The low level is composed of control logic and physical components (sensors and actuators) grouped into a device. In order to capture the physical constraints between the components in a device, we propose the notion of a physical constraint automaton, which is composed with the generic component automata to generate the complete model of the device. We also show how the methodology allows the introduction of component faults into the overall model. The effectiveness of the proposed approach is demonstrated on a micro flexible manufacturing system.},
+	booktitle = {2010 {IEEE} Conference on Emerging Technologies and Factory Automation {(ETFA)}},
+	author = {Sartini, M. and Paoli, A. and Hill, {R.C.} and Lafortune, S.},
+	month = sep,
+	year = {2010},
+	keywords = {complex automated systems, control logic, discrete automation, flexible manufacturing systems, industrial control, large-scale systems, micro flexible manufacturing system, modular model-building, physical constraint automation},
+	pages = {1 --8}
+}
+
+
+@article{schumann_decentralised_2010,
+	title = {A Decentralised Symbolic Diagnosis Approach},
+	author = {Schumann, Anika and Pencol{\'e}, Yannick and Thi{\'e}baux, Sylvie},
+	year = {2010}
+}
+
+@inproceedings{cassez_note_2009,
+	title = {A note on fault diagnosis algorithms},
+	doi = {10.1109/CDC.2009.5399968},
+	abstract = {In this paper we review algorithms for checking diagnosability of discrete-event systems and timed automata. We point out that the diagnosability problems in both cases reduce to the emptiness problem for (timed) BuГѓвЂљГ‚Вїchi automata. Moreover, it is known that, checking whether a discrete-event system is diagnosable, can also be reduced to checking bounded diagnosability. We establish a similar result for timed automata. We also provide a synthesis of the complexity results for the different fault diagnosis problems.},
+	booktitle = {Proceedings of the 48th {IEEE} Conference on Decision and Control, 2009. {CDC} 2009},
+	author = {Cassez, F.},
+	month = dec,
+	year = {2009},
+	keywords = {automata theory, bounded diagnosability, diagnosability checking, Discrete event systems, discrete-event system, emptiness problem, fault diagnosis, fault diagnosis algorithm, observability, timed Buchi automata},
+	pages = {6941 --6946},
+}
+
+@inproceedings{zhou_decentralized_2008,
+	title = {Decentralized modular diagnosis of concurrent discrete event systems},
+	doi = {10.1109/WODES.2008.4605977},
+	abstract = {The problem of decentralized modular fault diagnosis of concurrent discrete event systems, that is composed of a set of component modules, is formulated and studied. In the proposed decentralized modular framework, diagnosis is performed by the local diagnosers, located at the component sites, using their own local observations. This is to ensure the scalability of the approach with respect to the number of component modules, and we require that the local diagnosers be ldquomodularly computablerdquo, i.e., their computation should be based on the local models, and not the global models. It is also required that there are no missed-detections (every fault is detected within a bounded number of transitions) and no false-alarms (a fault detection report is issued only when a fault has occurred). We formally define the decentralized modular diagnosis problem and introduce the notion of modular diagnosability as a key property for the existence of desired decentralized modular diagnosers. We show that under this property, the complexity for constructing the local diagnosers is polynomial in the number of local modules. We present a method for testing the modular diagnosability property by reducing it to an instance of a certain codiagnosability property for which known verification techniques exist.},
+	booktitle = {9th International Workshop on Discrete Event Systems, 2008. {WODES} 2008},
+	author = {Zhou, C. and Kumar, R. and Sreenivas, {R.S.}},
+	month = may,
+	year = {2008},
+	keywords = {codiagnosability property, concurrent discrete event systems, decentralized modular fault diagnosis, Discrete event systems, fault diagnosis, modular computability, modular diagnosability},
+	pages = {388 --393}
+}
+
+@article{wang_diagnosis_2007,
+	title = {Diagnosis of Discrete Event Systems Using Decentralized Architectures},
+	volume = {17},
+	issn = {0924-6703},
+	doi = {10.1007/s10626-006-0006-8},
+	abstract = {Decentralized diagnosis of discrete event systems has received a lot of attention to deal with distributed systems or with systems that may be too large to be diagnosed by one centralized site. This paper casts the problem of decentralized diagnosis in a new hierarchical framework. A key feature is the exploitation of different local decisions together with appropriate rules for their fusion. This includes local diagnosis decisions that can be interpreted as вЂњconditional decisions.вЂќ Under this new framework, a series of new decentralized architectures are defined and studied. The properties of their corresponding notions of decentralized diagnosability are characterized and their relationship with existing work described. Corresponding verification algorithms are also presented and on-line diagnosis strategies discussed.},
+	number = {2},
+	urldate = {2012-09-12},
+	journal = {Discrete Event Dynamic Systems},
+	author = {Wang, Yin and Yoo, Tae-Sic and Lafortune, St{\'e}phane},
+	year = {2007},
+	keywords = {Mathematics and Statistics},
+	pages = {233--263},
+}
+
+@article{qiu_decentralized_2006,
+	title = {Decentralized failure diagnosis of discrete event systems},
+	volume = {36},
+	issn = {1083-4427},
+	doi = {10.1109/TSMCA.2005.853503},
+	abstract = {By decentralized diagnosis we mean diagnosis using multiple diagnosers, each possessing its own set of sensors, without involving any communication among diagnosers or to any coordinators. The notion of decentralized diagnosis is formalized by introducing the notion of codiagnosability that requires that a failure be detected by one of the diagnosers within a bounded delay. Algorithms of complexity polynomial in the size of the system and the nonfault specification are provided for: 1) testing codiagnosability, 2) computing the bound in delay of diagnosis, 3) offline synthesis of individual diagnosers, and 4) online diagnosis using them. The notion of codiagnosability and the above algorithms are initially presented in a setting of a specification language (violation of which represents a fault) and are later specialized to the case where faults are modeled as the occurrences of certain events. The notion of strong codiagnosability is also introduced to capture the ability of being certain about both the failure as well as the nonfailure conditions in a system within a bounded delay.},
+	number = {2},
+	journal = {{IEEE} Transactions on Systems, Man and Cybernetics, Part A: Systems and Humans},
+	author = {Qiu, Wenbin and Kumar, R.},
+	month = mar,
+	year = {2006},
+	keywords = {bounded delay, codiagnosability notion, complexity polynomial algorithms, decentralized failure diagnosis, delays, Discrete event systems, fault diagnosis, nonfault specification, polynomials, specification language},
+	pages = {384 -- 395},
+}
+
+@article{contant_diagnosability_2006,
+	 author = {Contant, Olivier and Lafortune, St{\'e}phane and Teneketzis, Demosthenis},
+	 title = {Diagnosability of Discrete Event Systems with Modular Structure},
+	 journal = {Discrete Event Dynamic Systems},
+	 issue_date = {January 2006},
+	 volume = {16},
+	 number = {1},
+	 month = jan,
+	 year = {2006},
+	 issn = {0924-6703},
+	 pages = {9--37},
+	 numpages = {29},
+	 doi = {10.1007/s10626-006-6177-5},
+	 acmid = {1117110},
+	 publisher = {Kluwer Academic Publishers},
+	 address = {Hingham, MA, USA},
+	 keywords = {Common events, Diagnosability, Distributed systems, Modularity},
+}
+
+@article{su_global_2005,
+	title = {Global and local consistencies in distributed fault diagnosis for discrete-event systems},
+	volume = {50},
+	issn = {0018-9286},
+	doi = {10.1109/TAC.2005.860291},
+	abstract = {In this paper, we present a unified framework for distributed diagnosis. We first introduce the concepts of global and local consistency in terms of supremal global and local supports, then present two distributed diagnosis problems based on them. After that, we provide algorithms to achieve supremal global and local supports respectively, and discuss in detail the advantages and disadvantages of each. Finally, we present an industrial example to demonstrate our distributed diagnosis approach.},
+	number = {12},
+	journal = {{IEEE} Transactions on Automatic Control},
+	author = {Su, Rong and Wonham, {W.M.}},
+	year = {2005},
+	keywords = {Automata, Computer architecture, Computer Science, Concrete, Discrete event systems, discrete-event systems, distributed fault diagnosis, fault detection, fault diagnosis, global consistency, local consistency, local supports, Mathematics, Petri nets, Storage area networks, supremal global supports},
+	pages = {1923--1935},
+}
+
+@article{pencole_formal_2005,
+	title = {A formal framework for the decentralised diagnosis of large scale discrete event systems and its application to telecommunication networks},
+	volume = {164},
+	issn = {0004-3702},
+	doi = {10.1016/j.artint.2005.01.002},
+	abstract = {We address the problem of diagnosing large discrete event systems. Given a flow of observations from the system, the goal is to explain these observations on-line by identifying and localising possible failures and their consequences across the system. Model-based diagnosis approaches deal with this problem but, apart very recent proposals, either they require the computation of a global model of the system which is not possible with large discrete event systems, or they cannot perform on-line diagnosis. The contribution of this paper is the description and the implementation of a formal framework for the on-line decentralised diagnosis of such systems, framework which is based on the вЂњdivide and conquerвЂќ principle and does not require the global model computation. This paper finally describes the use of this framework in the monitoring of a real telecommunication network.},
+	number = {1–2},
+	urldate = {2013-04-22},
+	journal = {Artificial Intelligence},
+	author = {Pencol{\'e}, Yannick and Cordier, Marie-Odile},
+	month = may,
+	year = {2005},
+	keywords = {decentralised model, Discrete event systems, distributed artificial intelligence, fault propagation, model-based diagnosis, telecommunication networks},
+	pages = {121--170},
+}
+
+@inproceedings{yoo_event_2004,
+	title = {Event diagnosis of discrete-event systems with uniformly and nonuniformly bounded diagnosis delays},
+	volume = {6},
+	abstract = {Various notions of diagnosability reported in literature deal with uniformly bounded finite detection or counting delays. The uniformity of delays can be relaxed while delays remain finite. We introduce various notions of diagnosability allowing nonuniformly bounded finite delays. A polynomial-time verification algorithm for diagnosability with nonuniformly bounded finite indefinite-counting delays is presented. A similar technique is applied to give a computationally better verification algorithm for diagnosability with uniformly bounded finite indefinite-counting delays than algorithms previously reported in literature. Finally, we develop a new on-line diagnosis algorithm that has a lower time and space complexity than on-line diagnosis algorithms reported in literature for counting the occurrence of repeated/intermittent faults.},
+	booktitle = {American Control Conference, 2004. Proceedings of the 2004},
+	author = {Yoo, T.-S. and Garcia, {H.E.}},
+	month = jul,
+	year = {2004},
+	keywords = {delays, Discrete event systems, fault diagnosis, nonuniformly bounded finite indefinite counting delays, online diagnosis algorithm, polynomial time verification algorithm, polynomials, uniformly bounded finite detection, uniformly bounded finite indefinite counting delays},
+	pages = {5102 --5107 vol.6},
+}
+
+@inproceedings{paoli_safe_2003,
+	title = {Safe diagnosability of discrete event systems},
+	volume = {3},
+	doi = {10.1109/CDC.2003.1273025},
+	abstract = {The problem of safe failure diagnosis in discrete event systems is addressed. Starting from the standard definition of diagnosability of discrete event systems, which deals with the problem of detecting the occurrence of an unobservable event using the available observations on the system, the problem of performing the detection before the system executes a forbidden string is introduced. For example, this constraint could be required to prevent local faults from developing into failures that could cause safety hazards. This idea results in a new language property for discrete event systems called safe diagnosability. Necessary and sufficient conditions to test this language property are presented. Moreover, the problem of explicitly taking into account safe diagnosability as a requirement in system design is discussed.},
+	booktitle = {42nd {IEEE} Conference on Decision and Control, 2003. Proceedings},
+	author = {Paoli, A. and Lafortune, S.},
+	month = dec,
+	year = {2003},
+	keywords = {Automata, Discrete event systems, Event detection, fault detection, fault diagnosis, finite state machines, Hazards, Observers, Personnel, safe diagnosability, safe failure diagnosis, Safety, safety systems, Sufficient conditions, Testing},
+	pages = {2658 -- 2664 Vol.3},
+}
+
+@inproceedings{su_distributed_2002,
+	title = {Distributed diagnosis for qualitative systems},
+	doi = {10.1109/WODES.2002.1167684},
+	abstract = {In this paper we propose a novel automaton-based architecture to build a diagnoser, based on which an efficient distributed diagnostic method consisting of local computation and communication is presented. The method proposed here is highly scalable and robust to partial failures of the overall diagnoser.},
+	booktitle = {Sixth International Workshop on Discrete Event Systems, 2002. Proceedings},
+	author = {Su, R. and Wonham, {W.M.} and Kurien, J. and Koutsoukos, X.},
+	year = {2002},
+	keywords = {aircraft, Character generation, communication channel, Communication channels, computational complexity, Computer architecture, Computer crashes, Distributed computing, distributed diagnosis, fault diagnosis, finite automata, observability, printer, printers, qualitative diagnostic systems, Robustness, Scalability, simple paper-path system, space complexity, telecommunication channels, Time factors},
+	pages = {169--174},
+}
+
+@inproceedings{garcia_centralized_2002,
+	title = {Centralized modular diagnosis and the phenomenon of coupling},
+	doi = {10.1109/WODES.2002.1167683},
+	abstract = {This paper studies modular decomposition as an approach for failure diagnosis based on discrete event systems. This paper also analyses the problem of coupling produced in the implementation of centralized modular diagnosers, as coupled diagnosers cannot carry out their own diagnosis task when there is a failure in another subsystem sharing a common energy or material flow. In addition, we propose a method to avoid diagnoser coupling, by means of decoupling functions using nonlocal information with respect to the coupled diagnoser and generated in the diagnoser where the failure has been isolated.},
+	booktitle = {Sixth International Workshop on Discrete Event Systems, 2002. Proceedings},
+	author = {Garcia, E. and Morant, F. and Blasco-Gimenez, R. and Correcher, A. and Quiles, E.},
+	year = {2002},
+	keywords = {Aerodynamics, Chemical industry, complex systems, Condition monitoring, Control systems, coupling conditions, Discrete event systems, Distributed control, Face detection, failure analysis, fault diagnosis, finite state machine, finite state machines, large-scale systems, Manufacturing automation, modular decomposition, Production systems},
+	pages = {161 -- 168},
+}
+
+@article{yoo_polynomial-time_2002,
+	title = {Polynomial-time verification of diagnosability of partially observed discrete-event systems},
+	volume = {47},
+	issn = {0018-9286},
+	doi = {10.1109/TAC.2002.802763},
+	number = {9},
+	journal = {{IEEE} Transactions on Automatic Control},
+	author = {Yoo, Tae-Sic and Lafortune, S.},
+	month = sep,
+	year = {2002},
+	keywords = {automata theory, computational complexity, diagnosability, Discrete event systems, failure diagnosis, fault diagnosis, finite state machines, finite-state automaton model, nondeterministic automaton, regular languages},
+	pages = {1491 -- 1495},
+}
+
+@article{debouk_modular_2002,
+	title = {A modular architecture for diagnosis of discrete event systems},
+	doi = {10.1109/CDC.2002.1184530},
+	month = {December},
+	journal = {Proceedings of the 41st {IEEE} Conference on Decision and Control},
+	author = {Debouk, Rami and Malik, Robi and Brandin, Bertil},
+	year = {2002},
+	pages = {417--422}
+}
+
+@article{jiang_polynomial_2001,
+	title = {A polynomial algorithm for testing diagnosability of discrete-event systems},
+	volume = {46},
+	issn = {0018-9286},
+	doi = {10.1109/9.940942},
+	abstract = {Failure diagnosis in large and complex systems is a critical task. In the realm of discrete-event systems, Sampath et al. (1995) proposed a language based failure diagnosis approach. They introduced the diagnosability for discrete-event systems and gave a method for testing the diagnosability by first constructing a diagnoser for the system. The complexity of this method of testing diagnosability is exponential in the number of states of the system and doubly exponential in the number of failure types. We give an algorithm for testing diagnosability that does not construct a diagnoser for the system, and its complexity is of fourth order in the number of states of the system and linear in the number of the failure types},
+	number = {8},
+	journal = {{IEEE} Transactions on Automatic Control},
+	author = {Jiang, Shengbing and Huang, Zhongdong and Chandra, V. and Kumar, R.},
+	month = aug,
+	year = {2001},
+	keywords = {computational complexity, diagnosability testing, diagnoser, Discrete event systems, discrete-event systems, failure diagnosis, fault diagnosis, finite state machines, large-scale systems, polynomial algorithm},
+	pages = {1318 --1321}
+}
+
+@inproceedings{debouk_coordinated_1998,
+	title = {Coordinated decentralized protocols for failure diagnosis of discrete event systems},
+	volume = {3},
+	doi = {10.1109/ICSMC.1998.725122},
+	abstract = {We address the problem of failure diagnosis in discrete event systems with decentralized information. We propose a coordinated decentralized architecture consisting of local sites communicating with a coordinator that is responsible for diagnosing the failures occurring in the system. We extend the notion of diagnosability, originally introduced in Sampath et al. (1995) for centralized systems, to the proposed coordinated decentralized architecture. We specify three protocols, i.e. the diagnostic information generated at the local sites, the communication rules used by the local sites, and the coordinator's decision rule, that realize the proposed architecture. We analyze the diagnostic properties of each protocol. We also state and prove necessary and sufficient conditions for a language to be diagnosable under each protocol. These conditions are checkable off-line. The online diagnostic process is carried out using the diagnosers introduced in the above article or a slight variation of these diagnosers. The key features of the proposed protocols are: (i) they achieve, each under a set of assumptions, the same diagnostic performance as the centralized diagnoser; and (ii) they highlight the performance vs. complexity tradeoff that arises in coordinated decentralized architectures. The correctness of two of the protocols relies on some stringent global ordering assumptions on message reception at the coordinator's site, the relaxation of which is briefly discussed},
+	booktitle = {1998 {IEEE} International Conference on Systems, Man, and Cybernetics, 1998},
+	author = {Debouk, R. and Lafortune, S. and Teneketzis, D.},
+	year = {1998},
+	keywords = {Ambient intelligence, communication rules, Computer aided manufacturing, Computer architecture, Computerized monitoring, Condition monitoring, Control systems, coordinated decentralized protocols, decentralized information, decision rule, Delay, diagnostic properties, Discrete event systems, Distributed control, failure diagnosis, fault diagnosis, global ordering, local sites, necessary and sufficient conditions, Observers, online diagnostic process, Protocols},
+	pages = {3010--3011 vol.3},
+	file = {Debouk et al. - 1998 - Coordinated decentralized protocols for failure di.pdf:E:\Documents and Settings\Dmitry\Application Data\Zotero\Zotero\Profiles\9j7amfwt.default\zotero\storage\PIDAUDZN\Debouk et al. - 1998 - Coordinated decentralized protocols for failure di.pdf:application/pdf;IEEE Xplore Abstract Record:E:\Documents and Settings\Dmitry\Application Data\Zotero\Zotero\Profiles\9j7amfwt.default\zotero\storage\XJMQPHSC\abs_all.html:text/html}
+}
+
+@article{sampath_diagnosability_1995,
+	title = {Diagnosability of discrete-event systems},
+	volume = {40},
+	issn = {0018-9286},
+	doi = {10.1109/9.412626},
+	abstract = {Fault detection and isolation is a crucial and challenging task in the automatic control of large complex systems. We propose a discrete-event system {(DES)} approach to the problem of failure diagnosis. We introduce two related notions of diagnosability of {DES's} in the framework of formal languages and compare diagnosability with the related notions of observability and invertibility. We present a systematic procedure for detection and isolation of failure events using diagnosers and provide necessary and sufficient conditions for a language to be diagnosable. The diagnoser performs diagnostics using online observations of the system behavior; it is also used to state and verify off-line the necessary and sufficient conditions for diagnosability. These conditions are stated on the diagnoser or variations thereof. The approach to failure diagnosis presented in this paper is applicable to systems that fall naturally in the class of {DES's;} moreover, for the purpose of diagnosis, most continuous variable dynamic systems can be viewed as {DES's} at a higher level of abstraction},
+	number = {9},
+	journal = {{IEEE} Transactions on Automatic Control},
+	author = {Sampath, M. and Sengupta, R. and Lafortune, S. and Sinnamohideen, K. and Teneketzis, D.},
+	month = sep,
+	year = {1995},
+	keywords = {Analytical models, Automatic control, continuous variable dynamic systems, diagnosability, Diagnostic expert systems, Discrete event systems, discrete-event systems, Event detection, failure diagnosis, fault detection, fault diagnosis, fault isolation, Formal languages, Humans, invertibility, large complex systems, large-scale systems, Mathematical model, necessary and sufficient conditions, observability, Power system modeling, Sufficient conditions},
+	pages = {1555--1575}
+}
+
+@article{tarjan_depth-first_1972,
+	title = {Depth-First Search and Linear Graph Algorithms},
+	volume = {1},
+	doi = {10.1137/0201010},
+	number = {2},
+	urldate = {2012-06-05},
+	journal = {{SIAM} Journal on Computing},
+	author = {Tarjan, Robert},
+	year = {1972},
+	keywords = {Algorithm, backtracking, biconnectivity, connectivity, depth-first, graph, search, spanning tree, strong-connectivity},
+	pages = {146--160}
+}
+
+@book{brualdi_introductory_2004,
+	title = {Introductory Combinatorics},
+	isbn = {9788131718827},
+	language = {en},
+	publisher = {Pearson Education},
+	author = {Brualdi},
+	year = {2004}
+}
+
+@article{aho_theory_1968,
+	title = {The theory of languages},
+	volume = {2},
+	issn = {0025-5661, 1433-0490},
+	url = {http://link.springer.com/article/10.1007/BF01692510},
+	doi = {10.1007/BF01692510},
+	language = {en},
+	number = {2},
+	urldate = {2014-02-07},
+	journal = {Mathematical systems theory},
+	author = {Aho, Alfred V. and Ullman, Jeffrey D.},
+	month = jun,
+	year = {1968},
+	keywords = {Computational Mathematics and Numerical Analysis, Theory of Computation},
+	pages = {97--125},
+}
+
+
+@book{hopcroft_introduction_2007,
+	title = {Introduction to Automata Theory, Languages, and Computation},
+	isbn = {9780321455369},
+	abstract = {This classic book on formal languages, automata theory, and computational complexity has been updated to present theoretical concepts in a concise and straightforward manner with the increase of hands-on, practical applications. This new edition comes with Gradiance, an online assessment tool developed for computer science.  Gradiance is the most advanced online assessment tool developed for the computer science discipline. With its innovative underlying technology, Gradiance turns basic homework assignments and programming labs into an interactive learning experience for students. By using a series of "root questions" and hints, it not only tests a student's capability, but actually simulates a one-on-one teacher-student tutorial that allows for the student to more easily learn the material. Through the programming labs, instructors are capable of testing, tracking, and honing their students' skills, both in terms of syntax and semantics, with an unprecedented level of assessment never before offered.  For more information about Gradiance, please visit www.aw.com/gradiance.},
+	language = {en},
+	publisher = {{Pearson/Addison} Wesley},
+	author = {Hopcroft, John E. and Motwani, Rajeev and Ullman, Jeffrey D.},
+	year = {2007},
+	keywords = {Computers / Computer Science}
+}
+
+@incollection{berezin_compositional_1998,
+	series = {Lecture Notes in Computer Science},
+	title = {Compositional Reasoning in Model Checking},
+	copyright = {В©1998 Springer-Verlag Berlin Heidelberg},
+	isbn = {978-3-540-65493-3, 978-3-540-49213-9},
+	url = {http://link.springer.com/chapter/10.1007/3-540-49213-5_4},
+	abstract = {The main problem in model checking that prevents it from being used for verification of large systems is the state explosion problem. This problem often arises from combining parallel processes together. Many techniques have been proposed to overcome this difficulty and, thus, increase the size of the systems that model checkers can handle. We describe several compositional model checking techniques used in practice and show a few examples demonstrating their performance.},
+	language = {en},
+	number = {1536},
+	urldate = {2014-02-07},
+	booktitle = {Compositionality: The Significant Difference},
+	publisher = {Springer Berlin Heidelberg},
+	author = {Berezin, Sergey and Campos, S{\'e}rgio and Clarke, Edmund M.},
+	editor = {Roever, Willem-Paul de and Langmaack, Hans and Pnueli, Amir},
+	month = jan,
+	year = {1998},
+	keywords = {Artificial Intelligence (incl. Robotics), Logics and Meanings of Programs, Mathematical Logic and Formal Languages, software engineering},
+	pages = {81--102},
+}
+
+@book{farrell_object-oriented_2013,
+	address = {Boston, {MA}},
+	title = {An object-oriented approach to programming logic and design},
+	isbn = {9781133188223  1133188222},
+	abstract = {This text takes a language independent approach to develop a foundation in traditional programming principles and object-oriented concepts before learning the details of a specific programming language. Includes programming exercises in every chapter, with review questions, debugging exercises and case projects.},
+	language = {English},
+	publisher = {Course {Technology/Cengage} Learning},
+	author = {Farrell, Joyce},
+	year = {2013}
+}
+
+@article{otto_iec_2009,
+	title = {{IEC} 61131: A general overview and emerging trends},
+	volume = {3},
+	issn = {1932-4529},
+	shorttitle = {{IEC} 61131},
+	doi = {10.1109/MIE.2009.934793},
+	abstract = {Programmable logic controller is the topic of this paper. For several decades, programmable logic controllers ({PLCs)} have been the most often used implementation platform for control algorithms in industrial applications. After their introduction in 1969, various companies developed {PLCs} with different run-time environments, operating systems, and programming languages. To reduce complexity for the users of {PLCs}, the International Electrotechnical Commission ({IEC)} elaborated the standard {IEC} 61131. {IEC} 61131-3 (published in 1992) specifies five {PLC} programming languages based on the existing programming languages but abstracting from proprietary peculiarities: the textual programming languages instruction list ({QV)} and structured text ({ST)}, the graphical programming languages function block diagram ({FBD)} and ladder diagram ({LD)}, and the structuring tool and higher level programming language sequential function chart ({SFC).} Although programmers had to get used to these languages first, they have now become a standard that is accepted and appreciated around the world, as it reduces training efforts and fosters harmonization. The integration of motion control and safety functions are discussed in this paper.},
+	number = {4},
+	journal = {{IEEE} Industrial Electronics Magazine},
+	author = {Otto, A. and Hellmann, K.},
+	month = dec,
+	year = {2009},
+	keywords = {Computer languages, Electrical equipment industry, function block diagram, {IEC} 61131-3 standard, {IEC} standards, industrial control, instruction list, ladder diagram, motion control, Operating systems, Programmable control, programmable controllers, programmable logic controllers, programming languages, Programming profession, Runtime environment, runtime environments, Safety, safety functions, sequential function chart, structured text},
+	pages = {27--31}
+}
+
+@article{vyatkin_iec_2009,
+	title = {The {IEC} 61499 standard and its semantics},
+	volume = {3},
+	issn = {1932-4529},
+	doi = {10.1109/MIE.2009.934796},
+	abstract = {The article is structured as follows. In the {"System-Level} Design for Distributed Automation" section, we give a general introduction to {IEC} 61499 in terms of its value for the automation systems developer. In the {"Elements} of {IEC} 61499 Architecture" section, the basic elements of the {IEC} 61499 architecture are presented using an illustrative example. The semantic problems of {IEC} 61499 are outlined in the {"Semantic} Problems of {IEC} 61499" section. The {"Semantics} of a Basic {FB"} section focuses on the problems and solutions related to the basic function block ({FB)} behavior. It is followed by the {"Semantics} of {FB} Networks" section that discusses semantic problems related to composite {FB} structures. In the "conclusions" section, we list some open problems.},
+	number = {4},
+	journal = {{IEEE} Industrial Electronics Magazine},
+	author = {Vyatkin, V.},
+	month = dec,
+	year = {2009},
+	keywords = {Automatic control, basic function block behavior, Communication system control, Computer languages, control engineering computing, Design automation, distributed automation system, distributed processing, Hardware, {IEC} 61499 architecture, {IEC} 61499 semantic problems, {IEC} 61499 standard, {IEC} standards, Logic design, Logic devices, {PLC} programming languages, Programmable control, programmable controllers, system-level design},
+	pages = {40--48},
+}
+
+@inproceedings{mcumber_general_2001,
+	title = {A general framework for formalizing {UML} with formal languages},
+	doi = {10.1109/ICSE.2001.919116},
+	abstract = {Informal and graphical modeling techniques enable developers to construct abstract representations of systems. Object-oriented modeling techniques further facilitate the development process. The Unified Modeling Language ({UML)}, an object-oriented modeling approach, could be broad enough in scope to represent a variety of domains and gain widespread use. Currently, {UML} comprises several different notations with no formal semantics attached to the individual diagrams. Therefore, it is not possible to apply rigorous automated analysis or to execute a {UML} model in order to test its behavior: short of writing code and performing exhaustive testing. We introduce a general framework for formalizing a subset of {UML} diagrams in terms of different formal languages based on a homomorphic mapping between meta models describing {UML} and the formal language. This framework enables the construction of a consistent set of rules for transforming {UML} models into specifications in the formal language. The resulting specifications derived from {UML} diagrams enable either execution through simulation or analysis through model checking, using existing tools. This paper describes the use of this framework for formalisms {UML} to model and analyze embedded systems. A prototype system for generating the formal specifications and results from an industrial case study are also described.},
+	booktitle = {Proceedings of the 23rd International Conference on Software Engineering, 2001. {ICSE} 2001},
+	author = {{McUmber}, {W.E.} and Cheng, B. H C},
+	month = may,
+	year = {2001},
+	keywords = {abstract representations, Analytical models, Automatic testing, Embedded system, embedded systems, Formal languages, formal semantics, formal specification, formal specifications, homomorphic mapping, industrial case study, meta models, model checking, Object oriented modeling, object-oriented methods, object-oriented modeling, Performance analysis, Performance evaluation, Prototypes, rigorous automated analysis, specification languages, specifications, {UML}, unified modeling language, Writing},
+	pages = {433--442},
+}
+
+@inproceedings{bonfe_design_2003,
+	title = {Design and verification of industrial logic controllers with {UML} and statecharts},
+	volume = {2},
+	doi = {10.1109/CCA.2003.1223152},
+	abstract = {The paper describes a methodological framework that aims to apply formal design and verification techniques to the domain of logic control and supervision for manufacturing systems. The methodology is based on an object-oriented approach, supported by a syntactical and semantical adaptation of the semi-formal software specification languages {UML} and statecharts. The modeling languages have been subsequently formalized, according to a semantics that take into account the concepts described in the {IEC} 61131-3 standard for industrial controllers programming, in order to prove correctness properties expressed in the temporal logic {CTL.} The verification process is performed by means of the model-checking tool {SMV.}},
+	booktitle = {Proceedings of 2003 {IEEE} Conference on Control Applications, 2003. {CCA} 2003},
+	author = {Bonfe, M. and Fantuzzi, C.},
+	month = jun,
+	year = {2003},
+	keywords = {correctness properties, {CTL} temporal logic, formal design, Formal languages, formal verification, {IEC} 61131-3 standard, industrial control, industrial controllers programming, industrial logic controller, manufacturing systems, modeling languages, object-oriented approach, object-oriented methods, {SMV} model checking tool, specification languages, statecharts semiformal software, supervision, temporal logic, {UML}, verification techniques},
+	pages = {1029 -- 1034 vol.2},
+}
+
+@inproceedings{dong_model_2001,
+	title = {Model checking {UML} statecharts},
+	doi = {10.1109/APSEC.2001.991503},
+	abstract = {Unified Modeling Language ({UML)} has been widely used in software development. Verifying if an {UML} model meets the required properties has become a key issue. Model checking is an important technology of automatic formal verification to ensure the correctness of design specifications. An approach of model checking {UML} statecharts is given in this paper At first, the brief syntax and semantics of {UML} statecharts are described. Then, the way of how {UML} statecharts is structurally expressed by extended hierarchical automaton and the labeled transition system are defined. The correctness of operational semantics of {UML} statecharts can be ensured through finding the maximal non-conflict transition set. For the system with infinite runs, the operational semantics can be mapped to a Buchi automaton and linear temporal logic properties of the system can be verified based on the automata theory of model checking. The paper also presents the method of verifying complex system consist of multiple objects modeled by statecharts and collaboration diagram.},
+	booktitle = {Software Engineering Conference, 2001. {APSEC} 2001. Eighth Asia-Pacific},
+	author = {Dong, Wei and Wang, Ji and Qi, Xuan and Qi, Zhi-Chang},
+	month = dec,
+	year = {2001},
+	keywords = {automata theory, automatic formal verification, Buchi automaton, design specifications, extended hierarchical automaton, labeled transition system, linear temporal logic properties, model checking, program verification, specification languages, temporal logic, {UML} statecharts, unified modeling language},
+	pages = {363 -- 370},
+}
+
+@inproceedings{frey_re-engineering_2004,
+	title = {A re-engineering approach for {PLC} programs using finite automata and {UML}},
+	doi = {10.1109/IRI.2004.1431431},
+	abstract = {Today there is a standard for the implementation of programs on programmable logic controllers ({PLCs).} Furthermore there are methods for the formal development of these programs. The standard allows the interchange of algorithms (e.g. if a new hardware should be used) and the formal methods allow the rigid prove of functionality especially needed in safety critical applications (e.g. using model checking). However, there is a lot of existing {PLC} programs that have been implemented in proprietary languages before a standard existed and even today formal methods are scarcely used. This paper outlines an approach to formalize existing {PLC} programs implemented in the widely used {STEP5} language. It consists of two steps: first the modular structure of the program is transferred to a {UML} model and in a second step the algorithms contained in the modules are converted to finite automata. This conversion uses an abstraction method to avoid large automata.},
+	booktitle = {Proceedings of the 2004 {IEEE} International Conference on Information Reuse and Integration, 2004. {IRI} 2004},
+	author = {Frey, G. and Younis, {M.B.}},
+	month = nov,
+	year = {2004},
+	keywords = {abstraction method, Automata, Automatic control, Automation, Control systems, finite automata, formal method, Hardware, {IEC} standards, microprogramming, Programmable control, programmable controllers, programmable logic controllers, Reverse engineering, Safety, safety critical application, software reusability, {STEP5} language, systems re-engineering, {UML} model, unified modeling language},
+	pages = {24 --29},
+}
+
+@book{ray_automated_2007,
+	address = {Chennai},
+	title = {Automated translation of {MATLAB} {Simulink/Stateflow} models to an Intermediate format in {HyVisual}},
+	publisher = {Chennai Mathematical Institute},
+	author = {Ray, Rajarshi},
+	year = {2007},
+	keywords = {simulink; matlab},
+}
+
+
+@inproceedings{li_stateflow_2011,
+	title = {Stateflow to Extended Finite Automata Translation},
+	doi = {10.1109/COMPSACW.2011.11},
+	abstract = {State flow, a graphical interface tool for Matlab, is a common choice for design of event-driven software and systems. In order for their offline analysis (testing/verification) or online analysis (monitoring), the State flow model must be converted to a form that is amenable to formal analysis. In this paper, we present a systematic method, which translates State flow into a formal model, called {Input/Output} Extended Finite Automata ({I/O-EFA).} The translation method treats each state of the State flow model as an atomic module, and applies composition/refinement rules for each feature (such as state-hierarchy, local events) recursively to obtain the entire model. The size of the translated model is linear in the size of the State flow chart. Our translation method is sound and complete in the sense that it preserves the discrete behaviors as observed at the sample times. Further, the translation method has been implemented in a Matlab tool, which outputs the translated {I/O-EFA} model that can itself be simulated in Matlab.},
+	booktitle = {Computer Software and Applications Conference Workshops ({COMPSACW)}, 2011 {IEEE} 35th Annual},
+	author = {Li, Meng and Kumar, R.},
+	month = jul,
+	year = {2011},
+	keywords = {atomic module, event-driven software, finite automata, formal analysis, graphical interface tool, graphical user interfaces, input-output extended finite automata translation method, mathematics computing, Matlab tool, offline analysis, online analysis, stateflow model, systematic method},
+	pages = {1 --6},
+}
+
+@online{matlab,
+	title = {{MATLABВ®}, a high-level language and interactive environment for numerical computation, visualization, and programming},
+	howpublished = {http://www.mathworks.it/}
+}
+
+
+@online{nusmv,
+	title = {The {NuSMV} symbolic model checker},
+	howpublished = {http://nusmv.fbk.eu/}
+}
+
+@online{iec_vocabulary,
+	title = {{International Electrotechnical Commission. Electropedia: The World's Online Electrotechnical Vocabulary}},
+	howpublished = {http://www.electropedia.org/}
+}
+
+@online{simatic_s7_300,
+	title = {{SIMATIC S7-300}: the modular universal controller for the manufacturing industry},
+	howpublished = {https://www.automation.siemens.com/mcms/programmable-logic-controller/en/simatic-s7-controller/s7-300/}
+}
+
+@online{siemens_mtbf,
+	title = {{SIEMENS Industry Online Support} Mean Time Between Failures (MTBF) - list for SIMATIC products}},
+	howpublished = {https://support.automation.siemens.com}
+}
+@online{reliabililty_database,
+	title = {{Center for Chemical Process Safety - Process Equipment Reliability Database (PERD)}},
+	howpublished = {http://www.aiche.org/ccps/resources/perd}
+}
+
+
+
+@phdthesis{sartini_architectures_2010,
+	type = {Tesi di dottorato},
+	title = {Architectures and design patterns for functional design of logic control and diagnostics in industrial automation},
+	url = {http://amsdottorato.unibo.it/2790/},
+	language = {English},
+	urldate = {2014-02-12},
+	school = {Univercity of Bologna},
+	author = {Sartini, Matteo},
+	month = mar,
+	year = {2010},
+	keywords = {{ING-INF/04} Automatica},
+}
+
+@inproceedings{faldella_hierarchical_2008,
+	address = {Seoul, Korea},
+	title = {Hierarchical control architectures in industrial automation: a design approach based on the generalized actuator concept},
+	author = {Faldella, Eugenio and Paoli, Andrea and Sartini, Matteo and Tilli, Andrea},
+	year = {2008},
+	file = {Hierarchical Supervision Systems in Industrial Automation_ A Design Procedure Based on the Generalized Actuator Concep.pdf:E:\Documents and Settings\Dmitry\Application Data\Zotero\Zotero\Profiles\9j7amfwt.default\zotero\storage\D3VCRW5N\Hierarchical Supervision Systems in Industrial Automation_ A Design Procedure Based on the Generalized Actuator Concep.pdf:application/pdf}
+}
+
+@misc{_iso/iec_12207_2008,
+	title = {{ISO/IEC 12207:2008 Standard for Information Technology - Software Life Cycle Processes}},
+	howpublished = {http://www.iso.org/iso/catalogue\_detail?csnumber=43447}
+}
+
+@article{vyatkin_software_2013,
+	title = {Software Engineering in Industrial Automation: State-of-the-Art Review},
+	volume = {9},
+	issn = {1551-3203},
+	shorttitle = {Software Engineering in Industrial Automation},
+	doi = {10.1109/TII.2013.2258165},
+	abstract = {This paper presents one perspective on recent developments related to software engineering in the industrial automation sector that spans from manufacturing factory automation to process control systems and energy automation systems. The survey's methodology is based on the classic {SWEBOK} reference document that comprehensively defines the taxonomy of software engineering domain. This is mixed with classic automation artefacts, such as the set of the most influential international standards and dominating industrial practices. The survey focuses mainly on research publications which are believed to be representative of advanced industrial practices as well.},
+	number = {3},
+	journal = {{IEEE} Transactions on Industrial Informatics},
+	author = {Vyatkin, V.},
+	month = aug,
+	year = {2013},
+	keywords = {advanced industrial practices, energy automation systems, factory automation, Industrial automation, industrial automation sector, international standards, manufacturing factory automation, Process control, process control systems, production engineering computing, production facilities, research publications, software engineering, software engineering taxonomy, Standards, {SWEBOK} reference document},
+	pages = {1234--1249},
+}
+
+@misc{james_failure,
+	title = {{Failure Analysis - Industrial Case Studies}},
+	howpublished = {http://www.fatiguefracture.com/},
+	author = {James, M Neil}
+}
+
+@misc{forensic_failre_analysis,
+	title = {{Forensic Engineering and Failure Analysis - Case Studies A-Z List}},
+	howpublished = {http://www.intertek.com/forensics/casestudies/}
+}
+
+@inproceedings{arora_failures_2007,
+	title = {{Failures of {Electrical/Electronic} Components: Selected Case Studies}},
+	shorttitle = {Failures of {Electrical/Electronic} Components},
+	doi = {10.1109/PSES.2007.4378474},
+	abstract = {Consumer products typically contain a large number of discrete electrical and electronic components. The failure modes of these components are usually benign. However, in some cases, these failure modes can pose a safety hazard. An understanding of a component's failure modes and mechanisms is desirable to design a product that is both safe and reliable. Two case studies are presented here: an electrical and thermal test to characterize the temperature of an aluminum electrolytic capacitor during a venting event, and a field failure case study showing a power connector failure due to improper connector mounting techniques. A summary of the test setup, test procedures and selected results are also presented here.},
+	booktitle = {{IEEE} Symposium on Product Compliance Engineering, 2007. {PSES} 2007},
+	author = {Arora, A. and Medora, {N.K.} and Swart, J.},
+	month = oct,
+	year = {2007},
+	keywords = {aluminium, Aluminum, aluminum electrolytic capacitor, Capacitors, connector failure, Connectors, Consumer products, electric connectors, electrolytic capacitors, Electronic components, failure analysis, failure modes, Hazards, high contact resistance, mechanical stress, mounting techniques, power connector, Product design, Safety, Temperature, Testing, venting, venting event},
+	pages = {1--6},
+}
+
+@article{what_is_a_process_map,
+	title = {{What is a Process Map?}},
+	howpublished = {http://www.bizmanualz.com/blog/what-is-a-process-map.html},
+	abstract = {The term {"Process} Map" or process flow chart is used to describes a process. Learn about the 7 types of process maps with graphic examples of each.},
+	date = {2014-03-07},
+	year = {2014},
+	author = {Chris, Anderson},
+	journal = {Business Process Management},
+	keywords = {business process, core processes, Cross Functional Process Map, document map, high level process map, Process Flow Chart, process map, process mapping, rendered process map, {SIPOC}, Swim Lanes Process Map, unified modeling language, value stream map, work flow diagram},
+}
+
+@book{tague_quality_2010,
+	title = {The Quality Toolbox, Second Edition},
+	language = {English},
+	publisher = {{ASQ} Quality Press},
+	author = {Tague, Nancy R.},
+	month = oct,
+	year = {2010}
+}
+
+@inproceedings{ruiz_state_2000,
+	title = {State analysis: an alternative approach to {FMEA}, {FTA} and Markov analysis},
+	shorttitle = {State analysis},
+	doi = {10.1109/RAMS.2000.816336},
+	abstract = {State analysis is an alternative functional approach to any other failure analysis technique that tries to face with current product and process design requirements. While other methodologies discover failures without a complete system understanding, state analysis focuses on finding system level failure modes by means of building a full functional model. State analysis grades failure modes in a more representative way by means of applying a customer reaction model, of combining factors, of following fuzzy rules and of including uncertainties. In this way, you are able to focus on important issues and produce field failure rate estimates with these results. Applying state analysis, a total of 635 issues have been identified in 12 sessions, of 2 hours, with an average of 7 people per session. An {FMEA} of a function was done with different people involved in order to compare. The results were: double time investment, 8 people involved and no critical subsystem interaction issues detected. State analysis has been found an intuitive, comprehensive and easy tool to analyze product functions, failures and design weaknesses within the {IPD} (integrated product design) environment},
+	booktitle = {Reliability and Maintainability Symposium, 2000. Proceedings. Annual},
+	author = {Ruiz, I. and Paniagua, E. and Alberto, J. and Sanabria, J.},
+	year = {2000},
+	keywords = {artificial intelligence, Buildings, Documentation, failure analysis, failure analysis technique, failure modes grading, Fault trees, field failure rate estimates, full functional model, fuzzy rules, integrated product design, Investments, Process design, Product design, product design weaknesses analysis, product development, product failures analysis, product functions analysis, reliability, state analysis, system level failure modes, Uncertainty, {US} Department of Transportation},
+	pages = {370--375},
+}
+
+@inproceedings{banks_introduction_1999,
+	title = {Introduction to simulation},
+	volume = {1},
+	doi = {10.1109/WSC.1999.823046},
+	abstract = {This introduction begins with an example of simulation done by hand. Modeling concepts in simulation are then introduced based on the example. Next, the advantages and disadvantages of simulation are discussed. The introduction ends with a discussion of the steps in a simulation study},
+	booktitle = {Simulation Conference Proceedings, 1999 Winter},
+	author = {Banks, J.},
+	year = {1999},
+	keywords = {Analytical models, banking, Character generation, Computational modeling, History, modeling concepts, modelling, problem solving, Problem-solving, reviews, simulation, Time measurement},
+	pages = {7--13 vol.1},
+}
+
+
+@inproceedings{tamimi_simulation_2012,
+author = {El-Tamimi A. M., Abidi M. H., Mian S. H. and Aalam J.},
+title = {Analysis of performance measures of flexible manufacturing system},
+booktitle = {Journal of King Saud University-Engineering Sciences},
+pages = {115-=129 vol. 24},
+year = {2012}
+}
+
+@inproceedings{sharda_best_2011,
+	title = {Best practices for effective application of discrete event simulation in the process industries},
+	doi = {10.1109/WSC.2011.6147942},
+	abstract = {The application of discrete event simulation in the process industries is commonly used for the analysis of reliability and maintenance improvements. However there have been increasing applications that go beyond this traditional area of application to include evaluations for chemical plant expansions, capital investment options, cycle time reduction and safety, in presence of failure prone components. This paper will present three case studies to demonstrate the use of discrete event simulation for such applications. The first case study demonstrates the use of discrete event simulation to identify critical failure modes for a plant characterized by discrete and continuous product flow. The second study involves the evaluation of capital expansion decisions in presence of different failures and identification of critical components affecting plant throughput. The third case study shows the use of simulation of verify the designed production capacity of a subsystem in presence of different failures and operational constraints. The goal of this paper is to show the potential of discrete event simulation for such problems, and to present examples of best practices for the scoping and execution of simulation projects in the process industries.},
+	booktitle = {Simulation Conference ({WSC)}, Proceedings of the 2011 Winter},
+	author = {Sharda, B. and Bury, {S.J.}},
+	month = dec,
+	year = {2011},
+	keywords = {best practices, capital expansion decisions, capital investment options, Chemical industry, chemical plant expansions, chemicals, continuous product flow, cycle time reduction, Data models, discrete event simulation, discrete product flow, failure analysis, failure prone components, investment, maintenance engineering, maintenance improvements, process industries, Production, reliability, reliability improvements, Safety, Throughput},
+	pages = {2315--2324},
+}
+
+@inproceedings{weatherford_simulation_2003,
+	title = {Simulation of industrial {AC} drive system under fault conditions},
+	volume = {1},
+	doi = {10.1109/APEC.2003.1179253},
+	abstract = {An industrial motor drive suffers from periodic failures of the {DC} link aluminum electrolytic capacitor bank. Simulations pinpoint likely causes, including problems with the design of the balancing resistors. Stress on the capacitor can be produced by faults in the inverter and by open-conductor faults in the balancing resistors.},
+	booktitle = {Eighteenth Annual {IEEE} Applied Power Electronics Conference and Exposition, 2003. {APEC} '03},
+	author = {Weatherford, {H.H.} and Brice, {C.W.}},
+	month = feb,
+	year = {2003},
+	keywords = {13.8 {kV}, 1500 {kVA}, 1500 {kW}, 700 V, 950 V, {AC} motors, balancing resistors, capacitor storage, capacitor stress, Capacitors, Circuit faults, {DC} link aluminum electrolytic capacitor bank, electrical faults, electrolytic capacitors, induction motor drives, industrial {AC} drive system, industrial motor drive, inverter faults, Inverters, invertors, Metals industry, Motor drives, open-conductor faults, periodic failures, Rectifiers, resistors, steel industry, Synchronous motors, Voltage},
+	pages = {457--463 vol.1},
+}
+
+@inproceedings{warrington_modelling_2002,
+	title = {Modelling of maintenance, within discrete event simulation},
+	doi = {10.1109/RAMS.2002.981652},
+	abstract = {The concept of maintenance free operating periods ({MFOP)} requires co-ordination of failure avoidance, failure anticipation and maintenance delay techniques, with the objective of enhancing operational capability in a cost-effective manner. Individual aspects might be modelled mathematically but discrete event simulation is required for an analysis with the necessary fidelity. The ultra reliable aircraft model ({URAM)} is an aircraft reliability and maintenance discrete event simulation designed to investigate {MFOP} concepts. Analysis during its development identified several important factors pertaining to maintenance: Allocation and scheduling of resource; maintenance objectives and their operational \& time-based over-ride; forward planning of scheduled \& prognostics based maintenance; diagnostics, covering both fault visibility \& isolation; task prioritisation, based on system structural importance, criticality importance, time \& cost. These have been successfully implemented, making {URAM} an efficient and representative simulation of aircraft reliability, maintenance support and operational tasking. The factors and their implementation in {URAM} may easily be transferred to discrete event simulation of other complex assets such as ships and railway systems},
+	booktitle = {Reliability and Maintainability Symposium, 2002. Proceedings. Annual},
+	author = {Warrington, L. and Jones, {J.A.} and Davis, N.},
+	year = {2002},
+	keywords = {aerospace simulation, aircraft, aircraft maintenance modelling, Costs, Delay, discrete event simulation, failure analysis, failure anticipation, failure avoidance, fault diagnosis, Maintenance, maintenance delay techniques, maintenance engineering, maintenance free operating periods, maintenance scheduling, Marine vehicles, Mathematical model, operational capability enhancement, Rail transportation, reliability, Resource management, ultra reliable aircraft model},
+	pages = {260--265},
+}
+
+
+@inproceedings{holloway_why_1997,
+	title = {Why Engineers Should Consider Formal Methods},
+	abstract = {This paper presents a logical analysis of a typical argument favoring the use of formal methods for software development, and suggests an alternative argument that is simpler and stronger than the typical one.},
+	booktitle = {In 1997 {AIAA/IEEE} 16th Digital Avionics Systems Conference},
+	author = {Holloway, C. Michael},
+	year = {1997},
+	pages = {9},
+}
+
+@misc{event_b_web,
+	title = {{Event-B and the Rodin Platform}},
+	howpublished = {http://www.event-b.org/}
+}
+
+
+@misc{atelier_b_web,
+	title = {{Atelier B - industrial tool for use of the B Method }},
+	howpublished = {http://www.atelierb.eu/}
+}
+
+@book{spivey_z_1992,
+	address = {New York},
+	title = {The Z notation: a reference manual},
+	isbn = {0139785299 9780139785290},
+	shorttitle = {The Z notation},
+	language = {English},
+	publisher = {Prentice Hall},
+	author = {Spivey, J. M},
+	year = {1992}
+}
+
+@article{maclay_click_2000,
+	title = {Click and code [automatic code generation]},
+	volume = {46},
+	issn = {0953-5683},
+	doi = {10.1049/ir:20000304},
+	abstract = {Automatic code generation already plays a valuable role in embedded development. Engineers are turning to advanced software tools that generate code automatically, both during the prototyping stage of the project and when production code is required. At the prototyping stage, automatic code generation can greatly accelerate the development process, allowing many different algorithms to be tried in a shorter period. Furthermore, because there is no significant time penalty for trying alternative solutions, automatic code generation tools positively encourage innovation, eliminating the temptation to re-use previously developed code in compromised solutions. The specification that previously would have been handed to a software engineer for hand coding is now used as an 'executable specification'. In addition to forming the basis for code generation this specification can be used to develop test procedures, that can be applied both in simulation and on the real product. A further advantage of this approach is that algorithm developers can test their ideas without having to wait until the associated code is ready for downloading to a target processor. This not only benefits the algorithm designer, but also frees the software engineer from the routine coding of algorithms, allowing greater effort to be devoted to more challenging issues},
+	number = {3},
+	journal = {{IEE} Review},
+	author = {Maclay, D.},
+	month = may,
+	year = {2000},
+	keywords = {algorithm developers, automatic code generation, automatic programming, embedded development, embedded systems, executable specification, innovation, production code, program compilers, prototyping stage, test procedures development},
+	pages = {25--28},
+}
+@book{clarke_model_1999,
+	address = {Cambridge, Mass.},
+	title = {Model checking},
+	isbn = {0262032708  9780262032704},
+	language = {English},
+	publisher = {{MIT} Press},
+	author = {Clarke, E. M and , Grumberg, Orna and Peled, Doron},
+	year = {1999}
+}
+
+@article{zhou_semantic_2012,
+	title = {Semantic Translation of Simulink Diagrams to {Input/Output} Extended Finite Automata},
+	volume = {22},
+	issn = {0924-6703, 1573-7594},
+	url = {http://link.springer.com/article/10.1007/s10626-010-0096-1},
+	doi = {10.1007/s10626-010-0096-1},
+	abstract = {We develop a semantic translation approach for Simulink diagrams. Simulink is a graphical tool for representing and simulating dynamical systems. We propose a recursive approach for translating a class of Simulink diagrams to input/output-extended finite automata ({I/O-EFA).} An {I/O-EFA} model of a Simulink diagram can be used for further analysis such as test generation and formal verification. We show that the translation approach is sound and complete: The input-state-output behavior of an {I/O-EFA} model, as defined in terms of a step-trajectory, preserves the input-state-output behavior of the corresponding Simulink diagram at each sample time (assuming the same integration method for any of the continuous blocks with dynamics).},
+	language = {en},
+	number = {2},
+	urldate = {2013-01-24},
+	journal = {Discrete Event Dynamic Systems},
+	author = {Zhou, Changyan and Kumar, Ratnesh},
+	month = jun,
+	year = {2012},
+	keywords = {Convex and Discrete Geometry, Electrical Engineering, Formal model, Input/output extended finite automata, Manufacturing, Machines, Tools, Operations {Research/Decision} Theory, Semantic translation, Simulink, Systems Theory, Control},
+	pages = {223--247}
+}
+
+@article{secchi_use_2007,
+	title = {On the Use of {UML} for Modeling Mechatronic Systems},
+	volume = {4},
+	issn = {1545-5955},
+	doi = {10.1109/TASE.2006.879686},
+	abstract = {This paper describes a modeling language that aims to provide a unified framework for representing control systems, namely, physical plants coupled with computer-based control devices. The proposed modeling methodology is based on the cardinal principle of object orientation, which allows describing both control software and physical components using the same basic concepts, particularly those of capsules, ports, and protocols. Furthermore, it is illustrated how the well-known object-oriented specification language unified modeling language can be adopted, provided an adequate formalization of its semantics, to describe structural and behavioral aspects of control systems, related to both logical and physical parts. Note to Practitioners-The development of an automated system within an industrial setting is a complex task, whose successful result depends on the joint efforts of a team of designers with different scientific backgrounds and specialized knowledge. In fact, an automated system is typically composed of a mechanical assembly, which must be precisely designed and manufactured, and a set of sensors and actuators (e.g., electrical drives, pneumatic systems, etc.), which are, on their turn, controlled most of the time by means of digital processors. Of course, both electrical parts and control algorithms (e.g., proportional, integral, and derivative ({PID)} regulators, logic and supervisory control, reference trajectories for mechanical motions, etc.) should be designed with the same care given to mechanical aspects. Moreover, it is undeniable that none of the various parts composing the automated system design specification can, on their own, allow engineers to understand the actual behavior of the whole system, especially without a common description language that is understandable for all of the designers. The present paper introduces a unified language which aims to support integrated design specifications of automated systems, including the dynamics of het- erogeneous physical assemblies, the discrete-event behavior of distributed control software, and the specification of interface ports between the plant and the control system. With the proposed language, it is possible to obtain a complete picture of the automated system suitable for its simulation, documentation, and validation. The modeling language described in the paper supports the principles of object orientation. This choice moves in the direction of enhancing modularity and reusability properties of design specifications, which are aspects of great importance in the design practice. Moreover, the object-oriented approach to automated systems design proposed in the paper aims to introduce the concept of "design by extension" in the manufacturing industry. This means that the definition of specialization relationships between classes of components implies that those components should be designed in order to be substitutable with each other, especially from a dynamic point of view. This aspect will be the subject of further papers illustrating other practical insights on the use of object-oriented models for automated systems},
+	number = {1},
+	journal = {{IEEE} Transactions on Automation Science and Engineering},
+	author = {Secchi, C. and Bonfe, M. and Fantuzzi, C.},
+	month = jan,
+	year = {2007},
+	keywords = {Assembly systems, Automatic control, Bond graphs, computer-based control devices, control engineering computing, control system synthesis, Control systems, mechatronic systems, mechatronics, modeling language, object orientation, Object oriented modeling, object-oriented design, object-oriented languages, object-oriented specification language, Physics computing, Protocols, software engineering, specification languages, system modeling, unified modeling language, unified modeling language ({UML)}},
+	pages = {105--113},
+}
+
+@inproceedings{blackburn_requirements_1998,
+	title = {Requirements for industrial-strength formal method tools},
+	doi = {10.1109/WIFT.1998.766308},
+	abstract = {Addresses issues concerning requirements for formal method tools. The question asked was: {ldquo;What} requirements should a formal methods-based software tool environment satisfy in order to meet both the criteria of formal methods, yet still be useful (usable) in industry? rdquo;. The stated requirements for formal method tools were quite similar to what might be expected for any tool that is to be used in an industrial software engineering environment. However, there is a general consensus that formal methods tools must be ldquo;invisible and automatic rdquo; if they are to be used in an industrial setting},
+	booktitle = {2nd {IEEE} Workshop on Industrial Strength Formal Specification Techniques, 1998. Proceedings},
+	author = {Blackburn, {M.R.} and Busser, {R.D.}},
+	year = {1998},
+	keywords = {automatic tools, formal specification, industrial software engineering environment, industrial-strength formal method tools, industry, invisible tools, requirements, software tool environment, software tools, usability, usefulness},
+	pages = {137 --138},
+}
+
+@misc{verilog,
+	title = {{Verilog hardware description language, IEEE 1364}},
+	howpublished = {http://www.verilog.com/}
+}
+
+@misc{theprob,
+	title = {{The ProB Animator and Model Checker}},
+	howpublished = {http://www.stups.uni-duesseldorf.de/ProB/}
+}
+
+@misc{pessoa,
+	title = {{Pessoa Software Toolbox for the Synthesis of Correct-by-Design Embedded Control Software}},
+	howpublished = {https://sites.google.com/a/cyphylab.ee.ucla.edu/pessoa/}
+}
+
+@misc{goal,
+	title = {{GOAL is a graphical interactive tool for defining and manipulating Büchi automata and temporal logic formulae}},
+	howpublished = {http://goal.im.ntu.edu.tw/wiki/doku.php}
+}
+
+@misc{desuma,
+	title = {{DESUMA Tool for discrete event systems}},
+	howpublished = {http://www.eecs.umich.edu/umdes/toolboxes.html}
+}
+
+@misc{tct,
+	title = {{TCT design software for discrete event systems theory}},
+	howpublished = {http://www.control.toronto.edu/DES/}
+}
+
+@misc{supremica,
+	title = {{Supremica Tool for Development Robust Control Systems}},
+	howpublished = {http://www.supremica.org/}
+}
+ 
+
+
+@misc{web_svg,
+	title = {{SVG graphics format by the W3C SVG Working Group}},
+	howpublished = {http://www.w3.org/Graphics/SVG/}
+}
+
+
+@inproceedings{rudie_minimal_1999,
+	title = {Minimal communication in a distributed discrete-event control system},
+	volume = {3},
+	doi = {10.1109/ACC.1999.786208},
+	abstract = {We consider distributed discrete-event systems where agents (or local sites) are required to communicate in order to perform some specified monitoring and control tasks. A strategy to minimize communication between sites is developed},
+	booktitle = {American Control Conference, 1999. Proceedings of the 1999},
+	author = {Rudie, K. and Lafortune, S. and Lin, Feng},
+	year = {1999},
+	keywords = {agents, Automata, Automatic control, Communication system control, Computerized monitoring, Condition monitoring, Control systems, control tasks, Discrete event systems, Distributed control, distributed discrete-event control system, finite automata, local sites, minimal communication, Mobile communication, Monitoring, Supervisory control},
+	pages = {1965--1970 vol.3}
+}
+
+@article{rudie_minimal_2003,
+	title = {Minimal communication in a distributed discrete-event system},
+	volume = {48},
+	issn = {0018-9286},
+	doi = {10.1109/TAC.2003.812780},
+	abstract = {This paper deals with distributed discrete-event systems, in which agents (or local sites) are required to communicate in order to perform some specified tasks. Associated with each agent is a finite-state automaton that captures the required tasks to be performed at that site. The problem considered is that each agent must be able to distinguish between the states of its automaton. To help it disambiguate states, an agent uses a combination of direct observation (obtained from sensor readings available to that agent) and communicated information (obtained from sensor readings available to another agent). Since communication may be costly, a strategy to minimize communication between sites is developed. The complexity of the solution reflects the interdependence of the agents' communication protocols. That is, the decision to communicate the occurrence of an event relies on which event sequences are indistinguishable to an agent, which, in turn, is a result of what has already been communicated to that agent.},
+	number = {6},
+	journal = {{IEEE} Transactions on Automatic Control},
+	author = {Rudie, K. and Lafortune, S. and Lin, Feng},
+	year = {2003},
+	keywords = {agent, Automata, Communication system control, complexity, Computerized monitoring, Condition monitoring, Control systems, decentralized control, Design engineering, direct observation, Discrete event systems, discrete-event systems, Distributed control, finite state machines, finite-state automaton, Power engineering and energy, Protocols},
+	pages = {957--975},
+}
+
+@article{lin_minimal_2007,
+	title = {Minimal Communication for Essential Transitions in a Distributed Discrete-Event System},
+	volume = {52},
+	issn = {0018-9286},
+	doi = {10.1109/TAC.2007.902761},
+	abstract = {In a distributed discrete-event system with decentralized information, agents at the various sites (e.g., controllers or diagnosers) may be required to communicate in order to correctly perform some prescribed tasks. Bandwidth, power, or security constraints motivate the design of communication protocols among agents that minimize the number of required communications. This note presents an algorithm that can synthesize such a communication protocol given a set of ldquoessential transitionsrdquo that constitute the initial required communications. The synthesized communication protocol is shown to be minimal.},
+	number = {8},
+	journal = {{IEEE} Transactions on Automatic Control},
+	author = {Lin, Feng and Rudie, K. and Lafortune, S.},
+	month = aug,
+	year = {2007},
+	keywords = {Algebra, Assembly systems, Capacity planning, communication protocol synthesis, control system synthesis, Control systems, decentralised control, decentralized information, Discrete event systems, discrete-event systems, Distributed control, distributed diagnosis, distributed discrete-event system, Equations, essential transition minimal communication, minimal communication, Production systems, Stochastic processes, Stochastic systems, Supply chains},
+	pages = {1495--1502},
+}
+
+@article{basilio_computation_2012,
+	title = {Computation of minimal event bases that ensure diagnosability},
+	volume = {22},
+	issn = {0924-6703},
+	url = {http://www.springerlink.com/content/t22g703m22067702/abstract/},
+	doi = {10.1007/s10626-012-0129-z},
+	abstract = {We deal with the problem of finding sets of observable events (event bases) that ensure language diagnosability of discrete-event systems modeled by finite state automata. We propose a methodology to obtain such event bases by exploiting the structure of the diagnoser automaton, and in particular of its indeterminate cycles. We use partial diagnosers, test diagnosers, and other new constructs to develop rules that guide the update of the observable event set towards achieving diagnosability. The contribution of this paper is the description of such rules and their integration into a set of algorithms that output minimal diagnosis bases.},
+	number = {3},
+	urldate = {2012-10-30},
+	journal = {Discrete Event Dynamic Systems},
+	author = {Basilio, JoГЈo and Lima, Saulo and Lafortune, StГ©phane and Moreira, Marcos},
+	year = {2012},
+	keywords = {Mathematics and Statistics},
+	pages = {249--292},
+}
+
+@inproceedings{ye_incremental_2009,
+	title = {An Incremental Approach for Pattern Diagnosability in Distributed Discrete Event Systems},
+	doi = {10.1109/ICTAI.2009.75},
+	abstract = {Diagnosability is a crucial property that determines at design stage how accurate any diagnosis algorithm can be on a partially observable system. Recent work on diagnosability has generalized fault event case to pattern case, which can describe more general objectives for diagnosis problem, but based on global model and global twin plant construction. In this paper, we propose an original framework to solve pattern diagnosability in a distributed way to avoid calculating global objects. We first show how to incrementally accomplish pattern recognition without building global model by propagating only diagnosability relative information between components. Then an efficient way to construct pattern verifier is proposed, which is inspired from the classical twin plant method but with smaller state space, to search for partial critical paths, whose global consistency is subsequently checked. Meanwhile we prove that the result obtained from our distributed approach is on an equality with that from the centralized one but the evaluation result shows that our search state space exploited is only a small subpart of the global twin plant, whose construction is unavoidable in the centralized approach.},
+	booktitle = {21st International Conference on Tools with Artificial Intelligence, 2009. {ICTAI} '09},
+	author = {Ye, Lina and Dague, P. and Yan, Yuhong},
+	month = nov,
+	year = {2009},
+	keywords = {Algorithm design and analysis, artificial intelligence, Buildings, Discrete event systems, distributed discrete event system, fault diagnosis, large-scale systems, Pattern analysis, pattern diagnosability approach, pattern recognition, state-space methods, Sufficient conditions, System testing},
+	pages = {123--130}
+}
+
+@inproceedings{ye_general_2012,
+	title = {A General Algorithm for Pattern Diagnosability of Distributed Discrete Event Systems},
+	volume = {1},
+	doi = {10.1109/ICTAI.2012.26},
+	abstract = {Diagnosability is an important system property that determines at design stage how accurate any diagnostic reasoning can be on a partially observed system. A fault in a discrete-event system is diagnosable iff its occurrence can always be deduced from enough observations. It is well known that centralized diagnosability approaches lead to combinatorial explosion of the search space since they assume the existence of a monolithic model of the system. This is why very recently the distributed approaches for diagnosability began to be investigated, relying on local objects. On the other hand, diagnosis objectives are generalized from fault event to fault pattern that can represent multiple faults, repeating fault, sequences of significant events, repair of faults, etc. For pattern case, most existing approaches are centralized. In this paper, we propose a new distributed framework for pattern diagnosability. We first show how to recognize patterns by incrementally constructing local pattern recognizers through extended subsystems. Then we propose a structure called regional pattern verifier that is constructed from the subsystem where the pattern is completely recognized before showing how to abstract just the necessary and sufficient diagnosability information to further save the search space. Then the global consistency checking is based on another local structure called abstracted local twin checker to analyze pattern diagnosability. In this way, we avoid constructing global objects both for pattern recognition and for pattern diagnosability. The correctness of our distributed algorithm is theoretically proved and its efficiency experimentally demonstrated by the results of the implementation.},
+	booktitle = {2012 {IEEE} 24th International Conference on Tools with Artificial Intelligence ({ICTAI)}},
+	author = {Ye, L. and Dague, P.},
+	year = {2012},
+	keywords = {abstracted local twin checker, centralized diagnosability, combinatorial explosion, design stage, diagnosability analysis, diagnosis objectives, diagnostic reasoning, Discrete event systems, distributed algorithm, distributed diagnosis, distributed discrete event systems, distributed framework, distributed processing, extended subsystems, fault diagnosis, fault event, fault pattern, general algorithm, global consistency checking, knowledge representation, local objects, local pattern recognition, model-based diagnosis, monolithic model, necessary and sufficient diagnosability information, partially observed system, pattern case, pattern diagnosability, pattern recognition, program diagnostics, regional pattern verifier, repeating fault, search problems, search space, system property},
+	pages = {130--137},
+}
+
+@article{su_discrete-event_2013,
+	title = {Discrete-event modeling of multi-agent systems with broadcasting-based parallel composition},
+	volume = {49},
+	issn = {0005-1098},
+	url = {http://www.sciencedirect.com/science/article/pii/S0005109813004081},
+	doi = {10.1016/j.automatica.2013.08.007},
+	abstract = {Multi-agent systems have been widely used in logistics and manufacturing. In this paper we develop an automaton-based modeling framework for a special type of multi-agent systems, where agents are instantiated from a finite number of finite-state automaton templates, and interactions among agents are characterized via cooperative synchronization and broadcasting. To describe the compositional behavior of all agents, we propose a novel broadcasting-based parallel composition rule and show that it is commutative and associative. The effectiveness of this modeling framework and the parallel composition rule is illustrated in a simple multi-agent system.},
+	number = {11},
+	urldate = {2013-12-16},
+	journal = {Automatica},
+	author = {Su, Rong},
+	month = nov,
+	year = {2013},
+	keywords = {Broadcasting-based parallel composition, finite-state automata, Multi-agent systems, Synchronous product},
+	pages = {3502--3506},
+}
+
+@article{fabre_distributed_2005,
+	title = {Distributed Monitoring of Concurrent and Asynchronous Systems*},
+	volume = {15},
+	issn = {0924-6703, 1573-7594},
+	url = {http://link.springer.com/article/10.1007/s10626-005-5238-5},
+	doi = {10.1007/s10626-005-5238-5},
+	abstract = {In this paper we study the diagnosis of distributed asynchronous systems with concurrency. Diagnosis is performed by a peer-to-peer distributed architecture of supervisors. Our approach relies on Petri net unfoldings and event structures, as means to manipulate trajectories of systems with concurrency. This article is an extended version of the paper with same title, which appeared as a plenary address in the Proceedings of {CONCURвЂ™2003.}},
+	language = {en},
+	number = {1},
+	urldate = {2013-04-27},
+	journal = {Discrete Event Dynamic Systems},
+	author = {Fabre, Eric and Benveniste, Albert and Haar, Stefan and Jard, Claude},
+	month = mar,
+	year = {2005},
+	keywords = {asynchronous, concurrent, Convex and Discrete Geometry, distributed, Electronic and Computer Engineering, event structures, fault diagnosis, fault management, Manufacturing, Machines, Tools, Operation {Research/Decision} Theory, Systems Theory, Control, unfoldings},
+	pages = {33--84},
+}
+
+
+@article{fabre_partial_2007,
+	title = {Partial Order Techniques for Distributed Discrete Event Systems: Why You Cannot Avoid Using Them},
+	volume = {17},
+	issn = {0924-6703},
+	shorttitle = {Partial Order Techniques for Distributed Discrete Event Systems},
+	url = {http://www.springerlink.com/content/122778557608147r/abstract/},
+	doi = {10.1007/s10626-007-0016-1},
+	abstract = {Monitoring or diagnosis of large scale distributed Discrete Event Systems with asynchronous communication is a demanding task. Ensuring that the methods developed for Discrete Event Systems properly scale up to such systems is a challenge. In this paper we explain why the use of partial orders cannot be avoided in order to achieve this objective. To support this claim, we try to push classical techniques (parallel composition of automata and languages) to their limits and we eventually discover that partial order models arise at some point. We focus on on-line techniques, where a key difficulty is the choice of proper data structures to represent the set of all runs of a distributed system, in a modular way. We discuss the use of previously known structures such as execution trees and unfoldings. We propose a novel and more compact data structure called вЂњtrellis.вЂќ Then, we show how all the above data structures can be used in performing distributed monitoring and diagnosis. The techniques reported here were used in an industrial context for fault management and alarm correlation in telecommunications networks. This paper is an extended and improved version of the plenary address that was given by the second author at {WODESвЂ™} 2006.},
+	number = {3},
+	urldate = {2012-06-19},
+	journal = {Discrete Event Dynamic Systems},
+	author = {Fabre, Eric and Benveniste, Albert},
+	year = {2007},
+	keywords = {Mathematics and Statistics},
+	pages = {355--403},
+}
+
+@inproceedings{pencole_diagnosability_2004,
+	address = {Carcassonne, France},
+	title = {Diagnosability Analysis of Distributed Discrete Event Systems},
+	url = {http://homepages.laas.fr/ypencole/papers/pencole_2004_refid69.pdf},
+	abstract = {This paper addresses the diagnosability problem of distributed discrete event systems. Until now, the problem of diagnosability has always been solved by considering centralised approaches, monolithic systems. These approaches do not use the fact that real monitored systems are generally modelled in a distributed manner. In this paper, we propose a framework for the diagnosability analysis of such systems: we study the diagnosability of the system using the fact that it is based on a set of communicating components. In the case where the system is not diagnosable, we also want to provide more accurate information in order to better understand the causes.},
+	booktitle = {In 15th International Workshop on Principles of Diagnosis},
+	author = {Pencole, Yannick},
+	month = aug,
+	year = {2004},
+	pages = {173--178},
+}
+
+@inproceedings{serna_design_2010,
+	title = {Design patterns for Failure Management in {IEC} 61499 Function Blocks.},
+	doi = {10.1109/ETFA.2010.5641250},
+	abstract = {{IEC} 61499 standard has promised to help handling the high level of complexity of modern control systems, but it hasn't still been adopted by the industry. Several authors claim for design methodologies to guide control engineers using this standard. This paper shows a way to ease the development of {IEC} 61499 based applications identifying and characterizing "extended {FBs"}, adding semantic artefacts to basic {FBs.} Specific design patterns are built from those extended {FBs}, which match elements of the problem domain. Two specific design patterns are presented which allow dealing with Failure Management, a common topic in control applications.},
+	booktitle = {2010 {IEEE} Conference on Emerging Technologies and Factory Automation ({ETFA)}},
+	author = {Serna, F. and Catalan, C. and Blesa, A. and Rams, {J.M.}},
+	month = sep,
+	year = {2010},
+	keywords = {control engineering computing, design patterns, failure analysis, failure management, {IEC} 61499 function blocks, {IEC} 61499 standard, {IEC} standards, industrial control, object-oriented methods, object-oriented programming},
+	pages = {1--7},
+}
+
+@article{zoitl_guidelines_2013,
+	title = {Guidelines and Patterns for Building Hierarchical Automation Solutions in the {IEC} 61499 Modeling Language},
+	volume = {9},
+	issn = {1551-3203},
+	doi = {10.1109/TII.2012.2235449},
+	abstract = {The {IEC} 61499 modeling language pursues a component-based approach with modular building blocks coupled by ports and arranged in a hierarchical manner. Like similar approaches, the {IEC} 61499 language does not define how functional hierarchies of upper- and lower-level functional entities should be built. In this paper we outline structuring principles for {IEC} 61499 programs with purely hierarchical control architectures. We present elementary design guidelines for structuring automation solutions in several hierarchical layers, outline which elements of the {IEC} 61499 language to use, discuss patterns that arise when implementing hierarchical control solutions, and illustrate the approach with a case study.},
+	number = {4},
+	journal = {{IEEE} Transactions on Industrial Informatics},
+	author = {Zoitl, A. and Prahofer, H.},
+	month = nov,
+	year = {2013},
+	keywords = {Automation, component-based approach, control engineering computing, design guidelines, Distributed control, functional hierarchies, Guidelines, hierarchical automation solutions, hierarchical control architectures, hierarchical software systems, {IEC} 61499, {IEC} 61499 modeling language, {IEC} 61499 programs, {IEC} standards, lower-level functional entities, modular building blocks, object-oriented programming, simulation languages, software architecture, structuring principles, unified modeling language, upper-level functional entities},
+	pages = {2387--2396},
+}
+
+@inproceedings{steinegger_design_2013,
+	title = {Design patterns for separating fault handling from control code in discrete manufacturing systems},
+	doi = {10.1109/IECON.2013.6699838},
+	abstract = {The objective of this paper is to propose a methodology for strictly separating fault detection and fault handling methods from control code in discrete manufacturing systems. In order to enable the separation, two different design patterns are elaborated. Based on an analysis of typical faults in manufacturing systems, a library of reusable function blocks for fault detection, handling, and also fault recovery is developed. These function blocks are implemented according to the international standard {IEC} 61499 and are applied within the design patterns. The design patterns are evaluated with the sequential control of an injection molding machine. It is shown, that the design patterns simplify the engineering and the separation of the fault detection and fault handling from control code significantly, since they provide clear design rules. Applying the proposed design patterns reduces the complexity of industrial control applications drastically. Furthermore, the function block library provides reusable and proven fault detection and fault handling methods.},
+	booktitle = {{IECON} 2013 - 39th Annual Conference of the {IEEE} Industrial Electronics Society},
+	author = {Steinegger, M. and Zoitl, A. and Fein, M. and Schitter, G.},
+	month = nov,
+	year = {2013},
+	keywords = {Complexity theory, control code, design for manufacture, design patterns, design rules, discrete manufacturing systems, fault detection, fault diagnosis, fault handling methods, fault recovery, {IEC} standards, industrial control applications, Injection molding, injection molding machine, injection moulding, international standard {IEC} 61499, manufacturing systems, reusable function block library, sequential control},
+	pages = {4368--4373},
+}

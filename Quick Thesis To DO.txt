@@ -1,0 +1,105 @@
+﻿
+
+=======================================================
+Thesis To Do
+
++ Make the last title
+	+ Make new title 
+		Discrete Event Systems based Design Patterns of Failures for 
+		Automated Manufacturing Systems, and their Formal Verification
+	+ Get response from Paoli
+
++ Intruduction
+	+ Update it accoring Paoli's notes
+	+ Remove number from this chapter & update references in other chapters
+	+ Send it to a native speaker
+	+ Update Introduction according to their comments
+
++ Chapter 1 Automation example
+	+ Add transition paragraph to the next chapter
+	+ Check the structure. It looks ugly!
+
+- Chapter 2 Framework
+	+ Add introduction
+	+ Make 2 parts: Model-base approach and DES
+	+ Remove "borrowed..." from captions of the figures to text
+	+ Add automata example to GD (from your factory example!)
+		+ Make automata drawing
+	- Update GA block (last thing to do)
+
+- Chapter 3 Theory
+	+ Add introduction
+	- Read and check if it is ok in the matherial flow
+	- Add inference diagram
+
++ Chapter 4 Simulation
+	+ Make a list of components
+	+ Make automaton for each component (w/o failures)
+	+ Make automaton for each component (w failures)
+	+ Make parallel composition
+		+ Record state growing and time
+	+ Add figures of the automata into the document
+	+ Add figures of the state growth 
+	+ Add figure of inference diagram
+	+ Make your algorithm working (1st part)
+	+ Add a tool description
+
++ Conclusions
+	+ Add text
+
+- Literature
+	- Add to => 100 
+
++ Abstract
+
+- Acknowledgments
+	- In cover.tex
+
++ Make clear submission rules!
+	+ Read the instructions
+	+ Get response from Tiziano
+	+ Make title also in Italian
+
++ Submit it
+
+
+=======================================================
+List of components:
+
+Object Name	Amount
+-------------------------
+. Butterfly valve	2
+. Gate valve	3
+. Screw conveyer	1
+. Vibrator		1
+. Belt conveyer	1
+. Fork level sensor	4
+. Air pump	1
+-------------------------
+All of them	13
+
+If add other two filters, it would be 23 objects (automata)
+For DI/DO you can make another (LOTS of) automata
+
+Control models:
+. Unload of the pneumatic container
+. Load of the pneumatic container (belt conveyer)
+. Unload the filter
+. Regulate air temperature
+. Regulate air pressure
+
+not modeled:
+. Temp measure	2
+. Pressure meas.	2
+. Weight measure	1
+. Flow measure	1
+
+
+=======================================================
+How to submit:
+https://intranet.unibo.it/Ricerca/Pagine/DottorandiEsameFinale.aspx
+Submission process: http://amsdottorato.unibo.it/help/Istruzioni_dottorandi.pdf
+dmitry.myadzelets@unibo.it
+We :)
+I'm from: II bando ciclo 26: 30/11/2013
+Dottorati del II bando ciclo 26: 1° sessione: scadenza per la consegna della tesi il 17/3/2014; esame da effettuarsi entro il 17/6/2014;

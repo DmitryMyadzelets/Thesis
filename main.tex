@@ -1,0 +1,76 @@
+% \documentclass{article}
+% \documentclass[final, 12pt, a4paper, twoside, english, indent]{itthesis}
+
+\documentclass[12pt, twoside, a4paper, english]{./Help/Templates/MIT/mitthesis}
+\usepackage{./Help/Templates/MIT/lgrind}
+\pagestyle{plain}
+ 
+\usepackage[pdftex, pdftitle={}, pdfauthor={Dmitry Myadzelets}, bookmarks=true,
+% colorlinks=true, linkcolor=black
+]{hyperref}
+
+% Mathematical symbols
+\usepackage{amsfonts, amssymb, amsmath, amsthm}
+
+% Figures
+\usepackage{tikz} 
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows,positioning,automata,shadows,fit,shapes}
+
+% Folder all the pictures are located
+\graphicspath{{figures/}}
+
+% For color backgound of figures 
+% \usepackage{mdframed}
+% \let\originalfigure=\figure
+% \let\endoriginalfigure=\endfigure
+% \renewenvironment{figure}[1][]{
+%   \begin{originalfigure}[#1]
+%     \begin{mdframed}[linecolor=black!0,backgroundcolor=blue!5]
+% }{
+%     \end{mdframed}
+%   \end{originalfigure} 
+% } 
+
+% URL in bibliography 
+\usepackage{url} 
+
+% Algorithms 
+\usepackage{algpseudocode}
+\usepackage{float}
+\newfloat{alg}{t}{lop}
+\floatname{alg}{Algorithm}
+
+% Logarithmic plots in the simulation 
+\usepackage{pgfplots}
+
+
+\begin{document}
+
+\include{cover}
+% Some departments (e.g. 5) require an additional signature page.  See
+% signature.tex for more information and uncomment the following line if
+% applicable.
+% \include{signature}
+\pagestyle{plain}
+\include{contents}
+\include{introduction}
+\include{overview}
+\include{framework}
+\include{thetheory}
+ 
+\include{simulation}
+
+% \section{Real example}
+
+\include{conclusions}
+
+\appendix
+\include{appa}
+% \include{biblio}
+
+\bibliography{References}
+\bibliographystyle{plain}
+
+
+\end{document}
